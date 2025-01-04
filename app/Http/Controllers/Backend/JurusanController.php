@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Jurusan;
+use App\Models\User;
 
 class JurusanController extends Controller
 {
@@ -17,7 +18,8 @@ class JurusanController extends Controller
 
     public function TambahJurusan(){
         $jurusan = Jurusan::latest()->get();
-        return view('admin.backend.jurusan.tambah_jurusan', compact('jurusan'));
+        $user = User::where('role', 'wakil')->get();
+        return view('admin.backend.jurusan.tambah_jurusan', compact('jurusan', 'user'));
     }
 
     public function SimpanJurusan(Request $request){
@@ -32,6 +34,7 @@ class JurusanController extends Controller
 
             Jurusan::insert([
                 'nama_jurusan' => $request->nama_jurusan,
+                'user_id' => $request->user_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->slug_jurusan)),
                 'logo_jurusan' => $save_url,
@@ -46,6 +49,7 @@ class JurusanController extends Controller
          }else{
             Jurusan::insert([
                 'nama_jurusan' => $request->nama_jurusan,
+                'user_id' => $request->user_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
             ]);
@@ -62,7 +66,8 @@ class JurusanController extends Controller
 
     public function EditJurusan($id){
         $jurusan = Jurusan::find($id);
-        return view('admin.backend.jurusan.edit_jurusan', compact('jurusan'));
+        $user = User::where('role', 'wakil')->get();
+        return view('admin.backend.jurusan.edit_jurusan', compact('jurusan', 'user'));
     }
 
     public function UpdateJurusan(Request $request){
@@ -81,6 +86,7 @@ class JurusanController extends Controller
 
             Jurusan::find($id)->update([
                 'nama_jurusan' => $request->nama_jurusan,
+                'user_id' => $request->user_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
                 'logo_jurusan' => $save_url,
@@ -94,6 +100,7 @@ class JurusanController extends Controller
          }else{
             Jurusan::find($id)->update([
                 'nama_jurusan' => $request->nama_jurusan,
+                'user_id' => $request->user_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
             ]);

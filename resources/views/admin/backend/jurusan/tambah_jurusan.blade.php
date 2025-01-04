@@ -37,6 +37,18 @@
                         </div>
 
                         <div class="mb-3 form-group">
+                            <label class="form-label">Ka. Proka:</label>
+                            <select name="user_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
+                                @foreach ($user as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-group">
                             <label class="form-label">Input File:</label>
                             <input type="file" class="form-control" name="logo_jurusan" id="image">
 

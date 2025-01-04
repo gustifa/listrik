@@ -28,6 +28,7 @@
                             <th style="width: 5px;">No</th>
                             <th style="width: 70px;">Logo Jurusan</th>
                             <th>Nama Jurusan</th>
+                            <th>Ka. Proka</th>
                             <th>Kode Jurusan</th>
                             <th style="width: 20px;">Action</th>
                         </tr>
@@ -41,6 +42,7 @@
                                 <img src="{{(!empty($item->logo_jurusan)) ? url($item->logo_jurusan): url('upload/no_image.jpg')}}" alt="logo_jurusan" width="50" class="p-1 rounded-circle bg-primary">
                             </td>
                             <td>{{$item->nama_jurusan}}</td>
+                            <td>{{$item['user']['name']}}</td>
                             <td>{{$item->kode_jurusan}}</td>
                             <td>
                                 <a href="{{route('edit.jurusan',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>

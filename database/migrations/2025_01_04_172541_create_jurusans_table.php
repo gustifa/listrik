@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('jurusans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jurusan');
+            $table->integer('user_id');
             $table->string('logo_jurusan')->nullable();
             $table->string('kode_jurusan')->nullable();
             $table->string('slug_jurusan');
