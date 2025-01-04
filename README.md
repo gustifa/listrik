@@ -1,4 +1,4 @@
-<p align="center"> SISFO SMK</p>
+<h1 align="center"> SISFO SMK</h1>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
