@@ -18,7 +18,7 @@
   <h4>Akun <b>{{ $instructorId->name}} </b><span class="text-success">Aktif</span> </h4>
   @else   
   <h4>Akun <b>{{ $instructorId->name}} <span class="text-danger">Belum Aktif</span> </h4> 
- <p class="text-danger"><b> Please wait admin will check and approve your account</b> </p>
+ <p class="text-danger"><b> Silahkan hubungi Admin untuk mengaktifkan akun</b> </p>
   @endif
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">

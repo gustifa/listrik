@@ -20,6 +20,20 @@
 
         </li>
         <li class="menu-label">Manage</li>
+        <!-- <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">SK </div>
+            </a>
+            <ul>
+                <li> <a href=""><i class='bx bx-radio-circle'></i>All Category</a>
+                </li>
+                <li> <a href=""><i class='bx bx-radio-circle'></i>Add Category</a>
+                </li>
+            </ul>
+        </li> -->
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -31,16 +45,7 @@
                 </li>
                 <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Add Category</a>
                 </li>
-                {{-- <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
-                </li>
-                <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
-                </li>
-                <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo List</a>
-                </li>
-                <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
-                </li>
-                <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
-                </li> --}}
+                
             </ul>
         </li>
 
@@ -62,15 +67,17 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-user"></i>
                 </div>
-                <div class="menu-title">Insturctor</div>
+                <div class="menu-title">Staff Pimpinan</div>
             </a>
             <ul>
-                <li> <a href="{{route('all.instructor')}}"><i class='bx bx-list-ul'></i>All Instructor</a>
+                <li> <a href="{{route('all.instructor')}}"><i class='bx bx-list-ul'></i>Semua</a>
                 </li>
                 <li> <a href="{{route('add.instructor')}}"><i class='bx bx-add-to-queue'></i>Add Instructor</a>
                 </li>
             </ul>
         </li>
+
+        
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-user"></i>

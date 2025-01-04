@@ -29,7 +29,7 @@
 
 	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-	<title>Admin Dashboard </title>
+	<title>SISFO SMK | @yield('title') </title>
 </head>
 
 <body>

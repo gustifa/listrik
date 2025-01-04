@@ -58,9 +58,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/update/password', [AdminController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
 
-    /* Instructor Active */
+    /*Staff Pimpinan Active */
     Route::controller(AdminController::class)->group(function(){
-        Route::get('/instructor/all', 'AllInstructor')->name('all.instructor');
+        Route::get('/staff/all', 'AllInstructor')->name('all.instructor');
         Route::post('/update/user/status', 'UpdateUserStatus')->name('update.user.status');
         Route::get('/instructor/add', 'AddInstructor')->name('add.instructor');
     });
