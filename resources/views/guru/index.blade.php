@@ -1,5 +1,9 @@
 @extends('guru.guru_dashboard')
 @section('guru')
+
+@section('title')
+   Dashboard Guru
+@endsection
     
 @php
   $id = Auth::user()->id;
@@ -11,9 +15,9 @@
 <div class="page-content">
   
   @if ($status === '1')
-  <h4>Account Is <b>{{ $instructorId->name}} </b><span class="text-success">Active</span> </h4>
+  <h4>Akun <b>{{ $instructorId->name}} </b><span class="text-success">Aktif</span> </h4>
   @else   
-  <h4>Account Is <b>{{ $instructorId->name}} <span class="text-danger">InActive</span> </h4> 
+  <h4>Akun <b>{{ $instructorId->name}} <span class="text-danger">Belum Aktif</span> </h4> 
  <p class="text-danger"><b> Please wait admin will check and approve your account</b> </p>
   @endif
 

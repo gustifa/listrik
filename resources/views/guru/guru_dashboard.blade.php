@@ -38,7 +38,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
-	<title>Guru Dashboard </title>
+	<title>SISFO SMK | @yield('title') </title>
 </head>
 
 <body>

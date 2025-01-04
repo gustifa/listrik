@@ -1,5 +1,9 @@
 @extends('staff.staff_dashboard')
 @section('staff')
+
+@section('title')
+   Dashboard Staff Pimpinan
+@endsection
     
 @php
   $id = Auth::user()->id;

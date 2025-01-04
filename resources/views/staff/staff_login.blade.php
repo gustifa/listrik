@@ -20,7 +20,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('backend/assets/css/app.css')}}" rel="stylesheet">
 	<link href="{{ asset('backend/assets/css/icons.css')}}" rel="stylesheet">
-	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+	<title>SISFO SMK | Halaman Login Staff Pimpinan</title>
 </head>
 
 <body class="">
@@ -37,7 +37,7 @@
 										<img src="{{ asset('backend/assets/images/logo-icon.png')}}" width="60" alt="" />
 									</div>
 									<div class="text-center mb-4">
-										<h5 class="">Instructor</h5>
+										<h5 class="">Staff Pimpinan</h5>
 										<p class="mb-0">Please log in to your account</p>
 									</div>
 									<div class="form-body">
