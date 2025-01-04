@@ -38,12 +38,14 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Category</div>
+                <div class="menu-title">Master Data</div>
             </a>
             <ul>
-                <li> <a href="{{route('all.category')}}"><i class='bx bx-radio-circle'></i>All Category</a>
+                <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Sekolah</a>
                 </li>
-                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Add Category</a>
+                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
+                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
+                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
                 </li>
                 
             </ul>

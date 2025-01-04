@@ -8,6 +8,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -84,6 +85,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/subcategory/update', 'UpdateSubCategory')->name('update.subcategory');
         Route::get('/subcategory/delete/{id}', 'DeleteSubCategory')->name('delete.subcategory');
 
+    });
+
+    // Sekolah
+    Route::controller(SekolahController::class)->group(function(){
+        Route::get('/sekolah/all', 'ProfileSekolah')->name('profile.sekolah');
+        Route::get('/sekolah/edit/{id}', 'EditProfileSekolah')->name('edit.profile.sekolah');
+        Route::post('/sekolah/update', 'UpdateProfileSekolah')->name('update.profile.sekolah');
     });
 
     // Admin Coruses All Route 
