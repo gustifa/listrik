@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SekolahController;
+use App\Http\Controllers\Backend\JurusanController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -92,6 +93,15 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/sekolah/all', 'ProfileSekolah')->name('profile.sekolah');
         Route::get('/sekolah/edit/{id}', 'EditProfileSekolah')->name('edit.profile.sekolah');
         Route::post('/sekolah/update', 'UpdateProfileSekolah')->name('update.profile.sekolah');
+    });
+
+    // Jurusan
+    Route::controller(JurusanController::class)->group(function(){
+        Route::get('/jurusan/all', 'SemuaJurusan')->name('semua.jurusan');
+        Route::get('/jurusan/tambah', 'TambahJurusan')->name('tambah.jurusan');
+        Route::get('/jurusan/edit/{id}', 'EditJurusan')->name('edit.jurusan');
+        Route::post('/jurusan/simpan', 'SimpanJurusan')->name('simpan.jurusan');
+        Route::post('/jurusan/update', 'UpdateJurusan')->name('update.jurusan');
     });
 
     // Admin Coruses All Route 
