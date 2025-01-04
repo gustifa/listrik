@@ -3,32 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class InstructorController extends Controller
+class GuruController extends Controller
 {
-    public function InstructorDashboard(){
-        return view('staff.index');
+    public function GuruDashboard(){
+        return view('guru.index');
     }
 
-    public function InstructorLogout(){
+    public function GuruLogout(){
         Auth::guard('web')->logout();
-        return redirect('/staff/login');
+        return redirect('/guru/login');
     }
 
-    public function InstructorLogin(){
-        return view('staff.staff_login');
+    public function GuruLogin(){
+        return view('guru.guru_login');
     }
 
-    public function InstructorProfile(){
+    public function GuruProfile(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('staff.staff_profile', compact('profileData'));
+        return view('guru.guru_profile', compact('profileData'));
     }
 
-    public function InstructorProfileStore(Request $request){
+    public function GuruProfileStore(Request $request){
         $id = Auth::user()->id;
         $data = User::find($id);
         $data->name = $request->name;
@@ -39,14 +39,14 @@ class InstructorController extends Controller
 
         if ($request->file('photo')) {
             $file = $request->file('photo');
-            @unlink(public_path('upload/instructor_images/'.$data->photo));
+            @unlink(public_path('upload/guru_images/'.$data->photo));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/instructor_images'),$filename);
+            $file->move(public_path('upload/guru_images'),$filename);
             $data['photo'] = $filename;
         }
 
         $notification = array(
-            'message' => 'Staff Profile Update Succesfully',
+            'message' => 'Profile Guru Berhasil diganti',
             'alert-type' => 'success',
         );
 
@@ -55,13 +55,13 @@ class InstructorController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function InstructorPassword(){
+    public function GuruPassword(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('staff.staff_password', compact('profileData'));
+        return view('guru.guru_password', compact('profileData'));
     }
 
-    public function InstructorUpdatePassword(Request $request){
+    public function GuruUpdatePassword(Request $request){
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed',
@@ -85,7 +85,7 @@ class InstructorController extends Controller
             'alert-type' => 'success',
         );
 
-        return back()->with($notification);
+        return redirect('/guru/login');
 
     }
 }

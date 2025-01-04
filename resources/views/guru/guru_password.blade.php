@@ -1,17 +1,17 @@
-@extends('instructor.instructor_dashboard')
-@section('instructor')
+@extends('guru.guru_dashboard')
+@section('guru')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">User Profile</div>
+        <div class="breadcrumb-title pe-3">Profile Pengguna</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="{{url('/instructor/dashboard')}}"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{url('/guru/dashboard')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+                    <li class="breadcrumb-item active" aria-current="page">Ganti Password</li>
                 </ol>
             </nav>
         </div>
@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{(!empty($profileData->photo)) ? url('upload/instructor_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="{{(!empty($profileData->photo)) ? url('upload/guru_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
                                     <h4>{{$profileData->name}}</h4>
                                     <p class="text-secondary mb-1">{{$profileData->username}}</p>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card">
-                        <form method="post" action="{{route('instructor.update.password')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('guru.update.password')}}" enctype="multipart/form-data">
                             @csrf
                         <div class="card-body">
                             <div class="row mb-3">
@@ -97,7 +97,7 @@
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Update" />
+                                    <input type="submit" class="btn btn-primary px-4" value="Ganti" />
                                 </div>
                             </div>
                         </div>

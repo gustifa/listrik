@@ -1,5 +1,5 @@
-@extends('instructor.instructor_dashboard')
-@section('instructor')
+@extends('guru.guru_dashboard')
+@section('guru')
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <script src="{{ asset('backend/assets/js/custom/jquery.min.js') }}"></script>
@@ -10,7 +10,7 @@
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="{{url('/instructor/dashboard')}}"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{url('/guru/dashboard')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                 </ol>
@@ -37,7 +37,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{(!empty($profileData->photo)) ? url('upload/instructor_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="{{(!empty($profileData->photo)) ? url('upload/guru_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
                                     <h4>{{$profileData->name}}</h4>
                                     <p class="text-secondary mb-1">{{$profileData->username}}</p>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card">
-                        <form method="post" action="{{route('instructor.profile.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('guru.profile.store')}}" enctype="multipart/form-data">
                             @csrf
                         <div class="card-body">
                             <div class="row mb-3">
@@ -119,14 +119,14 @@
                                     
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <img id ="showImage"src="{{(!empty($profileData->photo)) ? url('upload/instructor_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
+                                    <img id ="showImage"src="{{(!empty($profileData->photo)) ? url('upload/guru_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
                                 </div>
                             </div>
                             
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                                    <input type="submit" class="btn btn-primary px-4" value="Simpan" />
                                 </div>
                             </div>
                         </div>

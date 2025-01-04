@@ -7,28 +7,28 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class InstructorController extends Controller
+class StaffController extends controller
 {
-    public function InstructorDashboard(){
+    public function StaffDashboard(){
         return view('staff.index');
     }
 
-    public function InstructorLogout(){
+    public function staffLogout(){
         Auth::guard('web')->logout();
         return redirect('/staff/login');
     }
 
-    public function InstructorLogin(){
+    public function staffLogin(){
         return view('staff.staff_login');
     }
 
-    public function InstructorProfile(){
+    public function staffProfile(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
         return view('staff.staff_profile', compact('profileData'));
     }
 
-    public function InstructorProfileStore(Request $request){
+    public function staffProfileStore(Request $request){
         $id = Auth::user()->id;
         $data = User::find($id);
         $data->name = $request->name;
@@ -39,14 +39,14 @@ class InstructorController extends Controller
 
         if ($request->file('photo')) {
             $file = $request->file('photo');
-            @unlink(public_path('upload/instructor_images/'.$data->photo));
+            @unlink(public_path('upload/staff_images/'.$data->photo));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/instructor_images'),$filename);
+            $file->move(public_path('upload/staff_images'),$filename);
             $data['photo'] = $filename;
         }
 
         $notification = array(
-            'message' => 'Staff Profile Update Succesfully',
+            'message' => 'Profile Staff Berhasil diganti',
             'alert-type' => 'success',
         );
 
@@ -55,13 +55,13 @@ class InstructorController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function InstructorPassword(){
+    public function staffPassword(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
         return view('staff.staff_password', compact('profileData'));
     }
 
-    public function InstructorUpdatePassword(Request $request){
+    public function staffUpdatePassword(Request $request){
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed',
@@ -81,11 +81,11 @@ class InstructorController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Change Password Update Succesfully',
+            'message' => 'Password Berhasil diganti',
             'alert-type' => 'success',
         );
 
-        return back()->with($notification);
+        return redirect('/staff/login');
 
     }
 }

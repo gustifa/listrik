@@ -30,22 +30,34 @@ class UserTableSeeder extends Seeder
             // instructor
             [
                 'id' => '2',
-                'name' => 'instructor',
-                'username' => 'instructor',
-                'email' => 'instructor@gmail.com',
+                'name' => 'wakil',
+                'username' => 'wakil',
+                'email' => 'wakil@gmail.com',
                 'password' => Hash::make('111'),
-                'role' => 'instructor',
+                'role' => 'wakil',
                 'status' => '1',
                 'created_at' => Carbon::now(),
             ],
-            //user
+            //Guru
             [
                 'id' => '3',
-                'name' => 'user',
-                'username' => 'user',
-                'email' => 'user@gmail.com',
+                'name' => 'guru',
+                'username' => 'guru',
+                'email' => 'guru@gmail.com',
                 'password' => Hash::make('111'),
-                'role' => 'user',
+                'role' => 'guru',
+                'status' => '1',
+                'created_at' => Carbon::now(),
+            ],
+
+            //user
+            [
+                'id' => '4',
+                'name' => 'siswa',
+                'username' => 'siswa',
+                'email' => 'siswa@gmail.com',
+                'password' => Hash::make('111'),
+                'role' => 'siswa',
                 'status' => '1',
                 'created_at' => Carbon::now(),
             ],

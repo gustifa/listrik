@@ -1,5 +1,5 @@
-@extends('instructor.instructor_dashboard')
-@section('instructor')
+@extends('guru.guru_dashboard')
+@section('guru')
     
 @php
   $id = Auth::user()->id;

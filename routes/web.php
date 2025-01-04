@@ -3,7 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
@@ -22,18 +23,18 @@ Route::get('/', [UserController::class, 'Index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
-})->middleware(['auth', 'role:user', 'verified'])->name('dashboard');
+})->middleware(['auth', 'role:siswa', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
-    Route::get('/user/profile',[UserController::class, 'UserProfile'])->name('user.profile');
-    Route::post('/user/profile/update',[UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
-    Route::post('/user/password/update',[UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
-    Route::get('/user/logout',[UserController::class, 'UserLogout'])->name('user.logout');
+    Route::get('/siswa/profile',[UserController::class, 'UserProfile'])->name('user.profile');
+    Route::post('/siswa/profile/update',[UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
+    Route::post('/siswa/password/update',[UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
+    Route::get('/siswa/logout',[UserController::class, 'UserLogout'])->name('user.logout');
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::controller(WishListController::class)->group(function(){
-        Route::get('/user/wishlist','AllWishlist')->name('user.wishlist');
+        Route::get('/siswa/wishlist','AllWishlist')->name('user.wishlist');
         Route::get('/get-wishlist-course','GetWishlistCourse');
         Route::get('/wishlist-remove/{id}','RemoveWishlist');
     });
@@ -106,15 +107,15 @@ Route::controller(AdminController::class)->group(function(){
 
 }); ///Akhir Admin Group Middleware
 
-// Awal Instructor Group Middleware
-Route::middleware(['auth','role:instructor'])->group(function(){
-    Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
-    Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');
-    Route::get('/instructor/profile', [InstructorController::class, 'InstructorProfile'])->name('instructor.profile');
-    Route::post('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
+// Awal Staff Group Middleware
+Route::middleware(['auth','role:wakil'])->group(function(){
+    Route::get('/staff/dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
+    Route::get('/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
+    Route::get('/staff/profile', [StaffController::class, 'StaffProfile'])->name('staff.profile');
+    Route::post('/staff/profile/store', [StaffController::class, 'StaffProfileStore'])->name('staff.profile.store');
 
-    Route::get('/instructor/change/password', [InstructorController::class, 'InstructorPassword'])->name('instructor.password');
-    Route::post('/instructor/update/password', [InstructorController::class, 'InstructorUpdatePassword'])->name('instructor.update.password');
+    Route::get('/staff/change/password', [StaffController::class, 'StaffPassword'])->name('staff.password');
+    Route::post('/staff/update/password', [StaffController::class, 'StaffUpdatePassword'])->name('staff.update.password');
 
     // Course Group Middleware
     Route::controller(CourseController::class)->group(function(){
@@ -145,8 +146,19 @@ Route::middleware(['auth','role:instructor'])->group(function(){
     });
 
 
-}); ///Akhir Instructor Group Middleware
+}); ///Akhir Staff Group Middleware
 
+// Awal Guru Group Middleware
+Route::middleware(['auth','role:guru'])->group(function(){
+    Route::get('/guru/dashboard', [GuruController::class, 'GuruDashboard'])->name('guru.dashboard');
+    Route::get('/guru/logout', [GuruController::class, 'GuruLogout'])->name('guru.logout');
+
+    Route::get('/guru/profile', [GuruController::class, 'GuruProfile'])->name('guru.profile');
+    Route::post('/guru/profile/store', [GuruController::class, 'GuruProfileStore'])->name('guru.profile.store');
+
+    Route::get('/guru/change/password', [GuruController::class, 'GuruPassword'])->name('guru.password');
+    Route::post('/guru/update/password', [GuruController::class, 'GuruUpdatePassword'])->name('guru.update.password');
+}); ///Akhir guru Group Middleware
 
 
 // User Group Middleware
@@ -157,7 +169,8 @@ Route::middleware(['auth','role:user'])->group(function(){
 
 // Route Accessable for ALl
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
-Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+Route::get('/staff/login', [StaffController::class, 'StaffLogin'])->name('staff.login');
+Route::get('/guru/login', [GuruController::class, 'GuruLogin'])->name('guru.login');
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
 
