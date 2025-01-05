@@ -8,6 +8,8 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ImportUserController;
+use App\Http\Controllers\Backend\ExportUserController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\JurusanController;
 use App\Http\Controllers\Backend\CourseController;
@@ -124,6 +126,12 @@ Route::controller(AdminController::class)->group(function(){
     });
 
 }); ///Akhir Admin Group Middleware
+
+//tes
+
+Route::get('users', [ImportUserController::class, 'index']);
+Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
+Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
 
 // Awal Staff Group Middleware
 Route::middleware(['auth','role:wakil'])->group(function(){
