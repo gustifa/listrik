@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\GroupController;
 use App\Http\Controllers\Backend\WaktuController;
 use App\Http\Controllers\Backend\MapelController;
 use App\Http\Controllers\Backend\BengkelController;
+use App\Http\Controllers\Backend\TahunPelajaranController;
+use App\Http\Controllers\Backend\SemesterController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -165,6 +167,27 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/bengkel/simpan', 'SimpanBengkel')->name('simpan.bengkel');
         Route::post('/bengkel/update', 'UpdateBengkel')->name('update.bengkel');
     });
+
+    // Tahun Pelajaran
+    Route::controller(TahunPelajaranController::class)->group(function(){
+        Route::get('/tahun-pelajaran/all', 'SemuaTahunPelajaran')->name('semua.tahun.pelajaran');
+        Route::get('/tahun-pelajaran/tambah', 'TambahTahunPelajaran')->name('tambah.tahun.pelajaran');
+        Route::get('/tahun-pelajaran/edit/{id}', 'EditTahunPelajaran')->name('edit.tahun.pelajaran');
+        Route::post('/tahun-pelajaran/simpan', 'SimpanTahunPelajaran')->name('simpan.tahun.pelajaran');
+        Route::post('/tahun-pelajaran/update', 'UpdateTahunPelajaran')->name('update.tahun.pelajaran');
+    });
+
+    // Semester
+    Route::controller(SemesterController::class)->group(function(){
+        Route::get('/semester/all', 'SemuaSemester')->name('semua.semester');
+        Route::get('/semester/tambah', 'TambahSemester')->name('tambah.semester');
+        Route::get('/semester/edit/{id}', 'EditSemestern')->name('edit.semester');
+        Route::post('/semester/simpan', 'SimpanSemester')->name('simpan.semester');
+        Route::post('/semester/update', 'UpdateSemester')->name('update.semester');
+        Route::post('/update/semester/status', 'UpdateSemesterStatus')->name('update.semester.status');
+
+    });
+
 
 
 

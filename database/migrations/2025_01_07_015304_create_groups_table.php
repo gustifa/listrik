@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('nama_group');
+            $table->enum('status', ['1', '0'])->default('0');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
+            $table->enum('status', ['1', '0'])->default('0');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

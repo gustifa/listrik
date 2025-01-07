@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_mapel');
             $table->string('kode_mapel');
-            $table->string('Keterangan')->nullable();
+            $table->enum('status', ['1', '0'])->default('0');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

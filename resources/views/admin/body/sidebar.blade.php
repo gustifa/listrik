@@ -42,17 +42,14 @@
             </a>
             <ul>
                 <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Sekolah</a>
-                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
+                <li> <a href="{{route('semua.tahun.pelajaran')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
+                <li> <a href="{{route('semua.semester')}}"><i class='bx bx-radio-circle'></i>Semester</a>
                 <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
                 <li> <a href="{{route('semua.mapel')}}"><i class='bx bx-radio-circle'></i>Mapel</a>
                 <li> <a href="{{route('semua.bengkel')}}"><i class='bx bx-radio-circle'></i>Bengkel</a>
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
                 <li> <a href="{{route('semua.kelas')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
                 <li> <a href="{{route('semua.group')}}"><i class='bx bx-radio-circle'></i>Group</a>
-                <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Peserta Didik</a>
-                <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Guru</a>
-                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Wali Kelas</a>
-                <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Rombel</a>
                 </li>
                 
             </ul>
@@ -65,7 +62,7 @@
                 <div class="menu-title">Maping</div>
             </a>
             <ul>
-                <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
+                <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Rombel</a>
                 <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
                 <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
                 </li>
