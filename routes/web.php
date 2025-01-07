@@ -176,6 +176,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/tahun-pelajaran/edit/{id}', 'EditTahunPelajaran')->name('edit.tahun.pelajaran');
         Route::post('/tahun-pelajaran/simpan', 'SimpanTahunPelajaran')->name('simpan.tahun.pelajaran');
         Route::post('/tahun-pelajaran/update', 'UpdateTahunPelajaran')->name('update.tahun.pelajaran');
+        Route::get('/tahun-pelajaran/delete/{id}', 'DeleteTahunPelajaran')->name('delete.tahun.pelajaran');
     });
 
     // Semester
