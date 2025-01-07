@@ -44,7 +44,8 @@
                 <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Sekolah</a>
                 <li> <a href="{{route('semua.tahun.pelajaran')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
                 <li> <a href="{{route('semua.semester')}}"><i class='bx bx-radio-circle'></i>Semester</a>
-                <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
+                <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu PBM</a>
+                <li> <a href="{{route('semua.hari')}}"><i class='bx bx-radio-circle'></i>Hari</a>
                 <li> <a href="{{route('semua.mapel')}}"><i class='bx bx-radio-circle'></i>Mapel</a>
                 <li> <a href="{{route('semua.bengkel')}}"><i class='bx bx-radio-circle'></i>Bengkel</a>
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
@@ -63,8 +64,8 @@
             </a>
             <ul>
                 <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Rombel</a>
-                <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
-                <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
+                <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>Jadwal Guru</a>
+                {{-- <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a> --}}
                 </li>
                 
             </ul>

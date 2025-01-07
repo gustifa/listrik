@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth; 
 use App\Models\JadwalPelajaran;
 use App\Models\User;
 use App\Models\Mapel;
@@ -13,6 +14,7 @@ use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Group;
 use App\Models\Waktu;
+use App\Models\Hari;
 
 class JadwalPelajaranController extends Controller
 {
@@ -29,15 +31,20 @@ class JadwalPelajaranController extends Controller
         $tingkat = Kelas::latest()->get();
         $group = Group::latest()->get();
         $waktu = Waktu::latest()->get();
-        return view('admin.backend.jadwal.tambah_jadwal', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu'));
+        $hari = Hari::latest()->get();
+        return view('admin.backend.jadwal.tambah_jadwal', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari'));
     }
 
     public function SimpanJadwal(Request $request){
-
+        $request->validate([
+            // 'name' => ['required','string','max:255'],
+            // 'mapel_id' => ['required','unique:jadwal_pelajarans'],
+        ]);
         JadwalPelajaran::insert([
             'user_id' => $request->user_id,
             'mapel_id' => $request->mapel_id,
             'rombel_id' => $request->rombel_id,
+            'hari_id' => $request->hari_id,
             'mulai_id' => $request->mulai_id,
             'selesai_id' => $request->selesai_id,
             'created_at' => Carbon::now(),
@@ -63,6 +70,54 @@ class JadwalPelajaranController extends Controller
             $jadwal->save();
         }
         return response()->json(['message'=>'Jadwal Berhasil diganti']);
+
+    }
+
+
+    // Guru
+    public function SemuaJadwalGuru(){
+        $id = Auth::user()->id;
+        $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->get();
+        return view('guru.jadwal.lihat_jadwal_guru', compact('jadwal'));
+    }
+
+    public function TambahJadwalGuru(){
+        $users = User::where('role', 'guru')->get();
+        $mapel = Mapel::latest()->get();
+        $rombel = Rombel::latest()->get();
+        $jurusan = Jurusan::latest()->get();
+        $tingkat = Kelas::latest()->get();
+        $group = Group::latest()->get();
+        $waktu = Waktu::latest()->get();
+        $hari = Hari::latest()->get();
+        return view('guru.jadwal.tambah_jadwal_guru', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari'));
+    }
+
+    public function SimpanJadwalGuru(Request $request){
+        $id = Auth::user()->id;
+        //dd($id);
+        $request->validate([
+            // 'name' => ['required','string','max:255'],
+            // 'mapel_id' => ['required','unique:jadwal_pelajarans'],
+        ]);
+        JadwalPelajaran::insert([
+            'user_id' => $id,
+            'mapel_id' => $request->mapel_id,
+            'rombel_id' => $request->rombel_id,
+            'hari_id' => $request->hari_id,
+            'mulai_id' => $request->mulai_id,
+            'selesai_id' => $request->selesai_id,
+            'created_at' => Carbon::now(),
+        ]);
+
+
+        $notification = array(
+            'message' => 'Jadwal Berhasil ditambahkan',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('lihat.jadwal.guru')->with($notification);
+
+            
 
     }
 }

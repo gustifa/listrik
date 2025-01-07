@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\BengkelController;
 use App\Http\Controllers\Backend\TahunPelajaranController;
 use App\Http\Controllers\Backend\SemesterController;
 use App\Http\Controllers\Backend\JadwalPelajaranController;
+use App\Http\Controllers\Backend\HariController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -202,6 +203,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/jadwal/delete/{id}', 'DeleteJadwal')->name('delete.jadwal');
     });
 
+    // Hari
+    Route::controller(HariController::class)->group(function(){
+        Route::get('/hari/all', 'SemuaHari')->name('semua.hari');
+        Route::get('/hari/tambah', 'TambahHari')->name('tambah.hari');
+        Route::get('/hari/edit/{id}', 'EditHari')->name('edit.hari');
+        Route::post('/hari/simpan', 'SimpanHari')->name('simpan.hari');
+        Route::post('/hari/update', 'UpdateHari')->name('update.hari');
+        Route::post('/update/hari/status', 'UpdateHariStatus')->name('update.hari.status');
+        Route::get('/hari/delete/{id}', 'DeleteHari')->name('delete.hari');
+    });
 
 
 
@@ -283,6 +294,17 @@ Route::middleware(['auth','role:guru'])->group(function(){
 
     Route::get('/guru/change/password', [GuruController::class, 'GuruPassword'])->name('guru.password');
     Route::post('/guru/update/password', [GuruController::class, 'GuruUpdatePassword'])->name('guru.update.password');
+
+    // Jadwal
+    Route::controller(JadwalPelajaranController::class)->group(function(){
+        Route::get('/guru/jadwal/all', 'SemuaJadwalGuru')->name('lihat.jadwal.guru');
+        Route::get('/guru/jadwal/tambah', 'TambahJadwalGuru')->name('tambah.jadwal.guru');
+        Route::get('/guru/jadwal/edit/{id}', 'EditJadwalGuru')->name('edit.jadwal.guru');
+        Route::post('/guru/jadwal/simpan', 'SimpanJadwalGuru')->name('simpan.jadwal.guru');
+        Route::post('/guru/jadwal/update', 'UpdateJadwalGuru')->name('update.jadwal.guru');
+        Route::post('/guru/update/jadwal/status', 'UpdateJadwalGuruStatus')->name('update.jadwal.guru.status');
+        Route::get('/guru/jadwal/delete/{id}', 'DeleteJadwal')->name('delete.jadwal.guru');
+    });
 }); ///Akhir guru Group Middleware
 
 

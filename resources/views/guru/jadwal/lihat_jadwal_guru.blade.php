@@ -1,8 +1,8 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('guru.guru_dashboard')
+@section('guru')
 
 @section('title')
-   Data Jadwal Pelajaran
+   Jadwal Pelajaran
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
@@ -18,7 +18,7 @@
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{route('guru.dashboard')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Data Jadwal Pelajaran</li>
                 </ol>
@@ -28,7 +28,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.jadwal')}}" class="btn btn-primary">Tambah Jadwal</a>
+        <a href="{{route('tambah.jadwal.guru')}}" class="btn btn-primary">Tambah Jadwal</a>
     </div>
     <div class="card">
         <div class="card-body">
@@ -37,14 +37,14 @@
                     <thead>
                         <tr>
                             <th style="width: 5px;">No</th>
-                            <th>Nama Guru</th>
+                            {{-- <th>Nama Guru</th> --}}
                             <th>Hari</th>
                             <th>Mata Pelajaran</th>
                             <th>Rombel</th>
                             <th>Mulai</th>
                             <th>Selesai</th>
                             <th>Status</th>
-                            <th style="width: 20px;">Action</th>
+                            {{-- <th style="width: 20px;">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -52,22 +52,22 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             
-                            <td>{{$item['user']['name']}}</td>
+                            {{-- <td>{{$item['user']['name']}}</td> --}}
                             <td>{{$item['hari']['nama_hari']}}</td>
                             <td>{{$item['mapel']['kode_mapel']}}</td>
                             <td>{{$item['rombel']['kelas']['nama_kelas']. ' ' .$item['rombel']['jurusan']['kode_jurusan']. ' '.$item['rombel']['group']['nama_group']}}</td>
                             <td>{{$item['waktu_mulai']['waktu_mulai']}}</td>
                             <td>{{$item['waktu_selesai']['waktu_selesai']}}</td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-jadwal="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
-                                  </div>
-                        </td>
-                            <td>
-                                <a href="{{route('edit.jadwal',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
-                                <!-- <a href="{{route('delete.jadwal',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> -->
+                            <td> @if ($item->status == 1)
+                                <span class="btn btn-success">Aktif </span>
+                                @else 
+                                <span class="btn btn-danger">Tidak Aktif </span>
+                                @endif 
                             </td>
+                            {{-- <td> --}}
+                                {{-- <a href="{{route('edit.jadwal',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a> --}}
+                                {{-- <!-- <a href="{{route('delete.jadwal',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
+                            {{-- </td> --}}
                         </tr>
                         @endforeach
 

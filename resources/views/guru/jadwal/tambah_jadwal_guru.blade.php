@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('guru.guru_dashboard')
+@section('guru')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 @section('title')
@@ -27,14 +27,14 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('simpan.jadwal')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('simpan.jadwal.guru')}}" enctype="multipart/form-data">
                         @csrf
                         {{-- <div class="mb-3 form-group">
                             <label class="form-label">Nama Jurusan:</label>
                             <input type="text" class="form-control" name="user_id">
                         </div> --}}
 
-                        <div class="mb-3 form-group">
+                        {{-- <div class="mb-3 form-group">
                             <label class="form-label">Nama Guru:</label>
                             <select name="user_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Guru</option>
@@ -44,7 +44,7 @@
 
 
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Mapel:</label>

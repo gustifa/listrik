@@ -41,7 +41,7 @@
                 <div class="menu-title">Course</div>
             </a>
             <ul>
-                <li> <a href="{{route('all.course')}}"><i class='bx bx-radio-circle'></i>All Course</a>
+                <li> <a href="{{route('lihat.jadwal.guru')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
                 </li>
                 {{-- <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
                 </li>

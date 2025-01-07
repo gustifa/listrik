@@ -38,4 +38,8 @@ class JadwalPelajaran extends Model
     public function group(){
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
+
+    public function hari(){
+        return $this->belongsTo(Hari::class, 'hari_id', 'id');
+    }
 }
