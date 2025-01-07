@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Semester;
+use Carbon\Carbon;
 
 class SemesterController extends Controller
 {
@@ -21,6 +22,7 @@ class SemesterController extends Controller
 
         Semester::insert([
             'nama' => $request->nama,
+            'created_at' => Carbon::now(),
         ]);
 
 

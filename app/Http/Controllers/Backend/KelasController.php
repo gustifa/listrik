@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Kelas;
 
 class KelasController extends Controller
@@ -22,6 +23,7 @@ class KelasController extends Controller
 
         Kelas::insert([
             'nama_kelas' => strtoupper($request->nama_kelas),
+            'created_at' => Carbon::now(),
         ]);
 
 

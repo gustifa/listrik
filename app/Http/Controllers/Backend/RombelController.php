@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Rombel;
 use App\Models\Jurusan;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Group;
+
 
 class RombelController extends Controller
 {
@@ -31,6 +33,7 @@ class RombelController extends Controller
                 'jurusan_id' => $request->jurusan_id,
                 'group_id' => $request->group_id,
                 'walas_id' => $request->walas_id,
+                'created_at' => Carbon::now(),
             ]);
 
             $notification = array(

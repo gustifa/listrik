@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Jurusan;
@@ -90,6 +91,7 @@ class JurusanController extends Controller
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
                 'logo_jurusan' => $save_url,
+                'created_at' => Carbon::now(),
             ]);
 
             $notification = array(
@@ -103,6 +105,7 @@ class JurusanController extends Controller
                 'user_id' => $request->user_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
+                'created_at' => Carbon::now(),
             ]);
 
             $notification = array(
