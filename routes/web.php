@@ -16,6 +16,8 @@ use App\Http\Controllers\Backend\KelasController;
 use App\Http\Controllers\Backend\RombelController;
 use App\Http\Controllers\Backend\GroupController;
 use App\Http\Controllers\Backend\WaktuController;
+use App\Http\Controllers\Backend\MapelController;
+use App\Http\Controllers\Backend\BengkelController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -145,6 +147,25 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/waktu/simpan', 'SimpanWaktu')->name('simpan.waktu');
         Route::post('/waktu/update', 'UpdateWaktu')->name('update.waktu');
     });
+
+    // Mapel
+    Route::controller(MapelController::class)->group(function(){
+        Route::get('/mapel/all', 'SemuaMapel')->name('semua.mapel');
+        Route::get('/mapel/tambah', 'TambahMapel')->name('tambah.mapel');
+        Route::get('/mapel/edit/{id}', 'EditMapel')->name('edit.mapel');
+        Route::post('/mapel/simpan', 'SimpanMapel')->name('simpan.mapel');
+        Route::post('/mapel/update', 'UpdateMapel')->name('update.mapel');
+    });
+
+    // Mapel
+    Route::controller(BengkelController::class)->group(function(){
+        Route::get('/bengkel/all', 'SemuaBengkel')->name('semua.bengkel');
+        Route::get('/bengkel/tambah', 'TambahBengkel')->name('tambah.bengkel');
+        Route::get('/bengkel/edit/{id}', 'EditBengkel')->name('edit.bengkel');
+        Route::post('/bengkel/simpan', 'SimpanBengkel')->name('simpan.bengkel');
+        Route::post('/bengkel/update', 'UpdateBengkel')->name('update.bengkel');
+    });
+
 
 
     // Admin Coruses All Route 
