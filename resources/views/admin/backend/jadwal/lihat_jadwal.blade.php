@@ -4,7 +4,7 @@
 @section('title')
    Data Jadwal Pelajaran
 @endsection
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
     .large-chexbox{
         transform: scale(1.5);
@@ -88,10 +88,10 @@
             // send an ajax request to update status
 
             $.ajax({
-                url: "{{ route('update.semester.status') }}",
+                url: "{{ route('update.jadwal.status') }}",
                 method: "POST",
                 data: {
-                    semester : jadwalId,
+                    jadwal : jadwalId,
                     is_checked: isChecked ? 1 : 0,
                     _token: "{{ csrf_token() }}"
                 },
@@ -105,4 +105,6 @@
 
         });
     });
+
+</script>
 @endsection

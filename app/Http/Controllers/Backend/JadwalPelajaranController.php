@@ -57,7 +57,7 @@ class JadwalPelajaranController extends Controller
     public function UpdateJadwalStatus(Request $request){
         $jadwalId = $request->input('jadwal');
         $isChecked = $request->input('is_checked', 0);
-        $jadwal = Semester::find($jadwalId);
+        $jadwal = JadwalPelajaran::find($jadwalId);
         if ($jadwal) {
             $jadwal->status =  $isChecked;
             $jadwal->save();
