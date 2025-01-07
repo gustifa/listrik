@@ -69,24 +69,22 @@ class SemesterController extends Controller
     }
 
     public function DeleteSemester($id){
-        $status = Semester::where('status', '1')->select('status')->get($id);
-        // dd($status);
-        if($status == 1){
-            $notification = array(
-                'message' => 'Semester Aktif',
-                'alert-type' => 'error',
-            );
-            return redirect()->route('semua.semester')->with($notification);
-        }else{
 
-            Semester::find($id)->delete();
-            $notification = array(
-                   'message' => 'Semester Berhasil dihapus',
-                   'alert-type' => 'success',
-               );
+    if(Semester::find($id)->where('status', '0')->delete()){
+        $notification = array(
+            'message' => 'Semester Berhasil dihapus',
+            'alert-type' => 'success',
+        );
 
-               return redirect()->route('semua.semester')->with($notification);
-        }
+        return redirect()->route('semua.semester')->with($notification);
+    }else{
+        $notification = array(
+            'message' => 'Semester Aktif, Gagal dihapus',
+            'alert-type' => 'error',
+        );
+
+        return redirect()->route('semua.semester')->with($notification);
+    }
 
     }
 
