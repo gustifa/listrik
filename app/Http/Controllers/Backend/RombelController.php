@@ -20,14 +20,19 @@ class RombelController extends Controller
     }
 
     public function TambahRombel(){
-        $jurusan = Jurusan::latest()->get();
         $user = User::where('role', 'guru')->get();
+        $jurusan = Jurusan::latest()->get();
         $tingkat = Kelas::latest()->get();
         $group = Group::latest()->get();
         return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'user', 'tingkat', 'group'));
     }
 
     public function SimpanRombel(Request $request){
+        
+        $request->validate([
+            // 'name' => ['required','string','max:255'],
+            'walas_id' => ['required', 'string','unique:rombels'],
+        ]);
             Rombel::insert([
                 'kelas_id' => $request->kelas_id,
                 'jurusan_id' => $request->jurusan_id,

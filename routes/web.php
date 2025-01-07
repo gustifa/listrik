@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\MapelController;
 use App\Http\Controllers\Backend\BengkelController;
 use App\Http\Controllers\Backend\TahunPelajaranController;
 use App\Http\Controllers\Backend\SemesterController;
+use App\Http\Controllers\Backend\JadwalPelajaranController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -188,7 +189,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/semester/update', 'UpdateSemester')->name('update.semester');
         Route::post('/update/semester/status', 'UpdateSemesterStatus')->name('update.semester.status');
         Route::get('/semester/delete/{id}', 'DeleteSemester')->name('delete.semester');
+    });
 
+    // Jadwal
+    Route::controller(JadwalPelajaranController::class)->group(function(){
+        Route::get('/jadwal/all', 'SemuaJadwal')->name('semua.jadwal');
+        Route::get('/jadwal/tambah', 'TambahJadwal')->name('tambah.jadwal');
+        Route::get('/jadwal/edit/{id}', 'EditJadwal')->name('edit.jadwal');
+        Route::post('/jadwal/simpan', 'SimpanJadwal')->name('simpan.jadwal');
+        Route::post('/jadwal/update', 'UpdateJadwal')->name('update.jadwal');
+        Route::post('/update/jadwal/status', 'UpdateJadwalStatus')->name('update.jadwal.status');
+        Route::get('/jadwal/delete/{id}', 'DeleteJadwal')->name('delete.jadwal');
     });
 
 

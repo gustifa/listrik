@@ -1,5 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 @section('title')
    Tambah Kelas
 @endsection
@@ -43,4 +45,36 @@
     </div>
     <!--end row-->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                nama_kelas: {
+                    required : true,
+                },
+
+            },
+            messages :{
+                nama_kelas: {
+                    required : 'Nama Kelas Tidak Boleh Kosong',
+                },
+
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
+</script>
 @endsection

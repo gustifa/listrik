@@ -21,7 +21,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.kelas')}}" class="btn btn-primary">Tambah Kelas</a>
+        <a href="{{route('tambah.kelas')}}" class="btn btn-primary"><i class="lni lni-plus"></i></a>
     </div>
     <div class="card">
         <div class="card-body">
@@ -40,7 +40,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_kelas}}</td>
                             <td>
-                                <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-warning" title="Edit"><i class="lni lni-pencil"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
                             </td>
                         </tr>

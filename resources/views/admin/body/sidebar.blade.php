@@ -63,7 +63,7 @@
             </a>
             <ul>
                 <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Rombel</a>
-                <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
+                <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
                 <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
                 </li>
                 
