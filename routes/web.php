@@ -12,6 +12,9 @@ use App\Http\Controllers\Backend\ImportUserController;
 use App\Http\Controllers\Backend\ExportUserController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\JurusanController;
+use App\Http\Controllers\Backend\KelasController;
+use App\Http\Controllers\Backend\RombelController;
+use App\Http\Controllers\Backend\GroupController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -104,6 +107,33 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/jurusan/edit/{id}', 'EditJurusan')->name('edit.jurusan');
         Route::post('/jurusan/simpan', 'SimpanJurusan')->name('simpan.jurusan');
         Route::post('/jurusan/update', 'UpdateJurusan')->name('update.jurusan');
+    });
+
+    // Kelas
+    Route::controller(KelasController::class)->group(function(){
+        Route::get('/kelas/all', 'SemuaKelas')->name('semua.kelas');
+        Route::get('/kelas/tambah', 'TambahKelas')->name('tambah.kelas');
+        Route::get('/kelas/edit/{id}', 'EditKelas')->name('edit.kelas');
+        Route::post('/kelas/simpan', 'SimpanKelas')->name('simpan.kelas');
+        Route::post('/kelas/update', 'UpdateKelas')->name('update.kelas');
+    });
+
+    // Rombel
+    Route::controller(RombelController::class)->group(function(){
+        Route::get('/rombel/all', 'SemuaRombel')->name('semua.rombel');
+        Route::get('/rombel/tambah', 'TambahRombel')->name('tambah.rombel');
+        Route::get('/rombel/edit/{id}', 'EditRombel')->name('edit.rombel');
+        Route::post('/rombel/simpan', 'SimpanRombel')->name('simpan.rombel');
+        Route::post('/rombel/update', 'UpdateRombel')->name('update.rombel');
+    });
+
+    // Group
+    Route::controller(GroupController::class)->group(function(){
+        Route::get('/group/all', 'SemuaGroup')->name('semua.group');
+        Route::get('/group/tambah', 'TambahGroup')->name('tambah.group');
+        Route::get('/group/edit/{id}', 'EditGroupl')->name('edit.group');
+        Route::post('/group/simpan', 'SimpanGroup')->name('simpan.group');
+        Route::post('/group/update', 'UpdateGroup')->name('update.group');
     });
 
     // Admin Coruses All Route 
