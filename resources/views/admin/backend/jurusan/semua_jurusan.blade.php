@@ -1,5 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+
+@section('title')
+   Data Jurusan
+@endsection
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
