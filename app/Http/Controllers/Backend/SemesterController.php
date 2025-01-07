@@ -35,7 +35,7 @@ class SemesterController extends Controller
     }
 
     public function UpdateSemesterStatus(Request $request){
-        $userId = $request->input('user_id');
+        $userId = $request->input('semester');
         $isChecked = $request->input('is_checked', 0);
         $semester = Semester::find($userId);
         if ($semester) {

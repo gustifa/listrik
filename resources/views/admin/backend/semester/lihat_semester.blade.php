@@ -49,14 +49,14 @@
                             <td>{{$item->nama}}</td>
                             <td>
                                 @if ($item->status == 1)
-                                    <span class="btn btn-success">Active</span>
+                                    <span class="btn btn-success">Aktif</span>
                                 @else
-                                    <span class="btn btn-danger">InActive</span>
+                                    <span class="btn btn-danger">Tidak Aktif</span>
                                 @endif
                             </td>
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-user-id="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
                                     <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
                                   </div>
                             </td>
@@ -77,7 +77,7 @@
 <script>
     $(document).ready(function(){
         $('.status-toggle').on('change', function(){
-            var userId = $(this).data('user-id');
+            var semesterId = $(this).data('semester');
             var isChecked = $(this).is(':checked');
 
             // send an ajax request to update status
@@ -86,7 +86,7 @@
                 url: "{{ route('update.semester.status') }}",
                 method: "POST",
                 data: {
-                    user_id : userId,
+                    semester : semesterId,
                     is_checked: isChecked ? 1 : 0,
                     _token: "{{ csrf_token() }}"
                 },
