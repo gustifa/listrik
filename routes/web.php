@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\JurusanController;
 use App\Http\Controllers\Backend\KelasController;
 use App\Http\Controllers\Backend\RombelController;
 use App\Http\Controllers\Backend\GroupController;
+use App\Http\Controllers\Backend\WaktuController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -135,6 +136,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/group/simpan', 'SimpanGroup')->name('simpan.group');
         Route::post('/group/update', 'UpdateGroup')->name('update.group');
     });
+
+    // Waktu
+    Route::controller(WaktuController::class)->group(function(){
+        Route::get('/waktu/all', 'SemuaWaktu')->name('semua.waktu');
+        Route::get('/waktu/tambah', 'TambahWaktu')->name('tambah.waktu');
+        Route::get('/waktu/edit/{id}', 'EditWaktu')->name('edit.waktu');
+        Route::post('/waktu/simpan', 'SimpanWaktu')->name('simpan.waktu');
+        Route::post('/waktu/update', 'UpdateWaktu')->name('update.waktu');
+    });
+
 
     // Admin Coruses All Route 
 Route::controller(AdminController::class)->group(function(){

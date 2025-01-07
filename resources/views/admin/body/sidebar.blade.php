@@ -42,6 +42,7 @@
             </a>
             <ul>
                 <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
+                <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a>
                 <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Sekolah</a>
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
                 <li> <a href="{{route('semua.kelas')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
