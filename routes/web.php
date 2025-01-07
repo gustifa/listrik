@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/wishlist-remove/{id}','RemoveWishlist');
     });
 
-    
+
 
 });
 
@@ -148,6 +148,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/waktu/edit/{id}', 'EditWaktu')->name('edit.waktu');
         Route::post('/waktu/simpan', 'SimpanWaktu')->name('simpan.waktu');
         Route::post('/waktu/update', 'UpdateWaktu')->name('update.waktu');
+        Route::get('/waktu/delete/{id}', 'DeleteWaktu')->name('delete.waktu');
     });
 
     // Mapel
@@ -181,32 +182,33 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::controller(SemesterController::class)->group(function(){
         Route::get('/semester/all', 'SemuaSemester')->name('semua.semester');
         Route::get('/semester/tambah', 'TambahSemester')->name('tambah.semester');
-        Route::get('/semester/edit/{id}', 'EditSemestern')->name('edit.semester');
+        Route::get('/semester/edit/{id}', 'EditSemester')->name('edit.semester');
         Route::post('/semester/simpan', 'SimpanSemester')->name('simpan.semester');
         Route::post('/semester/update', 'UpdateSemester')->name('update.semester');
         Route::post('/update/semester/status', 'UpdateSemesterStatus')->name('update.semester.status');
+        Route::get('/semester/delete/{id}', 'DeleteSemester')->name('delete.semester');
 
     });
 
 
 
 
-    // Admin Coruses All Route 
+    // Admin Coruses All Route
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/all/course','AdminAllCourse')->name('admin.all.course');
     Route::post('/update/course/stauts','UpdateCourseStatus')->name('update.course.stauts');
     Route::get('/admin/course/details/{id}','AdminCourseDetails')->name('admin.course.details');
-   
+
 });
 
-    // Admin Coupon All Route 
+    // Admin Coupon All Route
     Route::controller(CouponController::class)->group(function(){
         Route::get('/admin/all/coupon','AdminAllCoupon')->name('admin.all.coupon');
         Route::get('/admin/add/coupon','AdminAddCoupon')->name('admin.add.coupon');
         Route::post('/admin/store/coupon','AdminStoreCoupon')->name('admin.store.coupon');
         Route::get('/admin/edit/coupon/{id}','AdminEditCoupon')->name('admin.edit.coupon');
         Route::post('/admin/update/coupon','AdminUpdateCoupon')->name('admin.update.coupon');
-        Route::get('/admin/delete/coupon/{id}','AdminDeleteCoupon')->name('admin.delete.coupon'); 
+        Route::get('/admin/delete/coupon/{id}','AdminDeleteCoupon')->name('admin.delete.coupon');
 
     });
 
@@ -298,7 +300,7 @@ Route::post('/buy/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('/cart/data/', [CartController::class, 'CartData']);
 
 
-// Get Data from Minicart 
+// Get Data from Minicart
 Route::get('/course/mini/cart/', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 
@@ -312,15 +314,15 @@ Route::post('/inscoupon-apply', [CartController::class, 'InsCouponApply']);
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
-// Cart All Route 
+// Cart All Route
 Route::controller(CartController::class)->group(function(){
     Route::get('/mycart','MyCart')->name('mycart');
     Route::get('/get-cart-course','GetCartCourse');
     Route::get('/cart-remove/{rowId}','CartRemove');
-    
+
 });
 
-/// Checkout Page Route 
+/// Checkout Page Route
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
 
 Route::post('/payment', [CartController::class, 'Payment'])->name('payment');

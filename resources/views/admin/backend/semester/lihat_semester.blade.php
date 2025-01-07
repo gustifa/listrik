@@ -9,6 +9,7 @@
 <style>
     .large-chexbox{
         transform: scale(1.5);
+        /* margin-left: 2em; */
     }
 </style>
 <div class="page-content">
@@ -24,7 +25,7 @@
                 </ol>
             </nav>
         </div>
-        
+
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
@@ -48,17 +49,14 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama}}</td>
                             <td>
-                                @if ($item->status == 1)
-                                    <span class="btn btn-success">Aktif</span>
-                                @else
-                                    <span class="btn btn-danger">Tidak Aktif</span>
-                                @endif
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                        <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
+                                      </div>
                             </td>
                             <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
-                                  </div>
+                                <a href="{{route('edit.semester',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('delete.semester',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

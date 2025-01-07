@@ -21,7 +21,7 @@ class SemesterController extends Controller
     public function SimpanSemester(Request $request){
 
         Semester::insert([
-            'nama' => $request->nama,
+            'nama' => strtoupper($request->nama),
             'created_at' => Carbon::now(),
         ]);
 
@@ -32,14 +32,14 @@ class SemesterController extends Controller
         );
         return redirect()->route('semua.semester')->with($notification);
 
-            
+
 
     }
 
     public function UpdateSemesterStatus(Request $request){
-        $userId = $request->input('semester');
+        $semesterId = $request->input('semester');
         $isChecked = $request->input('is_checked', 0);
-        $semester = Semester::find($userId);
+        $semester = Semester::find($semesterId);
         if ($semester) {
             $semester->status =  $isChecked;
             $semester->save();
@@ -47,4 +47,47 @@ class SemesterController extends Controller
         return response()->json(['message'=>'Semester Berhasil diganti']);
 
     }
+
+    public function EditSemester($id){
+        $semester = Semester::find($id);
+        return view('admin.backend.semester.edit_semester', compact('semester'));
+    }
+
+
+    public function UpdateSemester(Request $request){
+        $semester_id = $request->id;
+        Semester::find($semester_id)->update([
+            'nama' => $request->nama,
+        ]);
+
+        $notification = array(
+            'message' => 'Semester Berhasil Diganti',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('semua.semester')->with($notification);
+    }
+
+    public function DeleteSemester($id){
+        $status = Semester::where('status', '1')->select('status')->get($id);
+        // dd($status);
+        if($status == 1){
+            $notification = array(
+                'message' => 'Semester Aktif',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('semua.semester')->with($notification);
+        }else{
+
+            Semester::find($id)->delete();
+            $notification = array(
+                   'message' => 'Semester Berhasil dihapus',
+                   'alert-type' => 'success',
+               );
+
+               return redirect()->route('semua.semester')->with($notification);
+        }
+
+    }
+
 }
