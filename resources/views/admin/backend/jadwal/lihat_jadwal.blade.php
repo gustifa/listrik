@@ -24,12 +24,13 @@
                 </ol>
             </nav>
         </div>
-        
+
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
         <a href="{{route('tambah.jadwal')}}" class="btn btn-primary">Tambah Jadwal</a>
     </div>
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -51,7 +52,7 @@
                         @foreach ($jadwal as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
-                            
+
                             <td>{{$item['user']['name']}}</td>
                             <td>{{$item['hari']['nama_hari']}}</td>
                             <td>{{$item['mapel']['kode_mapel']}}</td>

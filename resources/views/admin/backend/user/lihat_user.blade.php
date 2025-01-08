@@ -30,6 +30,8 @@
     <!--end breadcrumb-->
     <div class="mb-3">
         {{-- <a href="{{route('import.user')}}" class="btn btn-primary">Tambah User</a> --}}
+
+        {{-- Awal Modal --}}
         <div class="col">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button>
@@ -65,8 +67,9 @@
                     </div>
                 </div>
             </div>
-            {{-- Akhir Modal --}}
+
         </div>
+        {{-- Akhir Modal --}}
     </div>
 
     <div class="card">
@@ -112,5 +115,37 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                file: {
+                    required : true,
+                },
+
+            },
+            messages :{
+                file: {
+                    required : 'Belum Ada File',
+                },
+
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
+</script>
 
 @endsection
