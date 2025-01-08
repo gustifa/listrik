@@ -51,8 +51,9 @@
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
                 <li> <a href="{{route('semua.kelas')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
                 <li> <a href="{{route('semua.group')}}"><i class='bx bx-radio-circle'></i>Group</a>
+                <li> <a href="{{route('lihat.guru')}}"><i class='bx bx-radio-circle'></i>Guru</a>
                 </li>
-                
+
             </ul>
         </li>
 
@@ -67,7 +68,7 @@
                 <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>Jadwal Guru</a>
                 {{-- <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a> --}}
                 </li>
-                
+
             </ul>
         </li>
 
@@ -99,7 +100,7 @@
             </ul>
         </li>
 
-        
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-user"></i>
@@ -109,7 +110,7 @@
             <ul>
                 <li> <a href="{{route('admin.all.coupon')}}"><i class='bx bx-list-ul'></i>All Coupon</a>
                 </li>
-                
+
             </ul>
         </li>
 
@@ -122,7 +123,7 @@
             <ul>
                 <li> <a href="{{route('admin.all.course')}}"><i class='bx bx-list-ul'></i>All Course</a>
                 </li>
-                
+
             </ul>
         </li>
         {{-- <li class="menu-label">UI Elements</li>

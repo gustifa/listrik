@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\SemesterController;
 use App\Http\Controllers\Backend\JadwalPelajaranController;
 use App\Http\Controllers\Backend\HariController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\ImportsGuruController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -212,6 +213,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/hari/update', 'UpdateHari')->name('update.hari');
         Route::post('/update/hari/status', 'UpdateHariStatus')->name('update.hari.status');
         Route::get('/hari/delete/{id}', 'DeleteHari')->name('delete.hari');
+    });
+
+    // Hari
+    Route::controller(ImportsGuruController::class)->group(function(){
+        Route::get('/guru/all', 'LihatGuru')->name('lihat.guru');
     });
 
 
