@@ -241,13 +241,15 @@ Route::controller(AdminController::class)->group(function(){
 
     });
 
+    Route::get('users', [ImportUserController::class, 'index'])->name('lihat.user');
+    Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
+    Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
+
 }); ///Akhir Admin Group Middleware
 
 //tes
 
-Route::get('users', [ImportUserController::class, 'index']);
-Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
-Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
+
 
 // Awal Staff Group Middleware
 Route::middleware(['auth','role:wakil'])->group(function(){

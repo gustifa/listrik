@@ -51,7 +51,7 @@
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
                 <li> <a href="{{route('semua.kelas')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
                 <li> <a href="{{route('semua.group')}}"><i class='bx bx-radio-circle'></i>Group</a>
-                <li> <a href="{{route('lihat.guru')}}"><i class='bx bx-radio-circle'></i>Guru</a>
+                <li> <a href="{{route('lihat.user')}}"><i class='bx bx-radio-circle'></i>User</a>
                 </li>
 
             </ul>
