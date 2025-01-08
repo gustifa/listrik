@@ -242,6 +242,8 @@ Route::controller(AdminController::class)->group(function(){
     });
 
     Route::get('users', [ImportUserController::class, 'index'])->name('lihat.user');
+    Route::get('import/users', [ImportUserController::class, 'ImportUser'])->name('import.user');
+    Route::get('download-template-user', [ImportUserController::class, 'DownloadTemplateUser'])->name('download.template.user');
     Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
     Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
 

@@ -18,6 +18,11 @@ class ImportUserController extends Controller
         return view('admin.backend.user.lihat_user', compact('users'));
     }
 
+    public function ImportUser()
+    {
+        return view('admin.backend.user.import_user');
+    }
+
 
     public function import(Request $request)
     {
@@ -28,6 +33,19 @@ class ImportUserController extends Controller
 
         Excel::import(new UsersImport, $request->file('file'));
 
-        return back()->with('success', 'Users imported successfully.');
+        // return back()->with('success', 'Users imported successfully.');
+        $notification = array(
+            'message' => 'Import Berhasil ditambahkan',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('lihat.user')->with($notification);
+    }
+
+    public function DownloadTemplateUser()
+    {
+        $path = public_path('template/users.xlsx');
+        $name = basename($path);
+        $headers = ["Content-Type:   application/vnd.ms-excel; charset=utf-8"];
+        return response()->download($path, $name, $headers);
     }
 }
