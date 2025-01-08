@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserTableSeeder::class);
         $this->call(SekolahTableSeeder::class);
+        $this->call(WaktuTableSeeder::class);
+        $this->call(HariTableSeeder::class);
+        $this->call(GroupTableSeeder::class);
+        $this->call(KelasTableSeeder::class);
+        $this->call(TahunPelajaranTableSeeder::class);
+        $this->call(SemesterTableSeeder::class);
         // User::factory(10)->create();
 
         // User::factory()->create([
