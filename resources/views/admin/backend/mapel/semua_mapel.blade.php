@@ -40,6 +40,8 @@
                             </li>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import</a>
                             </li>
+                            <li><a class="dropdown-item" href="{{route('cetak.mapel')}}">Cetak</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +107,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_mapel}}</td>
                             <td>{{$item->kode_mapel}}</td>
-                            <td>{{$item->Keterangan}}</td>
+                            <td>{{$item->keterangan}}</td>
                             <td>
                                 <a href="{{route('edit.mapel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <a href="{{route('hapus.mapel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>

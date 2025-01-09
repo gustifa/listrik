@@ -164,6 +164,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('download-template-mapel', 'DownloadTemplateMapel')->name('download.template.mapel');
         Route::post('import/mapel', 'ImportMapel')->name('import.mapel');
         Route::get('/mapel/delete/{id}', 'HapusMapel')->name('hapus.mapel');
+        Route::get('/mapel/cetak', 'CetakMapel')->name('cetak.mapel');
     });
 
     // Bengkel

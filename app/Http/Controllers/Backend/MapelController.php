@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MapelImport;
 use App\Models\Mapel;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\User;
+use App\Models\Sekolah;
 
 class MapelController extends Controller
 {
@@ -71,5 +75,23 @@ class MapelController extends Controller
         );
 
         return redirect()->route('semua.mapel')->with($notification);
+    }
+
+    public function CetakMapel(){
+        $sekolah = Sekolah::find(1)->get();
+        $id = Auth::user()->id;
+        $user = User::where('id',$id )->get();
+        // dd($sekolah);
+        $mapel = Mapel::get();
+
+        $data = [
+            // 'title' => 'Welcome to ItSolutionStuff.com',
+            // 'date' => date('m/d/Y'),
+            'mapel' => $mapel
+        ];
+
+        $pdf = PDF::loadView('admin.backend.mapel.cetak_mapel', $data);
+
+        return $pdf->stream('mapel.pdf');
     }
 }
