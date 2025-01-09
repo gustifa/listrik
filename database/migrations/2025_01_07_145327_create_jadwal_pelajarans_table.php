@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('mapel_id');
             $table->integer('rombel_id');
             $table->integer('hari_id');
+            $table->integer('bengkel_id');
             $table->integer('mulai_id');
             $table->integer('selesai_id');
             $table->enum('status', ['1', '0'])->default('0');

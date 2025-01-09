@@ -42,6 +42,7 @@
             </a>
             <ul>
                 <li> <a href="{{route('lihat.jadwal.guru')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
+                <li> <a href="{{route('lihat.jurnal.guru')}}"><i class='bx bx-radio-circle'></i>Jurnal</a>
                 </li>
                 {{-- <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
                 </li>

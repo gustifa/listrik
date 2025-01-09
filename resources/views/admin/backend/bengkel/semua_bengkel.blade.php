@@ -20,8 +20,70 @@
         
     </div>
     <!--end breadcrumb-->
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <a href="{{route('tambah.bengkel')}}" class="btn btn-primary">Tambah Bengkel</a>
+    </div> --}}
+
+    <div class="card-body">
+        {{-- Awal --}}
+        <div class="mb-3 form-group">
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        {{-- <button type="button" class="btn btn-primary">Tambah</button> --}}
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Import</button>
+                        <ul class="dropdown-menu" style="">
+                            <li><a class="dropdown-item" href="{{route('tambah.bengkel')}}">Tambah</a>
+                            </li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{route('cetak.bengkel')}}">Cetak</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col">
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Import Bengkel</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                        <form id="myForm" method="post" action="{{route('import.bengkel')}}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3 form-group">
+                                                <label class="form-label">Input File: </label>
+                                                <input type="file" class="form-control" name="file" id="file">
+
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="px-5 btn btn-primary">Import</button>
+                                            </div>
+                                            <div class="mb-3">
+                                                <a href="{{route('download.template.bengkel')}}">Download Template</a>
+                                            </div>
+
+                                        </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {{-- Akhir Modal --}}
+        </div>
+
     </div>
     <div class="card">
         <div class="card-body">
@@ -42,10 +104,10 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_bengkel}}</td>
                             <td>{{$item->kode_bengkel}}</td>
-                            <td>{{$item->Keterangan}}</td>
+                            <td>{{$item->keterangan}}</td>
                             <td>
                                 <a href="{{route('edit.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
-                                <!-- <a href="{{route('delete.category',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> -->
+                                <a href="{{route('hapus.bengkel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

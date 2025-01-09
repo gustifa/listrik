@@ -26,6 +26,8 @@
             <a href="{{route('tambah.mapel')}}" class="btn btn-primary">Tambah Mapel</a>
             </div>
         </div> --}}
+
+        {{-- Awal --}}
         <div class="mb-3 form-group">
             {{-- <div class="mb-3">
                 <a href="{{route('tambah.mapel')}}" class="btn btn-primary">Tambah Mapel</a>
@@ -47,43 +49,43 @@
                 </div>
             </div>
 
-            {{-- Awal Modal --}}
-        <div class="col">
+            
+            <div class="col">
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Import Mata Pelajaran</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Import Mata Pelajaran</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
 
-                                    <form id="myForm" method="post" action="{{route('import.mapel')}}" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="mb-3 form-group">
-                                            <label class="form-label">Input File: </label>
-                                            <input type="file" class="form-control" name="file" id="file">
+                                        <form id="myForm" method="post" action="{{route('import.mapel')}}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3 form-group">
+                                                <label class="form-label">Input File: </label>
+                                                <input type="file" class="form-control" name="file" id="file">
 
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" class="px-5 btn btn-primary">Import</button>
-                                        </div>
-                                        <div class="mb-3">
-                                            <a href="{{route('download.template.mapel')}}">Download Template</a>
-                                        </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="px-5 btn btn-primary">Import</button>
+                                            </div>
+                                            <div class="mb-3">
+                                                <a href="{{route('download.template.mapel')}}">Download Template</a>
+                                            </div>
 
-                                    </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                                        </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         {{-- Akhir Modal --}}
         </div>
 

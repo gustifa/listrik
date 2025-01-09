@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\BengkelController;
 use App\Http\Controllers\Backend\TahunPelajaranController;
 use App\Http\Controllers\Backend\SemesterController;
 use App\Http\Controllers\Backend\JadwalPelajaranController;
+use App\Http\Controllers\Backend\JurnalController;
 use App\Http\Controllers\Backend\HariController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\ImportsGuruController;
@@ -174,6 +175,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/bengkel/edit/{id}', 'EditBengkel')->name('edit.bengkel');
         Route::post('/bengkel/simpan', 'SimpanBengkel')->name('simpan.bengkel');
         Route::post('/bengkel/update', 'UpdateBengkel')->name('update.bengkel');
+        Route::get('download-template-bengkel', 'DownloadTemplateBengkel')->name('download.template.bengkel');
+        Route::post('import/bengkel', 'ImportBengkel')->name('import.bengkel');
+        Route::get('/bengkel/delete/{id}', 'HapusBengkel')->name('hapus.bengkel');
+        Route::get('/bengkel/cetak', 'CetakBengkel')->name('cetak.bengkel');
 
     });
 
@@ -319,6 +324,17 @@ Route::middleware(['auth','role:guru'])->group(function(){
         Route::post('/guru/jadwal/update', 'UpdateJadwalGuru')->name('update.jadwal.guru');
         Route::post('/guru/update/jadwal/status', 'UpdateJadwalGuruStatus')->name('update.jadwal.guru.status');
         Route::get('/guru/jadwal/delete/{id}', 'DeleteJadwal')->name('delete.jadwal.guru');
+    });
+
+    // Jurnal
+    Route::controller(JurnalController::class)->group(function(){
+        Route::get('/guru/jurnal/all', 'SemuaJurnalGuru')->name('lihat.jurnal.guru');
+        Route::get('/guru/jurnal/tambah', 'TambahJurnalGuru')->name('tambah.jurnal.guru');
+        Route::get('/guru/jurnal/edit/{id}', 'EditJurnalGuru')->name('edit.jurnal.guru');
+        Route::post('/guru/jurnal/simpan', 'SimpanJurnalGuru')->name('simpan.jurnal.guru');
+        Route::post('/guru/jurnal/update', 'UpdateJurnalGuru')->name('update.jurnal.guru');
+        Route::post('/guru/update/jurnal/status', 'UpdateJurnalGuruStatus')->name('update.jurnal.guru.status');
+        Route::get('/guru/jurnal/delete/{id}', 'DeleteJurnal')->name('delete.jurnal.guru');
     });
 }); ///Akhir guru Group Middleware
 
