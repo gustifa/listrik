@@ -161,15 +161,19 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/mapel/edit/{id}', 'EditMapel')->name('edit.mapel');
         Route::post('/mapel/simpan', 'SimpanMapel')->name('simpan.mapel');
         Route::post('/mapel/update', 'UpdateMapel')->name('update.mapel');
+        Route::get('download-template-mapel', 'DownloadTemplateMapel')->name('download.template.mapel');
+        Route::post('import/mapel', 'ImportMapel')->name('import.mapel');
+        Route::get('/mapel/delete/{id}', 'HapusMapel')->name('hapus.mapel');
     });
 
-    // Mapel
+    // Bengkel
     Route::controller(BengkelController::class)->group(function(){
         Route::get('/bengkel/all', 'SemuaBengkel')->name('semua.bengkel');
         Route::get('/bengkel/tambah', 'TambahBengkel')->name('tambah.bengkel');
         Route::get('/bengkel/edit/{id}', 'EditBengkel')->name('edit.bengkel');
         Route::post('/bengkel/simpan', 'SimpanBengkel')->name('simpan.bengkel');
         Route::post('/bengkel/update', 'UpdateBengkel')->name('update.bengkel');
+
     });
 
     // Tahun Pelajaran

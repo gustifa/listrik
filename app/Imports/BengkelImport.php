@@ -2,18 +2,18 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
 use App\Models\Bengkel;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class BengkelImport implements ToCollection
+class BengkelImport implements ToModel, WithHeadingRow
 {
     /**
-    * @param Collection $collection
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function collection(Collection $collection)
+    public function model(array $row)
     {
         return new Bengkel([
             'nama_bengkel'     => $row['nama_bengkel'],

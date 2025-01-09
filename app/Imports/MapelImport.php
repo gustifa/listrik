@@ -2,23 +2,33 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use App\Models\Mapel;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use App\Models\Mapel;
 
-class MapelImport implements ToCollection
+class MapelImport implements ToModel, WithHeadingRow
 {
     /**
-    * @param Collection $collection
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function collection(Collection $collection)
+    public function model(array $row)
     {
         return new Mapel([
-            'nama_mapel'     => $row['nama_mapel'],
-            'kode_mapel'     => $row['kode_mapel'],
-            'keterangan'     => $row['keterangan'],
+                'nama_mapel'     => $row['nama_mapel'],
+                'kode_mapel'     => $row['kode_mapel'],
+                'keterangan'     => $row['keterangan'],
         ]);
     }
+
+    // public function rules(): array
+    // {
+    //     return [
+    //         'name' => 'required',
+    //         'password' => 'required|min:5',
+    //         'email' => 'required|nama_mapel|kode_mapel|unique:mapels'
+    //     ];
+    // }
 }
