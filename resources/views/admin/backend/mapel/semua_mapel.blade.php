@@ -20,8 +20,17 @@
         
     </div>
     <!--end breadcrumb-->
+    <div class="card-body">
+    <div class="mb-3">
+        <div class="mb-3 form-group">
+        <a href="{{route('tambah.mapel')}}" class="btn btn-primary">Tambah Mapel</a>
+        </div>
+    </div>
+    <div class="mb-3 form-group">
     <div class="mb-3">
         <a href="{{route('tambah.mapel')}}" class="btn btn-primary">Tambah Mapel</a>
+    </div>
+    </div>
     </div>
     <div class="card">
         <div class="card-body">
