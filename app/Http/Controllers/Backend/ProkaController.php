@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Proka;
 use App\Models\User;
 
@@ -20,7 +23,7 @@ class ProkaController extends Controller
         return view('admin.backend.proka.tambah_proka', compact('user', 'proka'));
     }
 
-    public function SimpanProkan(Request $request){
+    public function SimpanProka(Request $request){
         if($request->file('logo_proka')){
             $manager = new ImageManager(new Driver());
             $image_gen = hexdec(uniqid()).'.'.$request->file('logo_proka')->getClientOriginalExtension();
@@ -32,10 +35,11 @@ class ProkaController extends Controller
 
             Proka::insert([
                 'nama_proka' => $request->nama_proka,
-                'user_id' => $request->user_id,
+                'proka_id' => $request->proka_id,
                 'kode_proka' => strtoupper($request->kode_proka),
                 'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
                 'logo_proka' => $save_url,
+                'created_at' => Carbon::now(),
             ]);
 
 
@@ -47,9 +51,10 @@ class ProkaController extends Controller
          }else{
             Jurusan::insert([
                 'nama_proka' => $request->nama_proka,
-                'user_id' => $request->user_id,
+                'proka_id' => $request->proka_id,
                 'kode_proka' => strtoupper($request->kode_proka),
                 'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
+                'created_at' => Carbon::now(),
             ]);
 
             $notification = array(

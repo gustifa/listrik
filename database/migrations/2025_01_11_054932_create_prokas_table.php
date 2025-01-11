@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('prokas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_proka');
-            $table->integer('user_id');
+            $table->integer('proka_id');
             $table->string('logo_proka')->nullable();
             $table->string('kode_proka')->nullable();
             $table->enum('status', ['1', '0'])->default('0');
