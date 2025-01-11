@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proka extends Model
 {
-    //
+    protected $guarded = [];
 }
