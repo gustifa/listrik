@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\JurnalController;
 use App\Http\Controllers\Backend\HariController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\ImportsGuruController;
+use App\Http\Controllers\Backend\ProkaController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -223,6 +224,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/hari/update', 'UpdateHari')->name('update.hari');
         Route::post('/update/hari/status', 'UpdateHariStatus')->name('update.hari.status');
         Route::get('/hari/delete/{id}', 'DeleteHari')->name('delete.hari');
+    });
+
+    // Proka
+    Route::controller(ProkaController::class)->group(function(){
+        Route::get('/proka/all', 'SemuaProka')->name('semua.proka');
+        Route::get('/proka/tambah', 'TambahProka')->name('tambah.proka');
+        Route::get('/proka/edit/{id}', 'EditProka')->name('edit.proka');
+        Route::post('/proka/simpan', 'SimpanProka')->name('simpan.proka');
+        Route::post('/proka/update', 'UpdateProka')->name('update.proka');
+        Route::post('/update/proka/status', 'UpdateProkaStatus')->name('update.proka.status');
+        Route::get('/proka/delete/{id}', 'DeleteProka')->name('proka.hari');
     });
 
     // Hari

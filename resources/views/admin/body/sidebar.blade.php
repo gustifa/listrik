@@ -48,6 +48,7 @@
                 <li> <a href="{{route('semua.hari')}}"><i class='bx bx-radio-circle'></i>Hari</a>
                 <li> <a href="{{route('semua.mapel')}}"><i class='bx bx-radio-circle'></i>Mapel</a>
                 <li> <a href="{{route('semua.bengkel')}}"><i class='bx bx-radio-circle'></i>Bengkel</a>
+                <li> <a href="{{route('semua.proka')}}"><i class='bx bx-radio-circle'></i>Proka</a>
                 <li> <a href="{{route('semua.jurusan')}}"><i class='bx bx-radio-circle'></i>Jurusan</a>
                 <li> <a href="{{route('semua.kelas')}}"><i class='bx bx-radio-circle'></i>Kelas</a>
                 <li> <a href="{{route('semua.group')}}"><i class='bx bx-radio-circle'></i>Group</a>
