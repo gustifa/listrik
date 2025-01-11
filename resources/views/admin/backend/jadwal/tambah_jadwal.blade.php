@@ -117,15 +117,39 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                nama_kelas: {
+                user_id: {
+                    required : true,
+                },
+                mapel_id: {
+                    required : true,
+                },
+
+                rombel_id: {
+                    required : true,
+                },
+
+                hari_id: {
                     required : true,
                 },
 
             },
             messages :{
-                nama_kelas: {
-                    required : 'Nama Kelas Tidak Boleh Kosong',
+                user_id: {
+                    required : 'Nama Guru Tidak Boleh Kosong',
                 },
+
+                mapel_id: {
+                    required : 'Mapel Tidak Boleh Kosong',
+                },
+
+                rombel_id: {
+                    required : 'Rombel Tidak Boleh Kosong',
+                },
+
+                hari_id: {
+                    required : 'Hari Tidak Boleh Kosong',
+                },
+
 
 
             },
