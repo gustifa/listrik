@@ -180,6 +180,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('import/bengkel', 'ImportBengkel')->name('import.bengkel');
         Route::get('/bengkel/delete/{id}', 'HapusBengkel')->name('hapus.bengkel');
         Route::get('/bengkel/cetak', 'CetakBengkel')->name('cetak.bengkel');
+        Route::get('/bengkel-cetak/{id}', 'CetakPerBengkel')->name('cetak.per.bengkel');
 
     });
 

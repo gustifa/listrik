@@ -95,7 +95,7 @@
                             <th>Nama Bengkel</th>
                             <th>Kode Bengkel</th>
                             <th>Keterangan</th>
-                            <th style="width: 20px;">Action</th>
+                            <th style="width: 30px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,6 +106,7 @@
                             <td>{{$item->kode_bengkel}}</td>
                             <td>{{$item->keterangan}}</td>
                             <td>
+                                <a href="{{route('cetak.per.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-printer"></i></a>
                                 <a href="{{route('edit.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
                                 <a href="{{route('hapus.bengkel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>

@@ -84,7 +84,7 @@
                             <th>Email</th>
                             <th>Hak Akses</th>
                             <th>Status</th>
-                            <th style="width: 20px;">Action</th>
+                            <th style="width: 40px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,7 +101,8 @@
                                   </div>
                         </td>
                             <td>
-                                <a href="" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="" class="btn btn-info" title="Print"><i class="lni lni-printer"></i></a>
+                                <a href="" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <a href="" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>

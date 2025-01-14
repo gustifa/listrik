@@ -91,4 +91,22 @@ class BengkelController extends Controller
         return $pdf->stream('bengkel.pdf');
     }
 
+    public function CetakPerBengkel($id){
+        // $sekolah = Sekolah::find(1)->get();
+        // $id = Auth::user()->id;
+        // $user = User::where('id',$id )->get();
+        // dd($sekolah);
+        $bengkel = Bengkel::find($id);
+        // dd($bengkel);
+        $data = [
+            // 'title' => 'Welcome to ItSolutionStuff.com',
+            // 'date' => date('m/d/Y'),
+            'bengkel' => $bengkel
+        ];
+
+        $pdf = PDF::loadView('admin.backend.bengkel.cetak_per_bengkel', $data, compact('bengkel'));
+
+        return $pdf->stream('bengkel.pdf');
+    }
+
 }
