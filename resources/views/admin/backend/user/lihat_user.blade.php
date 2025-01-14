@@ -34,8 +34,9 @@
         {{-- Awal Modal --}}
         <div class="col">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button>
-            <a href="{{route('cetak.semua.user')}}" class="btn btn-warning" title="Print" target="_blank"><i class="lni lni-printer"></i></a>
+            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
+            <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-import"></i></a>
+            <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -102,6 +103,7 @@
                                   </div>
                         </td>
                             <td>
+                                <a href="{{route('cetak.per.user', $item->id)}}" class="btn btn-warning" title="Detail User" target="_blank"><i class="bx bx-detail"></i></a>
                                 <a href="{{route('cetak.per.user', $item->id)}}" class="btn btn-info" title="Print" target="_blank"><i class="lni lni-printer"></i></a>
                                 <a href="" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <a href="" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>

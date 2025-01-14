@@ -51,30 +51,33 @@ hr {
 </head>
 
 <body>
-
+@php
+    $sekolah = App\Models\Sekolah::find(1);
+    //dd($sekolah->logo_sekolah);
+@endphp
 
 <table id="judul">
   <tr>
     <td>
       <h2>
-        <img id ="showImage"src="">
+        <img id ="showImage"src="{{$sekolah->logo_sekolah}}" width="100">
 
       </h2>
     </td>
     <td align="center">
       <h3>
-        DINAS PROVINSI SUMATERA BARAT
+        DINAS PROVINSI {{strtoupper($sekolah->provinsi)}}
       </h3>
       <h2>
-        SMK NEGERI BUKITTINGGI
+        {{$sekolah->nama}}
       </h2>
-      <p>Jl. Teuku Umar KM. 1 Kecamatan Kinali Kabupaten Pasaman Barat</p>
+      <p>{{$sekolah->alamat}}</p>
       <!-- <p>Phone : 343434343434, Email : support@easylerningbd.com</p> -->
 
     </td>
     <td>
       <h2>
-        <img id ="showImageProvinsi"src="">
+        <img id ="showImageProvinsi"src="{{$sekolah->logo_provinsi}}" width="100">
 
       </h2>
     </td>
@@ -82,9 +85,7 @@ hr {
 </table>
 <hr />
 
-@php
 
-@endphp
 <h2 align="center">Laporan Bengkel</h2>
 
 
@@ -113,7 +114,7 @@ hr {
 
 
 </body>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   window.print();
-</script>
+</script> --}}
 </html>

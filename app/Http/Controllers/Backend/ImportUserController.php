@@ -62,7 +62,7 @@ class ImportUserController extends Controller
             // 'date' => date('m/d/Y'),
             'user' => $user
         ];
-        $customPaper = [0, 0, 210, 570];
+        $customPaper = [0, 0, 320, 570];
 
         $pdf = PDF::loadView('admin.backend.user.cetak_per_user', $data, compact('user'))
                     ->setPaper($customPaper, 'landscape');

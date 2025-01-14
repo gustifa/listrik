@@ -8,7 +8,7 @@
     <style>
         h1{
             text-align: center;
-            
+
         }
 
         #user td, #user th {
@@ -31,9 +31,49 @@
             border-collapse: collapse;
             width: 100%;
         }
+        .sekolah{
+            line-height: 10px;
+        }
+        .garis{
+            border: 3px solid;
+        }
     </style>
 </head>
 <body>
+
+@php
+$sekolah = App\Models\Sekolah::find(1);
+//dd($sekolah->logo_sekolah);
+@endphp
+
+<table id="judul" class="sekolah">
+<tr>
+<td>
+  <h2>
+    <img id ="showImage"src="{{$sekolah->logo_sekolah}}" width="100">
+
+  </h2>
+</td>
+<td align="center" >
+  <h3>
+    DINAS PROVINSI {{strtoupper($sekolah->provinsi)}}
+  </h3>
+  <h2>
+    {{$sekolah->nama}}
+  </h2>
+  <p>{{$sekolah->alamat}}</p>
+  <!-- <p>Phone : 343434343434, Email : support@easylerningbd.com</p> -->
+
+</td>
+<td>
+  <h2>
+    <img id ="showImageProvinsi"src="{{$sekolah->logo_provinsi}}" width="100">
+
+  </h2>
+</td>
+</tr>
+</table>
+<hr class="garis" />
     <h1>Informasi Akun</h1>
     <table id="user">
         <tr>
@@ -49,18 +89,18 @@
             <td>12345678</td>
             <td>
                 @if ($user->role == 'siswa')
-                    <span class="badge bg-success">Siswa</span>   
-                @elseif($user->role == 'guru') 
+                    <span class="badge bg-success">Siswa</span>
+                @elseif($user->role == 'guru')
                     <span class="badge bg-danger">Guru</span>
-                @elseif($user->role == 'wakil') 
+                @elseif($user->role == 'wakil')
                     <span class="badge bg-danger">Wakil</span>
-                @elseif($user->role == 'admin') 
+                @elseif($user->role == 'admin')
                     <span class="badge bg-danger">Admin</span>
                 @endif
             </td>
         </tr>
         @endforeach
-        
+
     </table>
     @php
         $id = Auth::user()->id;

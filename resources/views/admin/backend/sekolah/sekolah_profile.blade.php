@@ -16,7 +16,7 @@
                 </ol>
             </nav>
         </div>
-        
+
     </div>
     <!--end breadcrumb-->
     <div class="card">
@@ -27,6 +27,7 @@
                         <tr>
                             <th style="width: 5px;">No</th>
                             <th style="width: 70px;">Logo Sekolah</th>
+                            {{-- <th style="width: 70px;">Logo Provinsi</th> --}}
                             <th>Nama Sekolah</th>
                             <th>NPSN</th>
                             <th style="width: 20px;">Action</th>
@@ -37,13 +38,13 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>
-                                <!-- <img src="{{asset($item->logo_sekolah)}}" alt="" style="height: 70px" width="70px" > -->
+                                {{-- <!-- <img src="{{asset($item->logo_sekolah)}}" alt="" style="height: 70px" width="70px" > --> --}}
                                 <img src="{{(!empty($item->logo_sekolah)) ? url($item->logo_sekolah): url('upload/no_image.jpg')}}" alt="logo_sekolah" width="110">
                             </td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->npsn}}</td>
                             <td>
-                                <a href="{{route('edit.profile.sekolah',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.profile.sekolah',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <!-- <a href="{{route('delete.category',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> -->
                             </td>
                         </tr>
