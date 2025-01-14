@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ImportUserController extends Controller
 {
@@ -47,5 +48,25 @@ class ImportUserController extends Controller
         $name = basename($path);
         $headers = ["Content-Type:   application/vnd.ms-excel; charset=utf-8"];
         return response()->download($path, $name, $headers);
+    }
+
+    public function CetakPerUser($id){
+        // $sekolah = Sekolah::find(1)->get();
+        // $id = Auth::user()->id;
+        // $user = User::where('id',$id )->get();
+        // dd($sekolah);
+        $user = User::find($id);
+        // dd($bengkel);
+        $data = [
+            // 'title' => 'Welcome to ItSolutionStuff.com',
+            // 'date' => date('m/d/Y'),
+            'user' => $user
+        ];
+        $customPaper = [0, 0, 210, 570];
+
+        $pdf = PDF::loadView('admin.backend.user.cetak_per_user', $data, compact('user'))
+                    ->setPaper($customPaper, 'landscape');
+
+        return $pdf->stream('Cetak User '.$user->name.'.pdf');
     }
 }

@@ -263,12 +263,13 @@ Route::controller(AdminController::class)->group(function(){
         Route::get('/admin/delete/coupon/{id}','AdminDeleteCoupon')->name('admin.delete.coupon');
 
     });
-
+    //User
     Route::get('users', [ImportUserController::class, 'index'])->name('lihat.user');
     Route::get('import/users', [ImportUserController::class, 'ImportUser'])->name('import.user');
     Route::get('download-template-user', [ImportUserController::class, 'DownloadTemplateUser'])->name('download.template.user');
     Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
     Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
+    Route::get('/user-cetak/{id}',[ImportUserController::class, 'CetakPerUser'])->name('cetak.per.user');
 
 }); ///Akhir Admin Group Middleware
 

@@ -103,10 +103,12 @@ class BengkelController extends Controller
             // 'date' => date('m/d/Y'),
             'bengkel' => $bengkel
         ];
+        $customPaper = [0, 0, 200, 100];
 
-        $pdf = PDF::loadView('admin.backend.bengkel.cetak_per_bengkel', $data, compact('bengkel'));
+        $pdf = PDF::loadView('admin.backend.bengkel.cetak_per_bengkel', $data, compact('bengkel'))
+                    ->setPaper($customPaper, 'landscape');
 
-        return $pdf->stream('bengkel.pdf');
+        return $pdf->stream('bengkel '.$bengkel->nama_bengkel.'.pdf');
     }
 
 }
