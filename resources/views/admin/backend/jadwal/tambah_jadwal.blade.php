@@ -62,7 +62,7 @@
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
                                 @foreach ($rombel as $rombels )
                                     
-                                    <option data-select2-id="select2-data-77-kb3z" value="{{$rombels->id}}">{{$rombels['kelas']['nama_kelas']. ' ' .$rombels['jurusan']['kode_jurusan']. ' ' .$rombels['group']['nama_group']}}</option>
+                                    <option data-select2-id="select2-data-77-kb3z" value="{{$rombels->id}}">{{$rombels->nama_rombel}}</option>
 
                                 @endforeach
                             </select>

@@ -10,6 +10,7 @@ use App\Models\Jurusan;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Group;
+use App\Models\Proka;
 
 
 class RombelController extends Controller
@@ -21,10 +22,11 @@ class RombelController extends Controller
 
     public function TambahRombel(){
         $user = User::where('role', 'guru')->get();
+        $proka = Proka::latest()->get();
         $jurusan = Jurusan::latest()->get();
         $tingkat = Kelas::latest()->get();
         $group = Group::latest()->get();
-        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'user', 'tingkat', 'group'));
+        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'user', 'tingkat', 'group', 'proka'));
     }
 
     public function SimpanRombel(Request $request){
@@ -34,10 +36,13 @@ class RombelController extends Controller
             'walas_id' => ['required', 'string','unique:rombels'],
         ]);
             Rombel::insert([
-                'kelas_id' => $request->kelas_id,
+                // 'kelas_id' => $request->kelas_id,
+                // 'proka_id' => $request->proka_id,
                 'jurusan_id' => $request->jurusan_id,
-                'group_id' => $request->group_id,
+                'nama_rombel' => $request->nama_rombel,
+                // 'group_id' => $request->group_id,
                 'walas_id' => $request->walas_id,
+                'siswa_id' => $request->siswa_id,
                 'created_at' => Carbon::now(),
             ]);
 

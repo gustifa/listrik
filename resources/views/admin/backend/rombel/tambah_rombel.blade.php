@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('simpan.rombel')}}" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3 form-group">
+                        {{-- <div class="mb-3 form-group">
                             <label class="form-label">Tingkat:</label>
                             <select name="kelas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
@@ -40,14 +40,26 @@
 
 
                             </select>
+                        </div> --}}
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Nama Program Keahlian:</label>
+                            <select name="jurusan_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Jurusan</option>
+                                @foreach ($proka as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_proka}}</option>
+                                @endforeach
+
+
+                            </select>
                         </div>
 
                         <div class="mb-3 form-group">
-                            <label class="form-label">Nama Jurusan:</label>
+                            <label class="form-label">Jurusan:</label>
                             <select name="jurusan_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Jurusan</option>
                                 @foreach ($jurusan as $item )
-                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->kode_jurusan}}</option>
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_jurusan}}</option>
                                 @endforeach
 
 
@@ -55,19 +67,24 @@
                         </div>
 
                         <div class="mb-3 form-group">
-                            <label class="form-label">Nama Group:</label>
-                            <select name="group_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Group</option>
-                                @foreach ($group as $item )
-                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_group}}</option>
-                                @endforeach
-
-
-                            </select>
+                            <label class="form-label">Nama Rombel:</label>
+                            <input type="text" class="form-control" name="nama_rombel">
                         </div>
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Walas:</label>
+                            <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
+                                @foreach ($user as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Anggota Rombel:</label>
                             <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
                                 @foreach ($user as $item )

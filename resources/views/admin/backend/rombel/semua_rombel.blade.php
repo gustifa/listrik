@@ -39,7 +39,7 @@
                         @foreach ($rombel as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$item['kelas']['nama_kelas']. ' ' .$item['jurusan']['kode_jurusan']. ' ' .$item['group']['nama_group']}}</td>
+                            <td>{{$item->nama_rombel}}</td>
                             <td>{{strtoupper($item['walas']['name'])}}</td>
                             <td>
                                 <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>

@@ -8,7 +8,9 @@ class Proka extends Model
 {
     protected $guarded = [];
 
-    public function proka(){
-        return $this->belongsTo(User::class, 'proka_id', 'id');
+    public function ka_proka(){
+        return $this->belongsTo(User::class, 'ka_proka_id', 'id');
     }
+
+    
 }

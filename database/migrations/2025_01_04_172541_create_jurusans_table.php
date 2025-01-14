@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('jurusans', function (Blueprint $table) {
             $table->id();
+            $table->integer('proka_id');
+            // $table->integer('walas_id');
             $table->string('nama_jurusan');
-            $table->integer('user_id');
-            $table->string('logo_jurusan')->nullable();
             $table->string('kode_jurusan')->nullable();
+            $table->string('logo_jurusan')->nullable();
             $table->enum('status', ['1', '0'])->default('0');
-            $table->string('slug_jurusan');
+            // $table->string('slug_jurusan');
             $table->timestamps();
         });
     }

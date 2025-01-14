@@ -30,6 +30,18 @@
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('simpan.jurusan')}}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Program Keahlian:</label>
+                            <select name="proka_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
+                                @foreach ($proka as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_proka}}</option>
+                                @endforeach
+
+
+                            </select>
+                        </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Jurusan:</label>
                             <input type="text" class="form-control" name="nama_jurusan">
@@ -40,7 +52,7 @@
                             <input type="text" class="form-control" name="kode_jurusan">
                         </div>
 
-                        <div class="mb-3 form-group">
+                        {{-- <div class="mb-3 form-group">
                             <label class="form-label">Ka. Proka:</label>
                             <select name="user_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
@@ -50,7 +62,7 @@
 
 
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Input File:</label>

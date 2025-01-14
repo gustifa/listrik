@@ -24,6 +24,10 @@ class ProkaController extends Controller
     }
 
     public function SimpanProka(Request $request){
+        $request->validate([
+            // 'name' => ['required','string','max:255'],
+            'ka_proka_id' => ['required', 'string','unique:prokas'],
+        ]);
         if($request->file('logo_proka')){
             $manager = new ImageManager(new Driver());
             $image_gen = hexdec(uniqid()).'.'.$request->file('logo_proka')->getClientOriginalExtension();
@@ -35,7 +39,7 @@ class ProkaController extends Controller
 
             Proka::insert([
                 'nama_proka' => $request->nama_proka,
-                'proka_id' => $request->proka_id,
+                'ka_proka_id' => $request->ka_proka_id,
                 'kode_proka' => strtoupper($request->kode_proka),
                 'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
                 'logo_proka' => $save_url,
@@ -51,7 +55,7 @@ class ProkaController extends Controller
          }else{
             Jurusan::insert([
                 'nama_proka' => $request->nama_proka,
-                'proka_id' => $request->proka_id,
+                'ka_proka_id' => $request->ka_proka_id,
                 'kode_proka' => strtoupper($request->kode_proka),
                 'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
                 'created_at' => Carbon::now(),
