@@ -69,4 +69,24 @@ class ImportUserController extends Controller
 
         return $pdf->stream('Cetak User '.$user->name.'.pdf');
     }
+
+    public function CetakSemuaUser(){
+        // $sekolah = Sekolah::find(1)->get();
+        // $id = Auth::user()->id;
+        // $user = User::where('id',$id )->get();
+        // dd($sekolah);
+        $users = User::all()->where('role', 'siswa');
+        // dd($bengkel);
+        $data = [
+            // 'title' => 'Welcome to ItSolutionStuff.com',
+            // 'date' => date('m/d/Y'),
+            'users' => $users
+        ];
+        // $customPaper = [0, 0, 210, 570];
+
+        $pdf = PDF::loadView('admin.backend.user.cetak_semua_user', $data, compact('users'));
+                    // ->setPaper($customPaper, 'landscape');
+
+        return $pdf->stream('Cetak User.pdf');
+    }
 }

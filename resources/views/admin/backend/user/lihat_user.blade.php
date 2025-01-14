@@ -35,6 +35,7 @@
         <div class="col">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button>
+            <a href="{{route('cetak.semua.user')}}" class="btn btn-warning" title="Print" target="_blank"><i class="lni lni-printer"></i></a>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

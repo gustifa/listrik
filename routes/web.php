@@ -270,6 +270,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
     Route::post('users-import', [ImportUserController::class, 'import'])->name('users.import');
     Route::get('/user-cetak/{id}',[ImportUserController::class, 'CetakPerUser'])->name('cetak.per.user');
+    Route::get('/user-all-cetak',[ImportUserController::class, 'CetakSemuaUser'])->name('cetak.semua.user');
 
 }); ///Akhir Admin Group Middleware
 
