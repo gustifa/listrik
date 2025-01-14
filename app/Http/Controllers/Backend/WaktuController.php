@@ -10,7 +10,7 @@ use App\Models\Waktu;
 class WaktuController extends Controller
 {
     public function SemuaWaktu(){
-        $waktu = Waktu::latest()->orderBy('id', 'DESC')->get();
+        $waktu = Waktu::all();
         return view('admin.backend.waktu.semua_waktu', compact('waktu'));
     }
 
@@ -34,9 +34,9 @@ class WaktuController extends Controller
         );
         return redirect()->route('semua.waktu')->with($notification);
 
-            
+
 
     }
 
-    
+
 }
