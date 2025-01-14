@@ -52,39 +52,7 @@ hr {
 
 <body>
 
-
-<table id="judul">
-  <tr>
-    <td>
-      <h2>
-        <img id ="showImage"src="">
-
-      </h2>
-    </td>
-    <td align="center">
-      <h3>
-        DINAS PROVINSI SUMATERA BARAT
-      </h3>
-      <h2>
-        SMK NEGERI BUKITTINGGI
-      </h2>
-      <p>Jl. Teuku Umar KM. 1 Kecamatan Kinali Kabupaten Pasaman Barat</p>
-      <!-- <p>Phone : 343434343434, Email : support@easylerningbd.com</p> -->
-
-    </td>
-    <td>
-      <h2>
-        <img id ="showImageProvinsi"src="">
-
-      </h2>
-    </td>
-  </tr>
-</table>
-<hr />
-
-@php
-
-@endphp
+@include('admin.body.logo_sekolah_a4')
 <h2 align="center">Laporan Mata Pelajaran</h2>
 
 
@@ -113,7 +81,7 @@ hr {
 
 
 </body>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   window.print();
-</script>
+</script> --}}
 </html>

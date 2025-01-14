@@ -28,7 +28,7 @@ $sekolah = App\Models\Sekolah::find(1);
     {{$sekolah->nama}}
   </h2>
   <p>{{$sekolah->alamat}}</p>
-  <p>Phone: {{$sekolah->no_telp}}, Email: {{$sekolah->email}}, Website: {{$sekolah->website}}, </p>
+  <p>Email: {{$sekolah->email}}, Website: {{$sekolah->website}}, </p>
 
 
 </td>
