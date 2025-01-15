@@ -135,6 +135,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/rombel/edit/{id}', 'EditRombel')->name('edit.rombel');
         Route::post('/rombel/simpan', 'SimpanRombel')->name('simpan.rombel');
         Route::post('/rombel/update', 'UpdateRombel')->name('update.rombel');
+        Route::get('/rombel/ajax/{proka_id}/','GetRombel');
     });
 
     // Group

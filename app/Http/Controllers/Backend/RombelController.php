@@ -104,5 +104,14 @@ class RombelController extends Controller
             return redirect()->route('semua.jurusan')->with($notification);
          }
 
+         
+
     }
+
+    public function GetRombel($proka_id){
+
+        $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
+        return json_encode($rombel);
+
+    }// End Method
 }
