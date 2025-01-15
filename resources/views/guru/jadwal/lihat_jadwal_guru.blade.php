@@ -24,7 +24,7 @@
                 </ol>
             </nav>
         </div>
-        
+
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
@@ -41,6 +41,7 @@
                             <th>Hari</th>
                             <th>Mata Pelajaran</th>
                             <th>Rombel</th>
+                            <th>Bengkel</th>
                             <th>Mulai</th>
                             <th>Selesai</th>
                             <th>Status</th>
@@ -51,18 +52,19 @@
                         @foreach ($jadwal as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
-                            
+
                             {{-- <td>{{$item['user']['name']}}</td> --}}
                             <td>{{$item['hari']['nama_hari']}}</td>
                             <td>{{$item['mapel']['kode_mapel']}}</td>
-                            <td>{{$item['rombel']['kelas']['nama_kelas']. ' ' .$item['rombel']['jurusan']['kode_jurusan']. ' '.$item['rombel']['group']['nama_group']}}</td>
+                            <td>{{$item['rombel']['nama_rombel']}}</td>
+                            <td>{{$item['bengkel']['nama_bengkel']}}</td>
                             <td>{{$item['waktu_mulai']['waktu_mulai']}}</td>
                             <td>{{$item['waktu_selesai']['waktu_selesai']}}</td>
                             <td> @if ($item->status == 1)
                                 <span class="btn btn-success">Aktif </span>
-                                @else 
+                                @else
                                 <span class="btn btn-danger">Tidak Aktif </span>
-                                @endif 
+                                @endif
                             </td>
                             {{-- <td> --}}
                                 {{-- <a href="{{route('edit.jadwal',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a> --}}

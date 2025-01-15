@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use App\Models\JadwalPelajaran;
 use App\Models\User;
 use App\Models\Mapel;
@@ -15,6 +15,7 @@ use App\Models\Kelas;
 use App\Models\Group;
 use App\Models\Waktu;
 use App\Models\Hari;
+use App\Models\Bengkel;
 
 class JadwalPelajaranController extends Controller
 {
@@ -32,7 +33,8 @@ class JadwalPelajaranController extends Controller
         $group = Group::latest()->get();
         $waktu = Waktu::latest()->get();
         $hari = Hari::latest()->get();
-        return view('admin.backend.jadwal.tambah_jadwal', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari'));
+        $bengkel = Bengkel::latest()->get();
+        return view('admin.backend.jadwal.tambah_jadwal', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari', 'bengkel'));
     }
 
     public function SimpanJadwal(Request $request){
@@ -44,6 +46,7 @@ class JadwalPelajaranController extends Controller
             'user_id' => $request->user_id,
             'mapel_id' => $request->mapel_id,
             'rombel_id' => $request->rombel_id,
+            'bengkel_id' => $request->bengkel_id,
             'hari_id' => $request->hari_id,
             'mulai_id' => $request->mulai_id,
             'selesai_id' => $request->selesai_id,
@@ -57,7 +60,7 @@ class JadwalPelajaranController extends Controller
         );
         return redirect()->route('semua.jadwal')->with($notification);
 
-            
+
 
     }
 
@@ -77,7 +80,7 @@ class JadwalPelajaranController extends Controller
     // Guru
     public function SemuaJadwalGuru(){
         $id = Auth::user()->id;
-        $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->get();
+        $jadwal = JadwalPelajaran::all();
         return view('guru.jadwal.lihat_jadwal_guru', compact('jadwal'));
     }
 
@@ -90,20 +93,22 @@ class JadwalPelajaranController extends Controller
         $group = Group::latest()->get();
         $waktu = Waktu::latest()->get();
         $hari = Hari::latest()->get();
-        return view('guru.jadwal.tambah_jadwal_guru', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari'));
+        $bengkel = Bengkel::latest()->get();
+        return view('guru.jadwal.tambah_jadwal_guru', compact('users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari', 'bengkel'));
     }
 
     public function SimpanJadwalGuru(Request $request){
         $id = Auth::user()->id;
         //dd($id);
-        $request->validate([
-            // 'name' => ['required','string','max:255'],
-            // 'mapel_id' => ['required','unique:jadwal_pelajarans'],
-        ]);
+        // $request->validate([
+        //     'name' => ['required','string','max:255'],
+        //     'mapel_id' => ['required','unique:jadwal_pelajarans'],
+        // ]);
         JadwalPelajaran::insert([
             'user_id' => $id,
             'mapel_id' => $request->mapel_id,
             'rombel_id' => $request->rombel_id,
+            'bengkel_id' => $request->bengkel_id,
             'hari_id' => $request->hari_id,
             'mulai_id' => $request->mulai_id,
             'selesai_id' => $request->selesai_id,
@@ -117,7 +122,7 @@ class JadwalPelajaranController extends Controller
         );
         return redirect()->route('lihat.jadwal.guru')->with($notification);
 
-            
+
 
     }
 }

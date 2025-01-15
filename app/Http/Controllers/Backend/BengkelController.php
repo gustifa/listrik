@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BengkelImport;
 use Carbon\Carbon;
 use App\Models\Bengkel;
+use App\Models\Proka;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class BengkelController extends Controller
@@ -18,11 +19,13 @@ class BengkelController extends Controller
     }
 
     public function TambahBengkel(){
-        return view('admin.backend.bengkel.tambah_bengkel');
+        $proka = Proka::latest()->get();
+        return view('admin.backend.bengkel.tambah_bengkel', compact('proka'));
     }
 
     public function SimpanBengkel(Request $request){
         Bengkel::insert([
+            'jurusan_id' => $request->jurusan_id,
             'nama_bengkel' => $request->nama_bengkel,
             'kode_bengkel' => $request->kode_bengkel,
             'keterangan' => $request->keterangan,

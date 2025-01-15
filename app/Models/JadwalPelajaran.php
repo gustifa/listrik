@@ -42,4 +42,8 @@ class JadwalPelajaran extends Model
     public function hari(){
         return $this->belongsTo(Hari::class, 'hari_id', 'id');
     }
+
+    public function bengkel(){
+        return $this->belongsTo(Bengkel::class, 'bengkel_id', 'id');
+    }
 }

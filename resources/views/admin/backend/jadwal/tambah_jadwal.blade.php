@@ -57,11 +57,23 @@
                         </div>
 
                         <div class="mb-3 form-group">
+                            <label class="form-label">Ruangan / Bengkel:</label>
+                            <select name="bengkel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Bengkel</option>
+                                @foreach ($bengkel as $item )
+
+                                    <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_bengkel}}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-group">
                             <label class="form-label">Nama Rombel:</label>
                             <select name="rombel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
                                 @foreach ($rombel as $rombels )
-                                    
+
                                     <option data-select2-id="select2-data-77-kb3z" value="{{$rombels->id}}">{{$rombels->nama_rombel}}</option>
 
                                 @endforeach
@@ -73,7 +85,7 @@
                             <select name="hari_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Hari</option>
                                 @foreach ($hari as $item )
-                                    
+
                                     <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_hari}}</option>
 
                                 @endforeach

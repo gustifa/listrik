@@ -56,7 +56,7 @@
                             <td>{{$item['user']['name']}}</td>
                             <td>{{$item['hari']['nama_hari']}}</td>
                             <td>{{$item['mapel']['kode_mapel']}}</td>
-                            <td>{{$item['rombel']['kelas']['nama_kelas']. ' ' .$item['rombel']['jurusan']['kode_jurusan']. ' '.$item['rombel']['group']['nama_group']}}</td>
+                            <td>{{$item->rombel->nama_rombel}}</td>
                             <td>{{$item['waktu_mulai']['waktu_mulai']}}</td>
                             <td>{{$item['waktu_selesai']['waktu_selesai']}}</td>
                             <td>
