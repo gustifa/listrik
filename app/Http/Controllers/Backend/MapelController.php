@@ -12,6 +12,7 @@ use App\Models\Mapel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\Sekolah;
+use App\Models\Proka;
 
 class MapelController extends Controller
 {
@@ -21,11 +22,13 @@ class MapelController extends Controller
     }
 
     public function TambahMapel(){
-        return view('admin.backend.mapel.tambah_mapel');
+        $proka = Proka::latest()->get();
+        return view('admin.backend.mapel.tambah_mapel', compact('proka'));
     }
 
     public function SimpanMapel(Request $request){
         Mapel::insert([
+            'jurusan_id' => $request->jurusan_id,
             'nama_mapel' => $request->nama_mapel,
             'kode_mapel' => $request->kode_mapel,
             'keterangan' => $request->keterangan,

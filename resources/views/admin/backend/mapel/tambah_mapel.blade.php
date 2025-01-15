@@ -30,6 +30,25 @@
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('simpan.mapel')}}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Course Category </label>
+                            <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
+                                <option selected="" disabled>Nama Proka</option>
+                                @foreach ($proka as $item )
+                                <option value="{{$item->id}}">{{$item->nama_proka}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Nama Jurusan </label>
+                            <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
+                                <option> </option>
+            
+                            </select>
+                        </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Mapel:</label>
                             <input type="text" class="form-control" name="nama_mapel">
@@ -57,6 +76,33 @@
     </div>
     <!--end row-->
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('select[name="proka_id"]').on('change', function(){
+            var proka_id = $(this).val();
+            if (proka_id) {
+                $.ajax({
+                    url: "{{ url('/rombel/ajax') }}/"+proka_id,
+                    type: "GET",
+                    dataType:"json",
+                    success:function(data){
+                        $('select[name="jurusan_id"]').html('');
+                        var d =$('select[name="jurusan_id"]').empty();
+                        $.each(data, function(key, value){
+                            $('select[name="jurusan_id"]').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
+                        });
+                    },
+
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+
+</script>
 
 <script type="text/javascript">
     $(document).ready(function (){

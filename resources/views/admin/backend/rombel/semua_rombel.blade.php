@@ -40,7 +40,7 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_rombel}}</td>
-                            <td>{{strtoupper($item['walas']['name'])}}</td>
+                            <td>{{$item['walas']['name']}}</td>
                             <td>
                                 <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}

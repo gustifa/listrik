@@ -21,26 +21,24 @@ class RombelController extends Controller
     }
 
     public function TambahRombel(){
-        $user = User::where('role', 'guru')->get();
+        $guru = User::where('role', 'guru')->get();
+        $siswa = User::where('role', 'siswa')->get();
         $proka = Proka::latest()->get();
         $jurusan = Jurusan::latest()->get();
         $tingkat = Kelas::latest()->get();
         $group = Group::latest()->get();
-        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'user', 'tingkat', 'group', 'proka'));
+        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'guru', 'tingkat', 'group', 'proka', 'siswa'));
     }
 
     public function SimpanRombel(Request $request){
         
         $request->validate([
             // 'name' => ['required','string','max:255'],
-            'walas_id' => ['required', 'string','unique:rombels'],
+            // 'walas_id' => ['required', 'string','unique:rombels'],
         ]);
             Rombel::insert([
-                // 'kelas_id' => $request->kelas_id,
-                // 'proka_id' => $request->proka_id,
                 'jurusan_id' => $request->jurusan_id,
                 'nama_rombel' => $request->nama_rombel,
-                // 'group_id' => $request->group_id,
                 'walas_id' => $request->walas_id,
                 'siswa_id' => $request->siswa_id,
                 'created_at' => Carbon::now(),
@@ -54,6 +52,13 @@ class RombelController extends Controller
             return redirect()->route('semua.rombel')->with($notification);
 
     }
+
+    public function GetRombel($proka_id){
+
+        $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
+        return json_encode($rombel);
+
+    }// End Method
 
     public function EditJurusan($id){
         $jurusan = Rombel::find($id);
@@ -108,10 +113,5 @@ class RombelController extends Controller
 
     }
 
-    public function GetRombel($proka_id){
-
-        $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
-        return json_encode($rombel);
-
-    }// End Method
+    
 }

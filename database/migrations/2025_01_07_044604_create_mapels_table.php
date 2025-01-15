@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
+            $table->integer('jurusan_id');
             $table->string('nama_mapel');
             $table->string('kode_mapel');
             $table->enum('status', ['1', '0'])->default('0');
