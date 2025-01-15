@@ -14,7 +14,8 @@ class ProkaController extends Controller
 {
     public function SemuaProka(){
         $proka = Proka::latest()->get();    
-        return view('admin.backend.proka.semua_proka', compact('proka'));
+        $user = User::where('role', 'guru')->get();
+        return view('admin.backend.proka.semua_proka', compact('proka', 'user'));
     }
 
     public function TambahProka(){

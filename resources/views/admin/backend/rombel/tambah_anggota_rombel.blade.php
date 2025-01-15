@@ -29,7 +29,7 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('simpan.rombel')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('simpan.anggota.rombel')}}" enctype="multipart/form-data">
                         @csrf
                         {{-- <div class="mb-3 form-group">
                             <label class="form-label">Tingkat:</label>
@@ -94,11 +94,65 @@
                             </select>
                         </div>
 
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Course Category </label>
+                            <select name="siswa_id" class="mb-3 form-select" aria-label="Default select example">
+                                <option selected="" disabled>Pilih Anggota Rombel</option>
+                                @foreach ($siswa as $item )
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
 
                         <div class="mb-3">
                             <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                         </div>
                     </form>
+
+                    {{-- Awal Modal --}}
+        <div class="col">
+            <!-- Button trigger modal -->
+            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
+            <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-import"></i></a>
+            <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Import User</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                                    <form id="myForm" method="post" action="{{route('users.import')}}" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Input File: </label>
+                                            <input type="file" class="form-control" name="file" id="file">
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="px-5 btn btn-primary">Import</button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <a href="{{route('download.template.user')}}">Download Template</a>
+                                        </div>
+
+                                    </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{-- Akhir Modal --}}
                 </div>
             </div>
 
@@ -137,14 +191,14 @@
             var jurusan_id = $(this).val();
             if (jurusan_id) {
                 $.ajax({
-                    url: "{{ url('/jurusan/ajax') }}/"+jurusan_id,
+                    url: "{{ url('/rombel/ajax') }}/"+jurusan_id,
                     type: "GET",
                     dataType:"json",
                     success:function(data){
                         $('select[name="rombel_id"]').html('');
                         var d =$('select[name="rombel_id"]').empty();
                         $.each(data, function(key, value){
-                            $('select[name="rombel_id"]').append('<option value="'+ value.id + '">' + value.rombel + '</option>');
+                            $('select[name="rombel_id"]').append('<option value="'+ value.id + '">' + value.nama_rombel + '</option>');
                         });
                     },
                 });

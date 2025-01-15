@@ -84,7 +84,7 @@
             var proka_id = $(this).val();
             if (proka_id) {
                 $.ajax({
-                    url: "{{ url('/rombel/ajax') }}/"+proka_id,
+                    url: "{{ url('/jurusan/ajax') }}/"+proka_id,
                     type: "GET",
                     dataType:"json",
                     success:function(data){

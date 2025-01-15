@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('rombel_id');
             $table->string('siswa_id');
-            $table->enum('status', ['1', '0'])->default('0');
+            $table->enum('status', ['1', '0'])->default('1');
             $table->timestamps();
         });
     }

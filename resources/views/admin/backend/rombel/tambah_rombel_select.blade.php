@@ -1160,5 +1160,4 @@
 	});
 
 </script>
-
 @endsection

@@ -13,13 +13,16 @@ use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Group;
 use App\Models\Proka;
+use App\Models\AnggotaRombel;
 
 
 class RombelController extends Controller
 {
     public function SemuaRombel(){
         $rombel = Rombel::latest()->get();
-        return view('admin.backend.rombel.semua_rombel', compact('rombel'));
+        $proka = Proka::latest()->get();
+        $siswa = User::where('role', 'siswa')->get();
+        return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa'));
     }
 
     public function TambahRombel(){
@@ -127,6 +130,27 @@ class RombelController extends Controller
         $rombel = Rombel::latest()->get();
         $proka = Proka::latest()->get();
         return view('admin.backend.rombel.tambah_anggota_rombel', compact('siswa', 'rombel', 'proka'));
+    }
+
+    public function SimpanAnggotaRombel(Request $request){
+
+        $request->validate([
+            // 'name' => ['required','string','max:255'],
+            // 'walas_id' => ['required', 'string','unique:rombels'],
+        ]);
+            AnggotaRombel::insert([
+                'rombel_id' => $request->rombel_id,
+                'siswa_id' => $request->siswa_id,
+                'created_at' => Carbon::now(),
+            ]);
+
+            $notification = array(
+                'message' => 'Rombel Berhasil ditambahkan',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('semua.rombel')->with($notification);
+
     }
 
 

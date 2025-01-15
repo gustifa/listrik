@@ -128,7 +128,6 @@
 	});
 
 </script>
-
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -136,7 +135,7 @@
             var proka_id = $(this).val();
             if (proka_id) {
                 $.ajax({
-                    url: "{{ url('/rombel/ajax') }}/"+proka_id,
+                    url: "{{ url('/jurusan/ajax') }}/"+proka_id,
                     type: "GET",
                     dataType:"json",
                     success:function(data){
@@ -155,4 +154,30 @@
     });
 
 </script>
+{{-- <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('select[name="proka_id"]').on('change', function(){
+            var proka_id = $(this).val();
+            if (proka_id) {
+                $.ajax({
+                    url: "{{ url('/jurusan/ajax') }}/"+proka_id,
+                    type: "GET",
+                    dataType:"json",
+                    success:function(data){
+                        $('select[name="jurusan_id"]').html('');
+                        var d =$('select[name="jurusan_id"]').empty();
+                        $.each(data, function(key, value){
+                            $('select[name="jurusan_id"]').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
+                        });
+                    },
+
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+
+</script> --}}
 @endsection
