@@ -42,7 +42,7 @@
             </a>
             <ul>
                 <li> <a href="{{route('profile.sekolah')}}"><i class='bx bx-radio-circle'></i>Sekolah</a>
-                    <li> <a href="{{route('lihat.user')}}"><i class='bx bx-radio-circle'></i>User</a>
+                    <li> <a href="{{route('lihat.user')}}"><i class='bx bx-radio-circle'></i>Pengguna</a>
                 <li> <a href="{{route('semua.tahun.pelajaran')}}"><i class='bx bx-radio-circle'></i>Tahun Pelajaran</a>
                 <li> <a href="{{route('semua.semester')}}"><i class='bx bx-radio-circle'></i>Semester</a>
                 <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu PBM</a>
