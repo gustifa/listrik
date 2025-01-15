@@ -86,22 +86,15 @@
 
                             </select>
                         </div>
-                        <div class="mb-3 form-group">
-                            <label class="form-label">Nama Rombel:</label>
-                            <input type="text" class="form-control" name="nama_rombel">
-                        </div>
-
-                        <div class="mb-3 form-group">
-                            <label class="form-label">Wali Kelas:</label>
-                            <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Walas</option>
-                                @foreach ($guru as $item )
-                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Rombel </label>
+                            <select name="rombel_id" class="mb-3 form-select" aria-label="Default select example">
+                                <option> </option>
 
                             </select>
                         </div>
+
+
                         <div class="mb-3">
                             <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                         </div>
@@ -116,7 +109,6 @@
 </div>
 
 <script type="text/javascript">
-
     $(document).ready(function(){
         $('select[name="proka_id"]').on('change', function(){
             var proka_id = $(this).val();
@@ -132,14 +124,35 @@
                             $('select[name="jurusan_id"]').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
                         });
                     },
-
                 });
             } else {
                 alert('danger');
             }
         });
     });
-
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('select[name="jurusan_id"]').on('change', function(){
+            var jurusan_id = $(this).val();
+            if (jurusan_id) {
+                $.ajax({
+                    url: "{{ url('/jurusan/ajax') }}/"+jurusan_id,
+                    type: "GET",
+                    dataType:"json",
+                    success:function(data){
+                        $('select[name="rombel_id"]').html('');
+                        var d =$('select[name="rombel_id"]').empty();
+                        $.each(data, function(key, value){
+                            $('select[name="rombel_id"]').append('<option value="'+ value.id + '">' + value.rombel + '</option>');
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
 </script>
 
 <script type="text/javascript">

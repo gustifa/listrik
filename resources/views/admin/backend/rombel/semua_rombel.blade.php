@@ -17,11 +17,12 @@
                 </ol>
             </nav>
         </div>
-        
+
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
         <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a>
+        <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a>
     </div>
     <div class="card">
         <div class="card-body">

@@ -132,10 +132,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::controller(RombelController::class)->group(function(){
         Route::get('/rombel/all', 'SemuaRombel')->name('semua.rombel');
         Route::get('/rombel/tambah', 'TambahRombel')->name('tambah.rombel');
+        Route::get('/anggota-rombel/tambah', 'TambahAnggotaRombel')->name('tambah.anggota.rombel');
+        Route::post('/anggota-rombel/simpan', 'SimpanAnggotaRombel')->name('simpan.anggota.rombel');
         Route::get('/rombel/edit/{id}', 'EditRombel')->name('edit.rombel');
         Route::post('/rombel/simpan', 'SimpanRombel')->name('simpan.rombel');
         Route::post('/rombel/update', 'UpdateRombel')->name('update.rombel');
-        Route::get('/rombel/ajax/{proka_id}/','GetRombel');
+        Route::get('/jurusan/ajax/{proka_id}/','GetJurusan');
+        Route::get('/rombel/ajax/{jurusan_id}/','GetRombel');
     });
 
     // Group

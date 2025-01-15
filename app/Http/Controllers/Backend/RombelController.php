@@ -55,10 +55,17 @@ class RombelController extends Controller
 
     }
 
-    public function GetRombel($proka_id){
+    public function GetJurusan($proka_id){
 
         $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
         return json_encode($rombel);
+
+    }// End Method
+
+    public function GetRombel($jurusan_id){
+
+        $jurusan = Rombel::where('jurusan_id',$jurusan_id)->orderBy('nama_rombel','ASC')->get();
+        return json_encode($jurusan);
 
     }// End Method
 
@@ -113,6 +120,13 @@ class RombelController extends Controller
 
 
 
+    }
+
+    public function TambahAnggotaRombel(){
+        $siswa = User::where('role', 'siswa')->get();
+        $rombel = Rombel::latest()->get();
+        $proka = Proka::latest()->get();
+        return view('admin.backend.rombel.tambah_anggota_rombel', compact('siswa', 'rombel', 'proka'));
     }
 
 
