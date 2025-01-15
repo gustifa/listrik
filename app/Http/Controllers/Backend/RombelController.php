@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Rombel;
 use App\Models\Jurusan;
 use App\Models\User;
@@ -31,7 +33,7 @@ class RombelController extends Controller
     }
 
     public function SimpanRombel(Request $request){
-        
+
         $request->validate([
             // 'name' => ['required','string','max:255'],
             // 'walas_id' => ['required', 'string','unique:rombels'],
@@ -40,7 +42,7 @@ class RombelController extends Controller
                 'jurusan_id' => $request->jurusan_id,
                 'nama_rombel' => $request->nama_rombel,
                 'walas_id' => $request->walas_id,
-                'siswa_id' => $request->siswa_id,
+                // 'siswa_id' => $request->siswa_id,
                 'created_at' => Carbon::now(),
             ]);
 
@@ -109,9 +111,9 @@ class RombelController extends Controller
             return redirect()->route('semua.jurusan')->with($notification);
          }
 
-         
+
 
     }
 
-    
+
 }

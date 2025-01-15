@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_rombel');
             // $table->integer('group_id');
             $table->integer('walas_id');
-            $table->integer('siswa_id')->nullable();
+            // $table->integer('siswa_id')->nullable();
             $table->timestamps();
         });
     }
