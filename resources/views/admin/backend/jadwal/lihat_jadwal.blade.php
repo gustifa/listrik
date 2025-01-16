@@ -82,7 +82,7 @@
                 <div class="col">
                     <!-- Button trigger modal -->
                     {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
-                   
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -99,7 +99,7 @@
                                             <label class="form-label">Nama Jurusan:</label>
                                             <input type="text" class="form-control" name="user_id">
                                         </div> --}}
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Nama Guru:</label>
                                             <select name="user_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
@@ -107,11 +107,11 @@
                                                 @foreach ($users as $item )
                                                 <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
-                
-                
+
+
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Nama Mapel:</label>
                                             <select name="mapel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
@@ -121,43 +121,43 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Ruangan / Bengkel:</label>
                                             <select name="bengkel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Bengkel</option>
                                                 @foreach ($bengkel as $item )
-                
+
                                                     <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_bengkel}}</option>
-                
+
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Nama Rombel:</label>
                                             <select name="rombel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
                                                 @foreach ($rombel as $rombels )
-                
+
                                                     <option data-select2-id="select2-data-77-kb3z" value="{{$rombels->id}}">{{$rombels->nama_rombel}}</option>
-                
+
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Nama Hari:</label>
                                             <select name="hari_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Hari</option>
                                                 @foreach ($hari as $item )
-                
+
                                                     <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_hari}}</option>
-                
+
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Waktu Mulai:</label>
                                             <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
@@ -167,7 +167,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3 form-group">
                                             <label class="form-label">Waktu Selesai:</label>
                                             <select name="selesai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
@@ -177,7 +177,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                
+
                                         <div class="mb-3">
                                             <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                                         </div>
@@ -223,6 +223,46 @@
                 }
             });
 
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                category_name: {
+                    required : true,
+                },
+
+                image: {
+                    required : true,
+                },
+
+            },
+            messages :{
+                category_name: {
+                    required : 'Please Enter Category Name',
+                },
+
+                image: {
+                    required : 'Please Upload Image',
+                },
+
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
         });
     });
 

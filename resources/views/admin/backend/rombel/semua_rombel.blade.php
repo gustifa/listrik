@@ -66,7 +66,7 @@
                         <div class="col">
                             <!-- Button trigger modal -->
                             {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
-                           
+
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -79,8 +79,8 @@
 
                                             <form id="myForm" method="post" action="{{route('simpan.rombel')}}" enctype="multipart/form-data">
                                                 @csrf
-                        
-                        
+
+
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Nama Program Keahlian </label>
                                                     <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
@@ -88,22 +88,22 @@
                                                         @foreach ($proka as $item )
                                                         <option value="{{$item->id}}">{{$item->nama_proka}}</option>
                                                         @endforeach
-                        
+
                                                     </select>
                                                 </div>
-                        
+
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Nama Jurusan </label>
                                                     <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
                                                         <option> </option>
-                        
+
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 form-group">
                                                     <label class="form-label">Nama Rombel:</label>
                                                     <input type="text" class="form-control" name="nama_rombel">
                                                 </div>
-                        
+
                                                 <div class="mb-3 form-group">
                                                     <label class="form-label">Wali Kelas:</label>
                                                     <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
@@ -111,8 +111,8 @@
                                                         @foreach ($guru as $item )
                                                         <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
                                                         @endforeach
-                        
-                        
+
+
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
@@ -132,18 +132,18 @@
                         {{-- Akhir Modal dasar --}}
                         {{-- Awal Modal full --}}
                         <div class="col">
-                           
+
                             <div class="modal fade" id="exampleFullScreenModal" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-fullscreen">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Modal title</h5>
+                                            <h5 class="modal-title">Tambah Anggota Rombel</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <form id="myForm" method="post" action="{{route('simpan.anggota.rombel')}}" enctype="multipart/form-data">
                                                 @csrf
-                                               
+
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Program Keahlian </label>
                                                     <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
@@ -151,25 +151,25 @@
                                                         @foreach ($proka as $item )
                                                         <option value="{{$item->id}}">{{$item->nama_proka}}</option>
                                                         @endforeach
-                        
+
                                                     </select>
                                                 </div>
-                        
+
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Nama Jurusan </label>
                                                     <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
                                                         <option> </option>
-                        
+
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Rombel </label>
                                                     <select name="rombel_id" class="mb-3 form-select" aria-label="Default select example">
                                                         <option> </option>
-                        
+
                                                     </select>
                                                 </div>
-                        
+
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Anggota Rombel </label>
                                                     <select name="siswa_id" class="mb-3 form-select" aria-label="Default select example">
@@ -177,11 +177,11 @@
                                                         @foreach ($siswa as $item )
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                         @endforeach
-                        
+
                                                     </select>
                                                 </div>
-                        
-                        
+
+
                                                 <div class="mb-3">
                                                     <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                                                 </div>
@@ -265,6 +265,12 @@
                 walas_id: {
                     required : true,
                 },
+                rombel_id: {
+                    required : true,
+                },
+                siswa_id: {
+                    required : true,
+                },
 
                 image: {
                     required : true,
@@ -283,6 +289,12 @@
                     required : 'Nama Rombel Tidak Boleh Kosong',
                 },
                 walas_id: {
+                    required : 'Walas Tidak Boleh Kosong',
+                },
+                rombel_id: {
+                    required : 'Walas Tidak Boleh Kosong',
+                },
+                siswa_id: {
                     required : 'Walas Tidak Boleh Kosong',
                 },
                 image: {
