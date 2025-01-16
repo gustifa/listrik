@@ -21,7 +21,16 @@ class JadwalPelajaranController extends Controller
 {
     public function SemuaJadwal(){
         $jadwal = JadwalPelajaran::latest()->get();
-        return view('admin.backend.jadwal.lihat_jadwal', compact('jadwal'));
+        $users = User::where('role', 'guru')->get();
+        $mapel = Mapel::latest()->get();
+        $rombel = Rombel::latest()->get();
+        $jurusan = Jurusan::latest()->get();
+        $tingkat = Kelas::latest()->get();
+        $group = Group::latest()->get();
+        $waktu = Waktu::latest()->get();
+        $hari = Hari::latest()->get();
+        $bengkel = Bengkel::latest()->get();
+        return view('admin.backend.jadwal.lihat_jadwal', compact('jadwal', 'users', 'mapel', 'rombel', 'jurusan', 'tingkat', 'group', 'waktu', 'hari', 'bengkel'));
     }
 
     public function TambahJadwal(){

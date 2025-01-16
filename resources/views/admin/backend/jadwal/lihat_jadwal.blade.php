@@ -28,7 +28,8 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.jadwal')}}" class="btn btn-primary">Tambah Jadwal</a>
+        {{-- <a href="{{route('tambah.jadwal')}}" class="btn btn-primary">Tambah Jadwal</a> --}}
+        <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-time"></i></a>
     </div>
 
     <div class="card">
@@ -76,6 +77,122 @@
                     </tbody>
 
                 </table>
+
+                {{-- Awal Modal dasar --}}
+                <div class="col">
+                    <!-- Button trigger modal -->
+                    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
+                   
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal Pelajaran</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form id="myForm" method="post" action="{{route('simpan.jadwal')}}" enctype="multipart/form-data">
+                                        @csrf
+                                        {{-- <div class="mb-3 form-group">
+                                            <label class="form-label">Nama Jurusan:</label>
+                                            <input type="text" class="form-control" name="user_id">
+                                        </div> --}}
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Nama Guru:</label>
+                                            <select name="user_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Guru</option>
+                                                @foreach ($users as $item )
+                                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                
+                
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Nama Mapel:</label>
+                                            <select name="mapel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                                @foreach ($mapel as $item )
+                                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_mapel}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Ruangan / Bengkel:</label>
+                                            <select name="bengkel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Bengkel</option>
+                                                @foreach ($bengkel as $item )
+                
+                                                    <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_bengkel}}</option>
+                
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Nama Rombel:</label>
+                                            <select name="rombel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                                @foreach ($rombel as $rombels )
+                
+                                                    <option data-select2-id="select2-data-77-kb3z" value="{{$rombels->id}}">{{$rombels->nama_rombel}}</option>
+                
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Nama Hari:</label>
+                                            <select name="hari_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Hari</option>
+                                                @foreach ($hari as $item )
+                
+                                                    <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_hari}}</option>
+                
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Waktu Mulai:</label>
+                                            <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                                @foreach ($waktu as $item )
+                                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{' Jam ke- '.$item->nama. ' => ' .$item->waktu_mulai. ' s/d ' .$item->waktu_selesai}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3 form-group">
+                                            <label class="form-label">Waktu Selesai:</label>
+                                            <select name="selesai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                                @foreach ($waktu as $item )
+                                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{' Jam ke- '.$item->nama. ' => ' .$item->waktu_mulai. ' s/d ' .$item->waktu_selesai}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                
+                                        <div class="mb-3">
+                                            <button type="submit" class="px-5 btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {{-- Akhir Modal dasar --}}
             </div>
         </div>
     </div>

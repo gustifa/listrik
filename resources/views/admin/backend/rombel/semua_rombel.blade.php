@@ -22,10 +22,13 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a>
+        {{-- <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a> --}}
         {{-- <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a> --}}
-        <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-user"></i></a>
+        <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-layout"></i></a>
         {{-- <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a> --}}
+         <!-- Button trigger modal -->
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="bx bx-user"></i></button>
+         <!-- Modal -->
     </div>
     <div class="card">
         <div class="card-body">
@@ -46,7 +49,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_rombel}}</td>
                             <td>{{$item['walas']['name']}}</td>
-                            <td><a href=""><button class="btn btn-danger"><i class="lni lni-user"></i></button></a></td>
+                            <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td>
                             <td>
                                 <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
@@ -59,7 +62,7 @@
 
                 </table>
 
-                        {{-- Awal Modal --}}
+                        {{-- Awal Modal dasar --}}
                         <div class="col">
                             <!-- Button trigger modal -->
                             {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button> --}}
@@ -69,50 +72,78 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota Rombel</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Tambah Rombongan Belajar</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
 
+                                            <form id="myForm" method="post" action="{{route('simpan.rombel')}}" enctype="multipart/form-data">
+                                                @csrf
+                        
+                        
+                                                <div class="form-group col-md-12">
+                                                    <label for="input1" class="form-label">Nama Program Keahlian </label>
+                                                    <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
+                                                        <option selected="" disabled>Nama Proka</option>
+                                                        @foreach ($proka as $item )
+                                                        <option value="{{$item->id}}">{{$item->nama_proka}}</option>
+                                                        @endforeach
+                        
+                                                    </select>
+                                                </div>
+                        
+                                                <div class="form-group col-md-12">
+                                                    <label for="input1" class="form-label">Nama Jurusan </label>
+                                                    <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
+                                                        <option> </option>
+                        
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 form-group">
+                                                    <label class="form-label">Nama Rombel:</label>
+                                                    <input type="text" class="form-control" name="nama_rombel">
+                                                </div>
+                        
+                                                <div class="mb-3 form-group">
+                                                    <label class="form-label">Wali Kelas:</label>
+                                                    <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                        <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Walas</option>
+                                                        @foreach ($guru as $item )
+                                                        <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                                        @endforeach
+                        
+                        
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button type="submit" class="px-5 btn btn-primary">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        {{-- Akhir Modal dasar --}}
+                        {{-- Awal Modal full --}}
+                        <div class="col">
+                           
+                            <div class="modal fade" id="exampleFullScreenModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
                                             <form id="myForm" method="post" action="{{route('simpan.anggota.rombel')}}" enctype="multipart/form-data">
                                                 @csrf
-                                                {{-- <div class="mb-3 form-group">
-                                                    <label class="form-label">Tingkat:</label>
-                                                    <select name="kelas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                                        <option disabled data-select2-id="select2-data-2-747t">Pilih Ka. Proka</option>
-                                                        @foreach ($tingkat as $item )
-                                                        <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_kelas}}</option>
-                                                        @endforeach
-                        
-                        
-                                                    </select>
-                                                </div> --}}
-                        
-                                                {{-- <div class="mb-3 form-group ">
-                                                    <label class="form-label">Nama Program Keahlian:</label>
-                                                    <select name="proka_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                                        <option disabled data-select2-id="select2-data-2-747t">Pilih Jurusan</option>
-                                                        @foreach ($proka as $item )
-                                                        <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_proka}}</option>
-                                                        @endforeach
-                        
-                        
-                                                    </select>
-                                                </div> --}}
-                        
-                        
-                                                {{-- <div class="form-group col-md-6">
-                                                    <label for="input1" class="form-label">Course Category </label>
-                                                    <select name="category_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option selected="" disabled>Open this select menu</option>
-                                                        @foreach ($categories as $cat)
-                                                        <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
-                                                        @endforeach
-                        
-                                                    </select>
-                                                </div> --}}
-                        
-                        
+                                               
                                                 <div class="form-group col-md-12">
                                                     <label for="input1" class="form-label">Program Keahlian </label>
                                                     <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
@@ -158,14 +189,13 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+                                            <button type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        {{-- Akhir Modal --}}
+                        {{-- Akhir Modal fulll --}}
             </div>
         </div>
     </div>

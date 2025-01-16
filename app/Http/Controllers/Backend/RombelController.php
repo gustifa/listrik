@@ -22,7 +22,8 @@ class RombelController extends Controller
         $rombel = Rombel::latest()->get();
         $proka = Proka::latest()->get();
         $siswa = User::where('role', 'siswa')->get();
-        return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa'));
+        $guru = User::where('role', 'guru')->get();
+        return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa', 'guru'));
     }
 
     public function TambahRombel(){
