@@ -50,7 +50,11 @@ class ImportUserController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
        
-                            $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                            // $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                            $btn = '
+                            <a href="" class="btn btn-info" title="Print" target="_blank"><i class="lni lni-printer"></i></a>
+                            <a href="" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
+                            ';
       
                             return $btn;
                     })
