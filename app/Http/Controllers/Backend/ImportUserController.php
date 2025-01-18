@@ -29,7 +29,12 @@ class ImportUserController extends Controller
     public function getUser(Request $request){
         $tags =[];
         if($search=$request->name){
-            $tags=User::where('username', 'LIKE', "%$search%")->get();
+            // $tags=Usaaaaaaaer::where('username', 'LIKE', "%$search%")->get();
+            $tags = User::select("*")
+
+            ->where('name','LIKE','%'.$search.'%')
+
+            ->get();
         }
         return response()->json($tags);
     }
