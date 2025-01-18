@@ -269,6 +269,7 @@ Route::controller(AdminController::class)->group(function(){
     });
     //User
     Route::get('users', [ImportUserController::class, 'index'])->name('lihat.user');
+    Route::get('users-multi-select', [ImportUserController::class, 'userMultiSelectSelect'])->name('lihat.user.multi.select');
     Route::get('import/users', [ImportUserController::class, 'ImportUser'])->name('import.user');
     Route::get('download-template-user', [ImportUserController::class, 'DownloadTemplateUser'])->name('download.template.user');
     Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');
@@ -277,7 +278,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/user-all-cetak',[ImportUserController::class, 'CetakSemuaUser'])->name('cetak.semua.user');
     Route::get('/user-guru-cetak',[ImportUserController::class, 'CetakGuruUser'])->name('cetak.guru.user');
     Route::get('/user-wakil-cetak',[ImportUserController::class, 'CetakWakilUser'])->name('cetak.wakil.user');
-
+    Route::post('get-users', [ImportUserController::class, 'getUser'])->name('get.user');
 }); ///Akhir Admin Group Middleware
 
 //tes

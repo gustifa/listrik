@@ -18,6 +18,21 @@ class ImportUserController extends Controller
 
         return view('admin.backend.user.lihat_user', compact('users'));
     }
+    // Test
+    public function userMultiSelectSelect()
+    {
+        $users = User::get('name', 'id');
+
+        return view('admin.backend.user.lihat_user_multi_select', compact('users'));
+    }
+
+    public function getUser(Request $request){
+        $siswa_id =[];
+        if($search=$request->name){
+            $siswa_id=User::where(`name`, `LIKE`, "%$search%")->get();
+        }
+        return response()->json($siswa_id);
+    }
 
     public function ImportUser()
     {
