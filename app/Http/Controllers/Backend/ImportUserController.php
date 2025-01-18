@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DataTables;
 
 class ImportUserController extends Controller
 {
@@ -37,6 +38,27 @@ class ImportUserController extends Controller
             ->get();
         }
         return response()->json($tags);
+    }
+
+    public function lihatUserYajra(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = User::query();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+       
+                            $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+      
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+          
+        return view('admin.backend.user.lihat_user_yajra');
     }
 
     public function ImportUser()
