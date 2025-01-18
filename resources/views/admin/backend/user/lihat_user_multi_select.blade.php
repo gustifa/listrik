@@ -24,10 +24,10 @@
                                 <form action="">
                                     <div class="mb-12">
                                     <label for="multiple-select-field" class="form-label">Basic multiple select</label>
-                                    <select class="name form-select" 
-                                    id="name" 
+                                    <select class="tags form-select" 
+                                    id="tags" 
                                     data-placeholder="Choose anything"
-                                    name="siswa_id[]" 
+                                    name="tags[]" 
                                     multiple="multiple">
                                     </select>
                                     </div>
@@ -45,37 +45,37 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.name').select2({
+		$('.tags').select2({
             placeholder: 'Select',
             allowClear: true
 
         });
 
-        $('#name').select2({
+        $('#tags').select2({
             ajax:{
                 url: "{{ route('get.user') }}",
                     type: "post",
-                    dataType:"json",
+                    dataType:'json',
                     delay:250,
                     data: function(params){
                         return{
                             name:params.term,
-                            "_token":"{{csrf_token()}}",
+                            "_token":"{{ csrf_token() }}",
                         };
                     },
 
-                    prossesResult:function(data){
+                    processResults:function(data){
                         return {
-                            result: $.map(data, function(item){
+                            results: $.map(data, function(item){
                                 return{
                                     id:item.id,
                                     text:item.name
                                 }
                             })
 
-                        }
-                    }
-            }
+                        };
+                    },
+            },
         });
 
 	});

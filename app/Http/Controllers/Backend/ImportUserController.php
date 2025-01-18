@@ -27,11 +27,11 @@ class ImportUserController extends Controller
     }
 
     public function getUser(Request $request){
-        $siswa_id =[];
+        $tags =[];
         if($search=$request->name){
-            $siswa_id=User::where(`name`, `LIKE`, "%$search%")->get();
+            $tags=User::where('username', 'LIKE', "%$search%")->get();
         }
-        return response()->json($siswa_id);
+        return response()->json($tags);
     }
 
     public function ImportUser()
