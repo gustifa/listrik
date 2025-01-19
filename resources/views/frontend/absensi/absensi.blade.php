@@ -18,12 +18,12 @@
                     <div class="card-body">
                         <h3 class="pb-4 text-center card-title fs-24 lh-35">SCAN BARCODE</h3>
                         <div class="section-block"></div>
-                        <div id="reader">
-                            <form class="pt-4" method="POST" action="">
+                        
+                            <form id="reader" class="pt-4" method="POST" action="">
                                 @csrf
-                                
+                               
                             </form>
-                        </div>
+                        
                         
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -50,6 +50,7 @@
     function onScanSuccess(decodedText, decodedResult) {
         // Redirect to the scanned QR Code link
         window.location.href = decodedText;
+        
 
         // Clear the scanner area after the action is performed
         html5QRCodeScanner.clear();
