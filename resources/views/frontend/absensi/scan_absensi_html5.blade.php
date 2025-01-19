@@ -1,46 +1,133 @@
+<!-- Index.html file -->
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    /* style.css file*/
+body {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgb(128 0 0 / 66%);
+}
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 5px;
+}
+
+.container h1 {
+    color: #ffffff;
+}
+
+.section {
+    background-color:rgb(255, 255, 255);
+    padding: 50px 30px;
+    border: 1.5px solid #b2b2b2;
+    border-radius: 0.25em;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+}
+
+#my-qr-reader {
+    padding: 20px !important;
+    border: 1.5px solid #b2b2b2 !important;
+    border-radius: 8px;
+}
+
+#my-qr-reader img[alt="Info icon"] {
+    display: none;
+}
+
+#my-qr-reader img[alt="Camera based scan"] {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #b2b2b2;
+    outline: none;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: #008000ad;
+    transition: 0.3s background-color;
+}
+
+button:hover {
+    background-color: #008000;
+}
+
+#html5-qrcode-anchor-scan-type-change {
+    text-decoration: none !important;
+    color: #1d9bf0;
+}
+
+video {
+    width: 100% !important;
+    border: 1px solid #b2b2b2 !important;
+    border-radius: 0.25em;
+}
+
+</style>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
-    <style>
-        #reader { width: 300px; height: 300px; }
-        #result { margin-top: 20px; }
-    </style>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="style.css">
+    <title>QR Code Scanner / Reader
+    </title>
 </head>
+
 <body>
-    <h1>QR Code Scanner</h1>
-    <div id="reader"></div>
-    <div id="result">Scanned result: <span id="result-value"></span></div>
-    <!-- <script src="https://unpkg.com/html5-qrcode"></script>
-    <script src="script.js"></script> -->
-    <script src="{{ asset('assets/html5-qrcode/html5-qrcode.min.js') }}"></script>
+    <div class="container">
+        <h1>Scan QR Codes</h1>
+        <div class="section">
+            <div id="my-qr-reader">
+            </div>
+        </div>
+    </div>
+    <script
+        src="https://unpkg.com/html5-qrcode">
+    </script>
+    <!-- <script src="script.js"></script> -->
+        <script>
+            // script.js file
 
-<script>
-    // Initialize the HTML5 QR Code Scanner
-    let html5QRCodeScanner = new Html5QrcodeScanner(
-        // Target element with the ID "reader" and configure settings
-        "reader", {
-            fps: 10, // Frames per second for scanning
-            qrbox: {
-                width: 200, // Width of the scanning box
-                height: 200, // Height of the scanning box
-            },
-        }
-    );
+            function domReady(fn) {
+                if (
+                    document.readyState === "complete" ||
+                    document.readyState === "interactive"
+                ) {
+                    setTimeout(fn, 1000);
+                } else {
+                    document.addEventListener("DOMContentLoaded", fn);
+                }
+            }
 
-    // Function executed when the scanner successfully reads a QR Code
-    function onScanSuccess(decodedText, decodedResult) {
-        // Redirect to the scanned QR Code link
-        window.location.href = decodedText;
+            domReady(function () {
 
-        // Clear the scanner area after the action is performed
-        html5QRCodeScanner.clear();
-    }
+                // If found you qr code
+                function onScanSuccess(decodeText, decodeResult) {
+                    alert("You Qr is : " + decodeText, decodeResult);
+                }
 
-    // Render the QR Code scanner
-    html5QRCodeScanner.render(onScanSuccess);
-</script>
+                let htmlscanner = new Html5QrcodeScanner(
+                    "my-qr-reader",
+                    { fps: 10, qrbos: 250 }
+                );
+                htmlscanner.render(onScanSuccess);
+            });
+
+        </script>
 </body>
+
 </html>

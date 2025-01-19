@@ -60,7 +60,7 @@
                             <td>{{$item->email}}</td>
                             <td>{{$item->role}}</td>
                             <!-- <td>{!! DNS2D::getBarcodeHTML('$ '. $item->name, 'QRCODE') !!}</td> -->
-                            <td>{!! DNS2D::getBarcodeHTML(route('admin.profile'), 'QRCODE') !!}</td>
+                            <td>{!! DNS2D::getBarcodeHTML(route('admin.profile'), 'QRCODE', 2,2) !!}</td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
