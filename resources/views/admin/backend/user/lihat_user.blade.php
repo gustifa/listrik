@@ -47,6 +47,7 @@
                             <th>Nama Pengguna</th>
                             <th>Email</th>
                             <th>Hak Akses</th>
+                            <th>Barcode</th>
                             <th>Status</th>
                             <th style="width: 40px;">Action</th>
                         </tr>
@@ -58,6 +59,8 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->role}}</td>
+                            <!-- <td>{!! DNS2D::getBarcodeHTML('$ '. $item->name, 'QRCODE') !!}</td> -->
+                            <td>{!! DNS2D::getBarcodeHTML(route('admin.profile'), 'QRCODE') !!}</td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >

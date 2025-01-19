@@ -42,6 +42,7 @@
             <th>Email</th>
             <th>Password</th>
             <th>Jenis Pengguna</th>
+            <th>Barcode</th>
         </tr>
         <tr>
             <td>{{$user->name}}</td>
@@ -49,15 +50,16 @@
             <td>12345678</td>
             <td>
                 @if ($user->role == 'siswa')
-                    <span class="badge bg-success">Siswa</span>
+                <span class="badge bg-success">Siswa</span>
                 @elseif($user->role == 'guru')
-                    <span class="badge bg-danger">Guru</span>
+                <span class="badge bg-danger">Guru</span>
                 @elseif($user->role == 'wakil')
-                    <span class="badge bg-danger">Wakil</span>
+                <span class="badge bg-danger">Wakil</span>
                 @elseif($user->role == 'admin')
-                    <span class="badge bg-danger">Admin</span>
+                <span class="badge bg-danger">Admin</span>
                 @endif
             </td>
+            <td>{!! DNS2D::getBarcodeHTML(route('admin.profile'), 'QRCODE', 1,1) !!}</td>
         </tr>
     </table>
     @php

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd532edfd412dfd0217b9fb999d11794",
+    "content-hash": "a04ed34a2e28079817454e4aff3e4e73",
     "packages": [
         {
             "name": "anayarojo/shoppingcart",
@@ -1505,24 +1505,24 @@
         },
         {
             "name": "intervention/gif",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/gif.git",
-                "reference": "42c131a31b93c440ad49061b599fa218f06f93be"
+                "reference": "6addac2c68b4bc0e37d0d3ccedda57eb84729c49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/gif/zipball/42c131a31b93c440ad49061b599fa218f06f93be",
-                "reference": "42c131a31b93c440ad49061b599fa218f06f93be",
+                "url": "https://api.github.com/repos/Intervention/gif/zipball/6addac2c68b4bc0e37d0d3ccedda57eb84729c49",
+                "reference": "6addac2c68b4bc0e37d0d3ccedda57eb84729c49",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1",
-                "phpunit/phpunit": "^10.0",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^10.0 || ^11.0",
                 "slevomat/coding-standard": "~8.0",
                 "squizlabs/php_codesniffer": "^3.8"
             },
@@ -1553,7 +1553,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/gif/issues",
-                "source": "https://github.com/Intervention/gif/tree/4.2.0"
+                "source": "https://github.com/Intervention/gif/tree/4.2.1"
             },
             "funding": [
                 {
@@ -1569,20 +1569,20 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2024-09-20T13:35:02+00:00"
+            "time": "2025-01-05T10:52:39+00:00"
         },
         {
             "name": "intervention/image",
-            "version": "3.10.2",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "1c68e5fdf443374f3580c5b920a7f177eccdab85"
+                "reference": "6b9ce4fc4485d30117e13935b25bc55a8b894a79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/1c68e5fdf443374f3580c5b920a7f177eccdab85",
-                "reference": "1c68e5fdf443374f3580c5b920a7f177eccdab85",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6b9ce4fc4485d30117e13935b25bc55a8b894a79",
+                "reference": "6b9ce4fc4485d30117e13935b25bc55a8b894a79",
                 "shasum": ""
             },
             "require": {
@@ -1592,7 +1592,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.6",
-                "phpstan/phpstan": "^2",
+                "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^10.0 || ^11.0",
                 "slevomat/coding-standard": "~8.0",
                 "squizlabs/php_codesniffer": "^3.8"
@@ -1629,7 +1629,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/3.10.2"
+                "source": "https://github.com/Intervention/image/tree/3.11.0"
             },
             "funding": [
                 {
@@ -1645,7 +1645,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2025-01-04T07:31:37+00:00"
+            "time": "2025-01-18T15:42:14+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3075,6 +3075,81 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.9.0"
             },
             "time": "2024-03-31T07:05:07+00:00"
+        },
+        {
+            "name": "milon/barcode",
+            "version": "v11.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/milon/barcode.git",
+                "reference": "3eb073d2d63c27b2e900d543ad7683be34ca14f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/milon/barcode/zipball/3eb073d2d63c27b2e900d543ad7683be34ca14f7",
+                "reference": "3eb073d2d63c27b2e900d543ad7683be34ca14f7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0 | ^11.0",
+                "php": "^7.3 | ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "DNS1D": "Milon\\Barcode\\Facades\\DNS1DFacade",
+                        "DNS2D": "Milon\\Barcode\\Facades\\DNS2DFacade"
+                    },
+                    "providers": [
+                        "Milon\\Barcode\\BarcodeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Milon\\Barcode": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nuruzzaman Milon",
+                    "email": "contact@milon.im"
+                }
+            ],
+            "description": "Barcode generator like Qr Code, PDF417, C39, C39+, C39E, C39E+, C93, S25, S25+, I25, I25+, C128, C128A, C128B, C128C, 2-Digits UPC-Based Extention, 5-Digits UPC-Based Extention, EAN 8, EAN 13, UPC-A, UPC-E, MSI (Variation of Plessey code)",
+            "keywords": [
+                "CODABAR",
+                "CODE 128",
+                "CODE 39",
+                "barcode",
+                "datamatrix",
+                "ean",
+                "laravel",
+                "pdf417",
+                "qr code",
+                "qrcode"
+            ],
+            "support": {
+                "issues": "https://github.com/milon/barcode/issues",
+                "source": "https://github.com/milon/barcode/tree/v11.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/nuruzzamanmilon",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/milon",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-06T18:45:34+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7196,16 +7271,16 @@
         },
         {
             "name": "yajra/laravel-datatables-buttons",
-            "version": "v11.2.1",
+            "version": "v11.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-buttons.git",
-                "reference": "53f1aea1a099f2f40a0def5601b28db6b68cfa93"
+                "reference": "78c84636f4bb56efb149f694b67784ed651cf0ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/53f1aea1a099f2f40a0def5601b28db6b68cfa93",
-                "reference": "53f1aea1a099f2f40a0def5601b28db6b68cfa93",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/78c84636f4bb56efb149f694b67784ed651cf0ad",
+                "reference": "78c84636f4bb56efb149f694b67784ed651cf0ad",
                 "shasum": ""
             },
             "require": {
@@ -7264,7 +7339,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables-buttons/issues",
-                "source": "https://github.com/yajra/laravel-datatables-buttons/tree/v11.2.1"
+                "source": "https://github.com/yajra/laravel-datatables-buttons/tree/v11.2.2"
             },
             "funding": [
                 {
@@ -7272,7 +7347,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-14T08:35:10+00:00"
+            "time": "2025-01-18T11:12:52+00:00"
         },
         {
             "name": "yajra/laravel-datatables-editor",
