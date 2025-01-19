@@ -377,6 +377,7 @@ Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->
 Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
 
 //scan absensi
+Route::get('/absensi', [ScanAbsensiController::class, 'Absensi'])->name('absensi');
 Route::get('/scan-absensi', [ScanAbsensiController::class, 'scanAbsensi'])->name('scan.absensi');
 Route::get('/scan-absensi-html', [ScanAbsensiController::class, 'scanAbsensi1'])->name('scan.absensi.html');
 // Akhsir Scan Absensi
