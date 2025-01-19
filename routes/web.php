@@ -29,6 +29,7 @@ use App\Http\Controllers\Backend\ProkaController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\ScanAbsensiController;
 
 use App\Http\Controllers\Backend\CouponController;
 
@@ -375,6 +376,10 @@ Route::get('/guru/login', [GuruController::class, 'GuruLogin'])->name('guru.logi
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
 
+//scan absensi
+Route::get('/scan-absensi', [ScanAbsensiController::class, 'scanAbsensi'])->name('scan.absensi');
+Route::get('/scan-absensi-html', [ScanAbsensiController::class, 'scanAbsensi1'])->name('scan.absensi.html');
+// Akhsir Scan Absensi
 Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('course.details');
 Route::get('/category/{id}/{slug}', [IndexController::class, 'CategoryCourse'])->name('category.course');
 Route::get('/subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
