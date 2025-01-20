@@ -63,7 +63,7 @@
                             <td>{!! DNS2D::getBarcodeHTML($item->name, 'QRCODE', 2,2) !!}</td>
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-user="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
                                     <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
                                   </div>
                         </td>
@@ -128,6 +128,34 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var userId = $(this).data('user');
+            var isChecked = $(this).is(':checked');
+
+            // send an ajax request to update status
+
+            $.ajax({
+                url: "{{ route('update.status.user') }}",
+                method: "POST",
+                data: {
+                    user : userId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    toastr.success(response.message);
+                },
+                error: function(){
+
+                }
+            });
+
+        });
+    });
+</script>
 
 <script type="text/javascript">
     $(document).ready(function (){

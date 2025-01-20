@@ -26,6 +26,8 @@ use App\Http\Controllers\Backend\HariController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\ImportsGuruController;
 use App\Http\Controllers\Backend\ProkaController;
+use App\Http\Controllers\Backend\KehadiranController;
+
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -246,6 +248,18 @@ Route::middleware(['auth','role:admin'])->group(function(){
     // Hari
     Route::controller(ImportsGuruController::class)->group(function(){
         Route::get('/guru/all', 'LihatGuru')->name('lihat.guru');
+        
+    });
+
+     // Kehadiran
+     Route::controller(KehadiranController::class)->group(function(){
+        Route::get('/kehadiran/all', 'LihatKehadiran')->name('lihat.kehadiran');
+        Route::get('/kehadiran/tambah', 'TambahKehadiran')->name('tambah.kehadiran');
+        Route::post('/kehadiran/simpan', 'SimpanKehadiran')->name('simpan.kehadiran');
+        Route::get('/kehadiran/edit/{id}', 'EditKehadiran')->name('edit.kehadiran');
+        Route::post('/kehadiran/update', 'UpdateKehadiran')->name('update.kehadiran');
+        Route::get('/kehadiran/hapus/{id}', 'hapusKehadiran')->name('hapus.kehadiran');
+        Route::post('/update/kehadiran/status', 'UpdateKehadiranStatus')->name('update.kehadiran.status');
     });
 
 
@@ -281,6 +295,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/user-guru-cetak',[ImportUserController::class, 'CetakGuruUser'])->name('cetak.guru.user');
     Route::get('/user-wakil-cetak',[ImportUserController::class, 'CetakWakilUser'])->name('cetak.wakil.user');
     Route::post('get-users', [ImportUserController::class, 'getUser'])->name('get.user');
+    Route::post('/update-user/status',[ImportUserController::class, 'UpdateStatusUser'])->name('update.status.user');
 }); ///Akhir Admin Group Middleware
 
 //tes
@@ -349,6 +364,8 @@ Route::middleware(['auth','role:guru'])->group(function(){
         Route::post('/guru/update/jadwal/status', 'UpdateJadwalGuruStatus')->name('update.jadwal.guru.status');
         Route::get('/guru/jadwal/delete/{id}', 'DeleteJadwal')->name('delete.jadwal.guru');
     });
+
+   
 
     // Jurnal
     Route::controller(JurnalController::class)->group(function(){

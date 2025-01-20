@@ -9,6 +9,7 @@ use App\Imports\UsersImport;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class ImportUserController extends Controller
 {
@@ -174,5 +175,34 @@ class ImportUserController extends Controller
                     // ->setPaper($customPaper, 'landscape');
 
         return $pdf->stream('Cetak User.pdf');
+    }
+
+    public function UpdateStatusUser(Request $request){
+        $id = Auth::user()->id;
+        $name = Auth::user()->name;
+        $userId = $request->input('user');
+        if($id != $userId ){
+            $isChecked = $request->input('is_checked', 0);
+            if($isChecked){
+                $user = User::find($userId);
+                if ($user) {
+                    $user->status =  $isChecked;
+                    $user->save();
+                }
+                return response()->json(['message'=>'Pengguna <b class="text-dark">'.$user->name.' </b>Berhasil diaktifkan']); 
+            }else{
+                $user = User::find($userId);
+                if ($user) {
+                    $user->status =  $isChecked;
+                    $user->save();
+                }
+                return response()->json(['message'=>'Pengguna <b class="text-danger">'.$user->name.' </b>Berhasil dinonaktifkan']); 
+            }
+        }else{
+            return response()->json(['message'=>'Anda Login sebagai <b class="text-danger">'.$name.' </b>Gagal Bro']);
+        }
+        
+        
+
     }
 }

@@ -40,7 +40,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_group}}</td>
                             <td>
-                                <a href="{{route('edit.group',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.group',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
                             </td>
                         </tr>
