@@ -1,5 +1,10 @@
 @php
     $catgories = App\Models\Category::orderBy('id','DESC')->get();
+    // $id = Auth::user()->id;
+    // $user = App\Models\User::where('id', $id)->select('role')->get();
+    // $implode = $user->implode('role');   
+    
+    //dd($implode);
 @endphp
 <header class="bg-white header-menu-area">
     <div class="py-1 header-top pr-150px pl-150px border-bottom border-bottom-gray">
@@ -37,9 +42,24 @@
                         </div>
                         <ul class="flex-wrap pl-3 ml-3 generic-list-item d-flex align-items-center fs-14 border-left border-left-gray">
                             @auth
+                                @php
+                                    $id = Auth::user()->id;
+                                    $user = App\Models\User::where('id', $id)->select('role')->get();
+                                    $implode = $user->implode('role');   
+                                @endphp   
+                               
+                             
+                            @if($implode == 'admin')
+                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('admin.dashboard')}}"> Dahboard</a></li>
+                            @elseif($implode == 'guru')
+                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('guru.dashboard')}}"> Dahboard</a></li>
+                            @elseif($implode == 'wakil')
+                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('staff.dashboard')}}"> Dahboard</a></li>
+                            @else
+                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('dashboard')}}"> Dahboard</a></li>
+                            @endif
                             
-                            <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('dashboard')}}"> Dahboard</a></li>
-                            <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a href="{{route('user.logout')}}"> Logout</a></li>
+                                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a href="{{route('user.logout')}}"> Logout</a></li>
                             @else
 
                             <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('login')}}"> Login</a></li>
