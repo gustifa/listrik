@@ -16,7 +16,7 @@ class Role
     public function handle(Request $request, Closure $next, $jenis_user): Response
     {
         if ($request->user()->jenis_user !== $jenis_user) {
-            return redirect('dashboard');
+            return redirect('/');
         }
         return $next($request);
     }
