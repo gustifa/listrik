@@ -15,6 +15,7 @@
         "maatwebsite/excel": "^3.1",
         "milon/barcode": "^11.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-permission": "^6.10",
         "yajra/laravel-datatables": "^11.0"
     },
     "require-dev": {
