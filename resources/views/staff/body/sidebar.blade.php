@@ -33,12 +33,12 @@
             </ul> --}}
         </li>
         @if ($status === '1') 
-        <li class="menu-label">Manage</li>
+        <li class="menu-label">Lihat</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Course</div>
+                <div class="menu-title">Pembelajaran</div>
             </a>
             <ul>
                 <li> <a href="{{route('all.course')}}"><i class='bx bx-radio-circle'></i>All Course</a>

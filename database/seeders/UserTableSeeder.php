@@ -73,7 +73,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Gustifa Fauzan', 
             'email' => 'fauzangustifa@gmail.com',
             'password' => Hash::make('111'),
-            'role' => 'admin'
+            'jenis_user' => 'admin'
         ]);
         $superAdmin->assignRole('admin');
 
@@ -83,7 +83,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Syed Ahsan Kamal', 
             'email' => 'admin@gmail.com',
             'password' => Hash::make('111'),
-            'role' => 'admin'
+            'jenis_user' => 'admin'
         ]);
         $admin->assignRole('admin');
 
@@ -93,7 +93,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Abdul Muqeet', 
             'email' => 'wakil@gmail.com',
             'password' => Hash::make('111'),
-            'role' => 'wakil'
+            'jenis_user' => 'wakil'
         ]);
        $wakil->assignRole('wakil');
 
@@ -103,7 +103,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Naghman Ali', 
             'email' => 'guru@gmail.com',
             'password' => Hash::make('111'),
-            'role' => 'guru'
+            'jenis_user' => 'guru'
         ]);
         $guru->assignRole('guru');
 
@@ -113,7 +113,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Muhammad Alfatih Riski', 
             'email' => 'user@gmail.com',
             'password' => Hash::make('111'),
-            'role' => 'siswa'
+            'jenis_user' => 'siswa'
         ]);
        $siswa->assignRole('siswa');
     }

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('peserta_didik', function (Blueprint $table) {
-            $table->uuid('peserta_didik_id');
-			$table->uuid('peserta_didik_id_dapodik')->nullable();
-			$table->uuid('sekolah_id');
+        Schema::create('peserta_didiks', function (Blueprint $table) {
+            // $table->uuid('peserta_didik_id');
+			// $table->uuid('peserta_didik_id_dapodik')->nullable();
+			// $table->uuid('sekolah_id');
+			$table->id();
 			$table->string('nama');
 			$table->string('no_induk');
 			$table->string('nisn')->nullable();
@@ -58,7 +59,7 @@ return new class extends Migration
 				->onUpdate('CASCADE')->onDelete('CASCADE');
 			$table->foreign('kerja_wali')->references('pekerjaan_id')->on('pekerjaan')
 				->onUpdate('CASCADE')->onDelete('CASCADE');
-			$table->primary('peserta_didik_id');
+			// $table->primary('peserta_didik_id');
         });
     }
 
@@ -67,13 +68,13 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('peserta_didik', function (Blueprint $table) {
+        Schema::table('peserta_didiks', function (Blueprint $table) {
             $table->dropForeign(['kerja_wali']);
             $table->dropForeign(['kerja_ibu']);
             $table->dropForeign(['kerja_ayah']);
             $table->dropForeign(['kode_wilayah']);
         });
-        Schema::dropIfExists('peserta_didik');
+        Schema::dropIfExists('peserta_didiks');
         
     }
 };

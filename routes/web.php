@@ -43,7 +43,7 @@ Route::get('/', [UserController::class, 'Index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
-})->middleware(['auth', 'role:siswa', 'verified'])->name('dashboard');
+})->middleware(['auth', 'jenis_user:siswa', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/siswa/profile',[UserController::class, 'UserProfile'])->name('user.profile');
     Route::post('/siswa/profile/update',[UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
@@ -68,7 +68,7 @@ require __DIR__.'/auth.php';
 
 
 // Awal Admin Group Middleware
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','jenis_user:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -303,7 +303,7 @@ Route::controller(AdminController::class)->group(function(){
 
 
 // Awal Staff Group Middleware
-Route::middleware(['auth','role:wakil'])->group(function(){
+Route::middleware(['auth','jenis_user:wakil'])->group(function(){
     Route::get('/staff/dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
     Route::get('/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     Route::get('/staff/profile', [StaffController::class, 'StaffProfile'])->name('staff.profile');
@@ -344,7 +344,7 @@ Route::middleware(['auth','role:wakil'])->group(function(){
 }); ///Akhir Staff Group Middleware
 
 // Awal Guru Group Middleware
-Route::middleware(['auth','role:guru'])->group(function(){
+Route::middleware(['auth','jenis_user:guru'])->group(function(){
     Route::get('/guru/dashboard', [GuruController::class, 'GuruDashboard'])->name('guru.dashboard');
     Route::get('/guru/logout', [GuruController::class, 'GuruLogout'])->name('guru.logout');
 
@@ -381,7 +381,7 @@ Route::middleware(['auth','role:guru'])->group(function(){
 
 
 // User Group Middleware
-Route::middleware(['auth','role:user'])->group(function(){
+Route::middleware(['auth','jenis_user:user'])->group(function(){
         // User Wishlist All Route
 
 });

@@ -55,7 +55,7 @@
                                   </div>
                         </td>
                             <td>
-                                <a href="{{route('edit.tahun.pelajaran',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.tahun.pelajaran',$item->id)}}" class="btn btn-warning" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <a href="{{route('delete.tahun.pelajaran',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>

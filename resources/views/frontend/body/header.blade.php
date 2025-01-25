@@ -1,8 +1,8 @@
 @php
     $catgories = App\Models\Category::orderBy('id','DESC')->get();
     // $id = Auth::user()->id;
-    // $user = App\Models\User::where('id', $id)->select('role')->get();
-    // $implode = $user->implode('role');   
+    // $user = App\Models\User::where('id', $id)->select('jenis_user')->get();
+    // $implode = $user->implode('jenis_user');   
     
     //dd($implode);
 @endphp
@@ -44,8 +44,8 @@
                             @auth
                                 @php
                                     $id = Auth::user()->id;
-                                    $user = App\Models\User::where('id', $id)->select('role')->get();
-                                    $implode = $user->implode('role');   
+                                    $user = App\Models\User::where('id', $id)->select('jenis_user')->get();
+                                    $implode = $user->implode('jenis_user');   
                                 @endphp   
                                
                              
