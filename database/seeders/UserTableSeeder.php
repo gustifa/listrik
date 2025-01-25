@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class UserTableSeeder extends Seeder
 {
@@ -68,46 +69,51 @@ class UserTableSeeder extends Seeder
 
         // Creating Super Admin User
         $superAdmin = User::create([
+            'id' => Str::uuid(),
             'name' => 'Gustifa Fauzan', 
             'email' => 'fauzangustifa@gmail.com',
             'password' => Hash::make('111'),
-            // 'role' => 'admin'
+            'role' => 'admin'
         ]);
         $superAdmin->assignRole('admin');
 
         // Creating Admin User
         $admin = User::create([
+            'id' => Str::uuid(),
             'name' => 'Syed Ahsan Kamal', 
             'email' => 'admin@gmail.com',
             'password' => Hash::make('111'),
-            // 'role' => 'admin'
+            'role' => 'admin'
         ]);
         $admin->assignRole('admin');
 
         // Creating Product Manager User
         $wakil = User::create([
+            'id' => Str::uuid(),
             'name' => 'Abdul Muqeet', 
             'email' => 'wakil@gmail.com',
             'password' => Hash::make('111'),
-            // 'role' => 'wakil'
+            'role' => 'wakil'
         ]);
        $wakil->assignRole('wakil');
 
         // Creating Application User
         $guru = User::create([
+            'id' => Str::uuid(),
             'name' => 'Naghman Ali', 
             'email' => 'guru@gmail.com',
             'password' => Hash::make('111'),
-            // 'role' => 'guru'
+            'role' => 'guru'
         ]);
         $guru->assignRole('guru');
 
         // Creating Application User
         $siswa = User::create([
+            'id' => Str::uuid(),
             'name' => 'Muhammad Alfatih Riski', 
             'email' => 'user@gmail.com',
             'password' => Hash::make('111'),
-            // 'role' => 'siswa'
+            'role' => 'siswa'
         ]);
        $siswa->assignRole('siswa');
     }
