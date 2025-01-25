@@ -23,7 +23,7 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
                         <h4 class="my-1 text-info">{{count($user_siswa)}}</h4>
                        
                     </div>
-                    <div class="text-white widgets-icons-2 rounded-circle bg-gradient-blues ms-auto"><i class='bx bxs-cart'></i>
+                    <div class="text-white widgets-icons-2 rounded-circle bg-gradient-blues ms-auto"><i class='bx bxs-group'></i>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
                        <h4 class="my-1 text-danger">{{count($user_guru)}}</h4>
                        <!-- <p class="mb-0 font-13">+5.4% from last week</p> -->
                    </div>
-                   <div class="text-white widgets-icons-2 rounded-circle bg-gradient-burning ms-auto"><i class='bx bxs-wallet'></i>
+                   <div class="text-white widgets-icons-2 rounded-circle bg-gradient-burning ms-auto"><i class='bx bxs-user'></i>
                    </div>
                </div>
            </div>
