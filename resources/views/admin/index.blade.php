@@ -9,7 +9,7 @@
 $user_siswa = App\Models\User::where('jenis_user', 'siswa')->get();
 $user_guru = App\Models\User::where('jenis_user', 'guru')->get();
 $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
-
+$sekolah = App\Models\Sekolah::find(1);
 @endphp
 <div class="page-content">
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
@@ -74,16 +74,72 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
            </div>
         </div>
       </div>
+                    <div class="col">
+						<div class="card radius-10 bg-primary bg-gradient">
+							<div class="card-body">
+								<div class="d-flex align-items-center">
+									<div>
+										<p class="mb-0 text-white">Total Orders</p>
+										<h4 class="my-1 text-white">845</h4>
+									</div>
+									<div class="text-white ms-auto font-35"><i class='bx bx-cart-alt'></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="col">
+						<div class="card radius-10 bg-danger bg-gradient">
+							<div class="card-body">
+								<div class="d-flex align-items-center">
+									<div>
+										<p class="mb-0 text-white">Total Income</p>
+										<h4 class="my-1 text-white">$89,245</h4>
+									</div>
+									<div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="col">
+						<div class="card radius-10 bg-warning bg-gradient">
+							<div class="card-body">
+								<div class="d-flex align-items-center">
+									<div>
+										<p class="mb-0 text-dark">Total Users</p>
+										<h4 class="text-dark my-1">24.5K</h4>
+									</div>
+									<div class="text-dark ms-auto font-35"><i class='bx bx-user-pin'></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="col">
+						<div class="card radius-10 bg-success bg-gradient">
+							<div class="card-body">
+								<div class="d-flex align-items-center">
+									<div>
+										<p class="mb-0 text-white">Comments</p>
+										<h4 class="my-1 text-white">8569</h4>
+									</div>
+									<div class="text-white ms-auto font-35"><i class='bx bx-comment-detail'></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+      
     </div><!--end row-->
-
     <div class="row">
        <div class="col-12 col-lg-8 d-flex">
-          <div class="card radius-10 w-100">
-            <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <div>
-                        <h6 class="mb-0">Sales Overview</h6>
-                    </div>
+            <div class="card radius-10 w-100">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0 box-title">Identitas Sekolah</h6>
+                        </div>
                     <div class="dropdown ms-auto">
                         <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
                         </a>
@@ -101,35 +157,61 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
                     </div>
                 </div>
             </div>
-              <div class="card-body">
-                <div class="gap-2 mb-3 d-flex align-items-center ms-auto font-13">
-                    <span class="px-1 border rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #14abef"></i>Sales</span>
-                    <span class="px-1 border rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #ffc107"></i>Visits</span>
+                <div class="card-body">
+                <div class="col-lg-12 col-xs-12">
+					<div class="box-header with-border">
+                        
+						<!-- <h5 class="box-title"><strong>Identitas Sekolah</strong></h5> -->
+					</div>
+										<table class="table table-condensed">
+						<tbody><tr>
+							<td width="30%">Nama Sekolah</td>
+							<td width="70%">: {{$sekolah->nama}}</td>
+						</tr>
+					<tr>
+						<td>NPSN</td>
+						<td>: {{$sekolah->npsn}}</td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td>: {{$sekolah->alamat}}</td>
+					</tr>
+					<tr>
+						<td>Kodepos</td>
+						<td>: {{$sekolah->kode_pos}}</td>
+					</tr>
+					<tr>
+						<td>Desa/Kelurahan</td>
+						<td>: {{$sekolah->desa_kelurahan}}</td>
+					</tr>
+					<tr>
+						<td>Kecamatan</td>
+						<td>: {{$sekolah->kecamatan}}</td>
+					</tr>
+					<tr>
+						<td>Kabupaten/Kota</td>
+						<td>: {{$sekolah->kabupaten}}</td>
+					</tr>
+					<tr>
+						<td>Provinsi</td>
+						<td>: {{$sekolah->provinsi}}</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>: {{$sekolah->email}}</td>
+					</tr>
+					<tr>
+						<td>Website</td>
+						<td>: {{$sekolah->website}}</td>
+					</tr>
+					<tr>
+						<td>Kepala Sekolah</td>
+						<td>: SYAHRUL, M.Pd.</td>
+					</tr>
+				</tbody></table>
+			</div>
+                
                 </div>
-                <div class="chart-container-1">
-                    <canvas id="chart1"></canvas>
-                  </div>
-              </div>
-              <div class="text-center row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group border-top">
-                <div class="col">
-                  <div class="p-3">
-                    <h5 class="mb-0">24.15M</h5>
-                    <small class="mb-0">Overall Visitor <span> <i class="align-middle bx bx-up-arrow-alt"></i> 2.43%</span></small>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="p-3">
-                    <h5 class="mb-0">12:38</h5>
-                    <small class="mb-0">Visitor Duration <span> <i class="align-middle bx bx-up-arrow-alt"></i> 12.65%</span></small>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="p-3">
-                    <h5 class="mb-0">639.82</h5>
-                    <small class="mb-0">Pages/Visit <span> <i class="align-middle bx bx-up-arrow-alt"></i> 5.62%</span></small>
-                  </div>
-                </div>
-              </div>
           </div>
        </div>
        <div class="col-12 col-lg-4 d-flex">
@@ -137,7 +219,7 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h6 class="mb-0">Trending Products</h6>
+                        <h6 class="mb-0">Status Aplikasi</h6>
                     </div>
                     <div class="dropdown ms-auto">
                         <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
@@ -161,367 +243,10 @@ $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
                     <canvas id="chart2"></canvas>
                   </div>
                </div>
-               <ul class="list-group list-group-flush">
-                <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center border-top">Jeans <span class="badge bg-success rounded-pill">25</span>
-                </li>
-                <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center">T-Shirts <span class="badge bg-danger rounded-pill">10</span>
-                </li>
-                <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center">Shoes <span class="badge bg-primary rounded-pill">65</span>
-                </li>
-                <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center">Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
-                </li>
-            </ul>
+               
            </div>
        </div>
     </div><!--end row-->
-
-     <div class="card radius-10">
-        <div class="card-header">
-            <div class="d-flex align-items-center">
-                <div>
-                    <h6 class="mb-0">Recent Orders</h6>
-                </div>
-                <div class="dropdown ms-auto">
-                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:;">Action</a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-             <div class="card-body">
-             <div class="table-responsive">
-               <table class="table mb-0 align-middle">
-                <thead class="table-light">
-                 <tr>
-                   <th>Product</th>
-                   <th>Photo</th>
-                   <th>Product ID</th>
-                   <th>Status</th>
-                   <th>Amount</th>
-                   <th>Date</th>
-                   <th>Shipping</th>
-                 </tr>
-                 </thead>
-                 <tbody><tr>
-                  <td>Iphone 5</td>
-                  <td><img src="{{ asset('backend/assets/images/products/01.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#9405822</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-quepal w-100">Paid</span></td>
-                  <td>$1250.00</td>
-                  <td>03 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
-                      </div></td>
-                 </tr>
-
-                 <tr>
-                  <td>Earphone GL</td>
-                  <td><img src="{{ asset('backend/assets/images/products/02.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#8304620</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-blooker w-100">Pending</span></td>
-                  <td>$1500.00</td>
-                  <td>05 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
-                      </div></td>
-                 </tr>
-
-                 <tr>
-                  <td>HD Hand Camera</td>
-                  <td><img src="{{ asset('backend/assets/images/products/03.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#4736890</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-bloody w-100">Failed</span></td>
-                  <td>$1400.00</td>
-                  <td>06 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 70%"></div>
-                      </div></td>
-                 </tr>
-
-                 <tr>
-                  <td>Clasic Shoes</td>
-                  <td><img src="{{ asset('backend/assets/images/products/04.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#8543765</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-quepal w-100">Paid</span></td>
-                  <td>$1200.00</td>
-                  <td>14 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
-                      </div></td>
-                 </tr>
-                 <tr>
-                  <td>Sitting Chair</td>
-                  <td><img src="{{ asset('backend/assets/images/products/06.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#9629240</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-blooker w-100">Pending</span></td>
-                  <td>$1500.00</td>
-                  <td>18 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
-                      </div></td>
-                 </tr>
-                 <tr>
-                  <td>Hand Watch</td>
-                  <td><img src="{{ asset('backend/assets/images/products/05.png')}}" class="product-img-2" alt="product img"></td>
-                  <td>#8506790</td>
-                  <td><span class="text-white shadow-sm badge bg-gradient-bloody w-100">Failed</span></td>
-                  <td>$1800.00</td>
-                  <td>21 Feb 2020</td>
-                  <td><div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 40%"></div>
-                      </div></td>
-                 </tr>
-                </tbody>
-              </table>
-              </div>
-             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-12 col-lg-7 col-xl-8 d-flex">
-              <div class="card radius-10 w-100">
-                <div class="bg-transparent card-header">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="mb-0">Recent Orders</h6>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                   </div>
-                 <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-7 col-xl-8 border-end">
-                         <div id="geographic-map-2"></div>
-                      </div>
-                      <div class="col-lg-5 col-xl-4">
-
-                        <div class="mb-4">
-                        <p class="mb-2"><i class="flag-icon flag-icon-us me-1"></i> USA <span class="float-end">70%</span></p>
-                        <div class="progress" style="height: 7px;">
-                             <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 70%"></div>
-                         </div>
-                        </div>
-
-                        <div class="mb-4">
-                         <p class="mb-2"><i class="flag-icon flag-icon-ca me-1"></i> Canada <span class="float-end">65%</span></p>
-                         <div class="progress" style="height: 7px;">
-                             <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 65%"></div>
-                         </div>
-                        </div>
-
-                        <div class="mb-4">
-                         <p class="mb-2"><i class="flag-icon flag-icon-gb me-1"></i> England <span class="float-end">60%</span></p>
-                         <div class="progress" style="height: 7px;">
-                             <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 60%"></div>
-                           </div>
-                        </div>
-
-                        <div class="mb-4">
-                         <p class="mb-2"><i class="flag-icon flag-icon-au me-1"></i> Australia <span class="float-end">55%</span></p>
-                         <div class="progress" style="height: 7px;">
-                             <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 55%"></div>
-                           </div>
-                        </div>
-
-                        <div class="mb-4">
-                         <p class="mb-2"><i class="flag-icon flag-icon-in me-1"></i> India <span class="float-end">50%</span></p>
-                         <div class="progress" style="height: 7px;">
-                             <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%"></div>
-                           </div>
-                        </div>
-
-                        <div class="mb-0">
-                           <p class="mb-2"><i class="flag-icon flag-icon-cn me-1"></i> China <span class="float-end">45%</span></p>
-                           <div class="progress" style="height: 7px;">
-                               <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" style="width: 45%"></div>
-                             </div>
-                        </div>
-
-                      </div>
-                    </div>
-                 </div>
-               </div>
-            </div>
-
-            <div class="col-12 col-lg-5 col-xl-4 d-flex">
-                <div class="card w-100 radius-10">
-                 <div class="card-body">
-                  <div class="border shadow-none card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <p class="mb-0 text-secondary">Total Likes</p>
-                                <h4 class="my-1">45.6M</h4>
-                                <p class="mb-0 font-13">+6.2% from last week</p>
-                            </div>
-                            <div class="text-white widgets-icons-2 bg-gradient-cosmic ms-auto"><i class='bx bxs-heart-circle'></i>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="border shadow-none card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <p class="mb-0 text-secondary">Comments</p>
-                                <h4 class="my-1">25.6K</h4>
-                                <p class="mb-0 font-13">+3.7% from last week</p>
-                            </div>
-                            <div class="text-white widgets-icons-2 bg-gradient-ibiza ms-auto"><i class='bx bxs-comment-detail'></i>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="mb-0 border shadow-none card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <p class="mb-0 text-secondary">Total Shares</p>
-                                <h4 class="my-1">85.4M</h4>
-                                <p class="mb-0 font-13">+4.6% from last week</p>
-                            </div>
-                            <div class="widgets-icons-2 bg-gradient-kyoto text-dark ms-auto"><i class='bx bxs-share-alt'></i>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                 </div>
-
-                </div>
-
-            </div>
-         </div><!--end row-->
-
-         <div class="row row-cols-1 row-cols-lg-3">
-             <div class="col d-flex">
-               <div class="card radius-10 w-100">
-                   <div class="card-body">
-                    <p class="mb-1 font-weight-bold text-secondary">Weekly Revenue</p>
-                    <div class="mb-4 d-flex align-items-center">
-                        <div>
-                            <h4 class="mb-0">$89,540</h4>
-                        </div>
-                        <div class="">
-                            <p class="mb-0 align-self-center font-weight-bold text-success ms-2">4.4% <i class="mr-2 bx bxs-up-arrow-alt"></i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mt-5 chart-container-0">
-                        <canvas id="chart3"></canvas>
-                      </div>
-                   </div>
-               </div>
-             </div>
-             <div class="col d-flex">
-                <div class="card radius-10 w-100">
-                    <div class="bg-transparent card-header">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="mb-0">Orders Summary</h6>
-                            </div>
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="mt-3 chart-container-1">
-                            <canvas id="chart4"></canvas>
-                          </div>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center border-top">Completed <span class="badge bg-gradient-quepal rounded-pill">25</span>
-                        </li>
-                        <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center">Pending <span class="badge bg-gradient-ibiza rounded-pill">10</span>
-                        </li>
-                        <li class="bg-transparent list-group-item d-flex justify-content-between align-items-center">Process <span class="badge bg-gradient-deepblue rounded-pill">65</span>
-                        </li>
-                    </ul>
-                </div>
-              </div>
-              <div class="col d-flex">
-                <div class="card radius-10 w-100">
-                     <div class="bg-transparent card-header">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="mb-0">Top Selling Categories</h6>
-                            </div>
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                         </div>
-                     </div>
-                    <div class="card-body">
-                       <div class="chart-container-0">
-                         <canvas id="chart5"></canvas>
-                       </div>
-                    </div>
-                    <div class="row row-group border-top g-0">
-                        <div class="col">
-                            <div class="p-3 text-center">
-                                <h4 class="mb-0 text-danger">$45,216</h4>
-                                <p class="mb-0">Clothing</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 text-center">
-                                <h4 class="mb-0 text-success">$68,154</h4>
-                                <p class="mb-0">Electronic</p>
-                            </div>
-                         </div>
-                    </div><!--end row-->
-                </div>
-              </div>
-         </div><!--end row-->
 
 </div>
 
