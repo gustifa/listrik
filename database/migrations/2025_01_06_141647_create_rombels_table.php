@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rombels', function (Blueprint $table) {
             // $table->id();
-            $table->uuid('id');
-            // $table->uuid('id')->primary();
+            // $table->uuid('id');
+            $table->uuid('id')->primary();
             // $table->integer('kelas_id');
             // $table->integer('kelas_id');
             $table->integer('jurusan_id');

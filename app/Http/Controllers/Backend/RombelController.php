@@ -145,6 +145,7 @@ class RombelController extends Controller
         ]);
             foreach($siswa_id as $item){
                 AnggotaRombel::insert([
+                    'id' => Str::uuid(),
                     'rombel_id' => $request->rombel_id,
                     'siswa_id' => $item,
                     'created_at' => Carbon::now(),
