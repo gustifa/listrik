@@ -54,7 +54,7 @@ class SekolahController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Logo Update Successfully',
+                'message' => 'Logo dan Data Sekolah Berhasil diganti',
                 'alert-type' => 'success',
             );
             return redirect()->route('profile.sekolah')->with($notification);
@@ -75,7 +75,7 @@ class SekolahController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Data Sekolah Update Successfully',
+                'message' => 'Data Sekolah Berhasil diganti',
                 'alert-type' => 'success',
             );
 
