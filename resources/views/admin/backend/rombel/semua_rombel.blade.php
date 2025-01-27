@@ -24,6 +24,8 @@
     <div class="mb-3">
         <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a>
         <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a>
+        <a href="{{route('all.anggota.rombel')}}" class="btn btn-primary">All anggota</a>
+        <a href="" class="btn btn-warning">{{count($rombel)}}</a>
         <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-layout"></i></a>
         {{-- <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a> --}}
          <!-- Button trigger modal -->
@@ -49,7 +51,11 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_rombel}}</td>
                             <td>{{$item['walas']['name']}}</td>
-                            <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td>
+                            <td>
+                                <a href="{{route('all.anggota.rombel')}}" class="btn btn-primary" title="Detaik"><i class="lni lni-eye"></i></a>
+                                {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
+                            </td>
+                            <!-- <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td> -->
                             <td>
                                 <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}

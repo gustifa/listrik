@@ -13,4 +13,8 @@ class AnggotaRombel extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $primaryKey = 'id';
+
+    public function peserta_didik(){
+        return $this->belongsTo(User::class, 'siswa_id', 'id');
+    }
 }
