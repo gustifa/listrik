@@ -21,7 +21,7 @@ class JadwalPelajaranController extends Controller
 {
     public function SemuaJadwal(){
         $jadwal = JadwalPelajaran::latest()->get();
-        $users = User::where('role', 'guru')->get();
+        $users = User::where('jenis_user', 'guru')->get();
         $mapel = Mapel::latest()->get();
         $rombel = Rombel::latest()->get();
         $jurusan = Jurusan::latest()->get();
@@ -34,7 +34,7 @@ class JadwalPelajaranController extends Controller
     }
 
     public function TambahJadwal(){
-        $users = User::where('role', 'guru')->get();
+        $users = User::where('jenis_user', 'guru')->get();
         $mapel = Mapel::latest()->get();
         $rombel = Rombel::latest()->get();
         $jurusan = Jurusan::latest()->get();
@@ -94,7 +94,7 @@ class JadwalPelajaranController extends Controller
     }
 
     public function TambahJadwalGuru(){
-        $users = User::where('role', 'guru')->get();
+        $users = User::where('jenis_user', 'guru')->get();
         $mapel = Mapel::latest()->get();
         $rombel = Rombel::latest()->get();
         $jurusan = Jurusan::latest()->get();

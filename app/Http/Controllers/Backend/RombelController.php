@@ -21,14 +21,14 @@ class RombelController extends Controller
     public function SemuaRombel(){
         $rombel = Rombel::latest()->get();
         $proka = Proka::latest()->get();
-        $siswa = User::where('role', 'siswa')->get();
-        $guru = User::where('role', 'guru')->get();
+        $siswa = User::where('jenis_user', 'siswa')->get();
+        $guru = User::where('jenis_user', 'guru')->get();
         return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa', 'guru'));
     }
 
     public function TambahRombel(){
-        $guru = User::where('role', 'guru')->get();
-        $siswa = User::where('role', 'siswa')->get();
+        $guru = User::where('jenis_user', 'guru')->get();
+        $siswa = User::where('jenis_user', 'siswa')->get();
         $proka = Proka::latest()->get();
         $jurusan = Jurusan::latest()->get();
         $tingkat = Kelas::latest()->get();
