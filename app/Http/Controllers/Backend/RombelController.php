@@ -14,6 +14,7 @@ use App\Models\Kelas;
 use App\Models\Group;
 use App\Models\Proka;
 use App\Models\AnggotaRombel;
+use Illuminate\Support\Str;
 
 
 class RombelController extends Controller
@@ -37,12 +38,14 @@ class RombelController extends Controller
     }
 
     public function SimpanRombel(Request $request){
-
+        // $id = $request->id;
+        // dd($id);
         $request->validate([
             // 'name' => ['required','string','max:255'],
             // 'walas_id' => ['required', 'string','unique:rombels'],
         ]);
             Rombel::insert([
+                'id' => Str::uuid(),
                 'jurusan_id' => $request->jurusan_id,
                 'nama_rombel' => $request->nama_rombel,
                 'walas_id' => $request->walas_id,
@@ -134,7 +137,7 @@ class RombelController extends Controller
     }
 
     public function SimpanAnggotaRombel(Request $request){
-        $siswa_id = $request->tags;
+        $siswa_id = $request->siswa_id;
         //dd($siswa_id);
         $request->validate([
             // 'name' => ['required','string','max:255'],
@@ -157,6 +160,20 @@ class RombelController extends Controller
 
             return redirect()->route('semua.rombel')->with($notification);
 
+    }
+
+    public function getUserSiswa(Request $request){
+        $siswa_id =[];
+        //dd( $siswa_id);
+        if($search=$request->name){
+            // $tags=Usaaaaaaaer::where('username', 'LIKE', "%$search%")->get();
+            $siswa_id = User::where('jenis_user', 'siswa')->select("*")
+
+            ->where('name','LIKE','%'.$search.'%')
+
+            ->get();
+        }
+        return response()->json($siswa_id);
     }
 
 

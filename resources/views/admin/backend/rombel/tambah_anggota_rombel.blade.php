@@ -4,15 +4,12 @@
 @section('title')
    Tambah Rombel
 @endsection
-<style>
-    #tags{
-        font-size: 20px;
-    }
-</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -102,7 +99,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="input1" class="form-label">Nama Peserta Didik </label>
-                            <select name="tags[]" id="tags" class="tags mb-3 form-select" data-placeholder="Cari Nama Siswa" name="tags[]" aria-label="Default select example"  multiple="multiple">
+                            <select id="tags" class="tags mb-3 form-select" data-placeholder="Cari Nama Siswa" name="siswa_id[]" aria-label="Default select example"  multiple="multiple">
                             </select>
                            
                  
@@ -257,7 +254,7 @@
 
         $('#tags').select2({
             ajax:{
-                url: "{{ route('get.user') }}",
+                url: "{{ route('get.user.siswa') }}",
                     type: "post",
                     dataType:'json',
                     delay:250,

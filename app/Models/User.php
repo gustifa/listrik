@@ -15,7 +15,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     use HasRoles; // tambahkan ini
-    //use HasUuids;
+    use HasUuids;
     public $incrementing = false;
     protected $primaryKey = 'id';
 

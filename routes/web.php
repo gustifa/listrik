@@ -142,6 +142,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::post('/rombel/update', 'UpdateRombel')->name('update.rombel');
         Route::get('/jurusan/ajax/{proka_id}/','GetJurusan');
         Route::get('/rombel/ajax/{jurusan_id}/','GetRombel');
+        Route::post('get-users-siswa', 'getUserSiswa')->name('get.user.siswa');
     });
 
     // Group

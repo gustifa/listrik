@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rombels', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
+            $table->uuid('id');
+            // $table->uuid('id')->primary();
             // $table->integer('kelas_id');
             // $table->integer('kelas_id');
             $table->integer('jurusan_id');
