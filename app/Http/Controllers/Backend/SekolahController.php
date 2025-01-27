@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Sekolah;
+use App\Models\User;
 
 class SekolahController extends Controller
 {
@@ -18,7 +19,8 @@ class SekolahController extends Controller
 
     public function EditProfileSekolah($id){
         $sekolah = Sekolah::find($id);
-        return view('admin.backend.sekolah.edit_sekolah_profile', compact('sekolah'));
+        $kepsek = User::where('jenis_user', 'wakil')->get();
+        return view('admin.backend.sekolah.edit_sekolah_profile', compact('sekolah', 'kepsek'));
     }
 
     public function UpdateProfileSekolah(Request $request){
@@ -39,7 +41,14 @@ class SekolahController extends Controller
                 'nama' => $request->nama,
                 'npsn' => $request->npsn,
                 'nss' => $request->nss,
+                'guru_id' => $request->guru_id,
                 'alamat' => $request->alamat,
+                'desa_kelurahan' => $request->desa_kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten,
+                'provinsi' => $request->provinsi,
+                'kode_pos' => $request->kode_pos,
+                'email' => $request->email,
                 'website' => $request->website,
                 'logo_sekolah' => $save_url,
             ]);
@@ -53,8 +62,15 @@ class SekolahController extends Controller
             Sekolah::find($id)->update([
                 'nama' => $request->nama,
                 'npsn' => $request->npsn,
+                'guru_id' => $request->guru_id,
                 'nss' => $request->nss,
                 'alamat' => $request->alamat,
+                'desa_kelurahan' => $request->desa_kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten,
+                'provinsi' => $request->provinsi,
+                'kode_pos' => $request->kode_pos,
+                'email' => $request->email,
                 'website' => $request->website,
             ]);
 

@@ -15,4 +15,8 @@ class Sekolah extends Model
     // public $incrementing = false;
     // protected $keyType = 'string';
     protected $guarded = [];
+
+    public function kepsek(){
+        return $this->belongsTo(User::class, 'guru_id', 'id');
+    }
 }

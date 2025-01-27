@@ -143,7 +143,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0 box-title">Identitas Sekolah</h6>
+                            <h6 class="mb-0 box-title">{{$sekolah->nama}}</h6>
                         </div>
                     <div class="dropdown ms-auto">
                         <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
@@ -168,11 +168,12 @@ $jadwal = App\Models\JadwalPelajaran::all();
                         
 						<!-- <h5 class="box-title"><strong>Identitas Sekolah</strong></h5> -->
 					</div>
-										<table class="table table-condensed">
-						<tbody><tr>
+			<table class="table table-condensed">
+				<tbody>
+                        <!-- <tr>
 							<td width="30%">Nama Sekolah</td>
 							<td width="70%">: {{$sekolah->nama}}</td>
-						</tr>
+						</tr> -->
 					<tr>
 						<td>NPSN</td>
 						<td>: {{$sekolah->npsn}}</td>
@@ -211,7 +212,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 					</tr>
 					<tr>
 						<td>Kepala Sekolah</td>
-						<td>: SYAHRUL, M.Pd.</td>
+						<td>: {{$sekolah->kepsek->name}}</td>
 					</tr>
 				</tbody></table>
 			</div>
@@ -224,7 +225,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h6 class="mb-0">Status Aplikasi</h6>
+                        <h6 class="mb-0">Informasi</h6>
                     </div>
                     <div class="dropdown ms-auto">
                         <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>

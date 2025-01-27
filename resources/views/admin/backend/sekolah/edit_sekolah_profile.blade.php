@@ -35,6 +35,15 @@
                             <label for="input1" class="form-label">Nama Sekolah</label>
                             <input type="text" name="nama" class="form-control" id="input1" value="{{$sekolah->nama}}">
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Kepala Sekolah</label>
+                            <select name="guru_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Kepsek</option>
+                                @foreach ($kepsek as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">NPSN</label>
                             <input type="text" name="npsn" class="form-control" id="input1" value="{{$sekolah->npsn}}">
@@ -49,6 +58,30 @@
                             <input type="text" name="alamat" class="form-control" id="input1" value="{{$sekolah->alamat}}">
                         </div>
                         <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Desa / Kelurahan</label>
+                            <input type="text" name="desa_kelurahan" class="form-control" id="input1" value="{{$sekolah->desa_kelurahan}}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Kecamatan</label>
+                            <input type="text" name="kecamatan" class="form-control" id="input1" value="{{$sekolah->kecamatan}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input1" class="form-label">Kabupaten / Kota</label>
+                            <input type="text" name="kabupaten" class="form-control" id="input1" value="{{$sekolah->kabupaten}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input1" class="form-label">Provinsi</label>
+                            <input type="text" name="provinsi" class="form-control" id="input1" value="{{$sekolah->provinsi}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input1" class="form-label">KODE POS</label>
+                            <input type="text" name="kode_pos" class="form-control" id="input1" value="{{$sekolah->kode_pos}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="input1" class="form-label">email</label>
+                            <input type="text" name="email" class="form-control" id="input1" value="{{$sekolah->email}}">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="input1" class="form-label">Website</label>
                             <input type="text" name="website" class="form-control" id="input1" value="{{$sekolah->website}}">
                         </div>
