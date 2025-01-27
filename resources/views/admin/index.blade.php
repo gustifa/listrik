@@ -10,6 +10,7 @@ $all_user = App\Models\User::all();
 $user_siswa = App\Models\User::where('jenis_user', 'siswa')->get();
 $user_guru = App\Models\User::where('jenis_user', 'guru')->get();
 $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
+$user_admin = App\Models\User::where('jenis_user', 'admin')->get();
 $sekolah = App\Models\Sekolah::find(1);
 $proka = App\Models\Proka::all();
 $rombel = App\Models\Rombel::all();
@@ -68,8 +69,8 @@ $jadwal = App\Models\JadwalPelajaran::all();
            <div class="card-body">
                <div class="d-flex align-items-center">
                    <div>
-                       <p class="mb-0 text-secondary">Total Customers</p>
-                       <h4 class="my-1 text-warning">8.4K</h4>
+                       <p class="mb-0 text-secondary">Jumlah Admin</p>
+                       <h4 class="my-1 text-warning">{{count($user_admin)}}</h4>
                        <!-- <p class="mb-0 font-13">+8.4% from last week</p> -->
                    </div>
                    <div class="text-white widgets-icons-2 rounded-circle bg-gradient-orange ms-auto"><i class='bx bxs-group'></i>
