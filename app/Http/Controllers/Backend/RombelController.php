@@ -134,16 +134,21 @@ class RombelController extends Controller
     }
 
     public function SimpanAnggotaRombel(Request $request){
-
+        $siswa_id = $request->tags;
+        //dd($siswa_id);
         $request->validate([
             // 'name' => ['required','string','max:255'],
-            // 'walas_id' => ['required', 'string','unique:rombels'],
+            // 'siswa_id' => ['required', 'unique:anggota_rombels'],
         ]);
-            AnggotaRombel::insert([
-                'rombel_id' => $request->rombel_id,
-                'siswa_id' => $request->siswa_id,
-                'created_at' => Carbon::now(),
-            ]);
+            foreach($siswa_id as $item){
+                AnggotaRombel::insert([
+                    'rombel_id' => $request->rombel_id,
+                    'siswa_id' => $item,
+                    'created_at' => Carbon::now(),
+                ]);
+            }
+
+            
 
             $notification = array(
                 'message' => 'Rombel Berhasil ditambahkan',

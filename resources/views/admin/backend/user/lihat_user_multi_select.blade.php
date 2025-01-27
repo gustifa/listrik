@@ -30,8 +30,9 @@
 
     <div class="card">
         <div class="card-body">
-             <form action="">
-                 <div class="mb-12">
+             <form action="{{route('store.user.multi.select')}}" method="post" enctype="multipart/form-data" >
+                 @csrf
+                <div class="mb-12">
                  <label for="multiple-select-field" class="form-label">Basic multiple select</label>
                  <select class="tags form-select" 
                  id="tags" 
@@ -40,6 +41,7 @@
                  multiple="multiple">
                  </select>
                  </div>
+                 <button type="submit">tes</button>
              </form>
          
 
@@ -50,6 +52,7 @@
     
 </div>
 
+<!-- Get User Baris Awal -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tags').select2({
@@ -88,5 +91,5 @@
 	});
 
 </script>
-
+<!-- Get User Baris Akhir -->
 @endsection

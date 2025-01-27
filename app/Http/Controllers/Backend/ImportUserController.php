@@ -28,6 +28,11 @@ class ImportUserController extends Controller
         return view('admin.backend.user.lihat_user_multi_select', compact('users'));
     }
 
+    public function storeuserMultiSelectSelect(Request $request){
+        $tags = $request->tags;
+        dd($tags);
+    }
+
     public function getUser(Request $request){
         $tags =[];
         if($search=$request->name){

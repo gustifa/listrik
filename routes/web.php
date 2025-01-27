@@ -286,6 +286,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('users', [ImportUserController::class, 'index'])->name('lihat.user');
     Route::get('users-yajra', [ImportUserController::class, 'lihatUserYajra'])->name('lihat.user.yajra');
     Route::get('users-multi-select', [ImportUserController::class, 'userMultiSelectSelect'])->name('lihat.user.multi.select');
+    Route::post('store-multi-select', [ImportUserController::class, 'storeuserMultiSelectSelect'])->name('store.user.multi.select');
     Route::get('import/users', [ImportUserController::class, 'ImportUser'])->name('import.user');
     Route::get('download-template-user', [ImportUserController::class, 'DownloadTemplateUser'])->name('download.template.user');
     Route::get('users-export', [ExportUserController::class, 'export'])->name('users.export');

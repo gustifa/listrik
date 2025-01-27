@@ -22,8 +22,8 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        {{-- <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a> --}}
-        {{-- <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a> --}}
+        <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a>
+        <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a>
         <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-layout"></i></a>
         {{-- <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a> --}}
          <!-- Button trigger modal -->
