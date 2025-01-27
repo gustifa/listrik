@@ -58,7 +58,17 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
-                            <td>{{$item->role}}</td>
+                            <td>
+                                @if ($item->jenis_user == 'siswa')
+                                    <span class="badge bg-success">Siswa</span>
+                                @elseif($item->jenis_user == 'guru')
+                                    <span class="badge bg-danger">Guru</span>
+                                @elseif($item->jenis_user == 'wakil')
+                                    <span class="badge bg-danger">Wakil</span>
+                                @elseif($item->jenis_user == 'admin')
+                                    <span class="badge bg-danger">Admin</span>
+                                @endif
+                            </td>
                             <!-- <td>{!! DNS2D::getBarcodeHTML('$ '. $item->name, 'QRCODE') !!}</td> -->
                             <td>{!! DNS2D::getBarcodeHTML($item->name, 'QRCODE', 2,2) !!}</td>
                             <td>

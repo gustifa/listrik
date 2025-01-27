@@ -49,13 +49,13 @@
             <td>{{$user->email}}</td>
             <td>12345678</td>
             <td>
-                @if ($user->role == 'siswa')
+                @if ($user->jenis_user == 'siswa')
                 <span class="badge bg-success">Siswa</span>
-                @elseif($user->role == 'guru')
+                @elseif($user->jenis_user == 'guru')
                 <span class="badge bg-danger">Guru</span>
-                @elseif($user->role == 'wakil')
+                @elseif($user->jenis_user == 'wakil')
                 <span class="badge bg-danger">Wakil</span>
-                @elseif($user->role == 'admin')
+                @elseif($user->jenis_user == 'admin')
                 <span class="badge bg-danger">Admin</span>
                 @endif
             </td>

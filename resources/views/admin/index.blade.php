@@ -6,10 +6,14 @@
 @endsection
 
 @php
+$all_user = App\Models\User::all();
 $user_siswa = App\Models\User::where('jenis_user', 'siswa')->get();
 $user_guru = App\Models\User::where('jenis_user', 'guru')->get();
 $user_wakil = App\Models\User::where('jenis_user', 'wakil')->get();
 $sekolah = App\Models\Sekolah::find(1);
+$proka = App\Models\Proka::all();
+$rombel = App\Models\Rombel::all();
+$jadwal = App\Models\JadwalPelajaran::all();
 @endphp
 <div class="page-content">
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
@@ -79,8 +83,8 @@ $sekolah = App\Models\Sekolah::find(1);
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-white">Total Orders</p>
-										<h4 class="my-1 text-white">845</h4>
+										<p class="mb-0 text-white">Jumlah Proka</p>
+										<h4 class="my-1 text-white">{{count($proka)}}</h4>
 									</div>
 									<div class="text-white ms-auto font-35"><i class='bx bx-cart-alt'></i>
 									</div>
@@ -93,8 +97,8 @@ $sekolah = App\Models\Sekolah::find(1);
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-white">Total Income</p>
-										<h4 class="my-1 text-white">$89,245</h4>
+										<p class="mb-0 text-white">Jumlah Rombel</p>
+										<h4 class="my-1 text-white">{{count($rombel)}}</h4>
 									</div>
 									<div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
 									</div>
@@ -107,8 +111,8 @@ $sekolah = App\Models\Sekolah::find(1);
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-dark">Total Users</p>
-										<h4 class="text-dark my-1">24.5K</h4>
+										<p class="mb-0 text-dark">Total Pengguna</p>
+										<h4 class="text-dark my-1">{{count($all_user)}}</h4>
 									</div>
 									<div class="text-dark ms-auto font-35"><i class='bx bx-user-pin'></i>
 									</div>
@@ -121,8 +125,8 @@ $sekolah = App\Models\Sekolah::find(1);
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-white">Comments</p>
-										<h4 class="my-1 text-white">8569</h4>
+										<p class="mb-0 text-white">Total Jadwal</p>
+										<h4 class="my-1 text-white">{{count($jadwal)}}</h4>
 									</div>
 									<div class="text-white ms-auto font-35"><i class='bx bx-comment-detail'></i>
 									</div>
