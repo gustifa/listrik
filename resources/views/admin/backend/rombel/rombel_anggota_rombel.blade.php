@@ -8,7 +8,7 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">Kehadiran</div>
+        <div class="breadcrumb-title pe-3">Anggota Rombel</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
@@ -22,7 +22,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <!-- <a href="{{route('tambah.kehadiran')}}" class="btn btn-primary"><i class="lni lni-plus"></i></a> -->
+        <a href="{{route('semua.rombel')}}" class="btn btn-danger">Back</a>
     </div>
     <div class="card">
         <div class="card-body">
