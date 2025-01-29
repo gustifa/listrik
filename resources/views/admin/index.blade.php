@@ -23,7 +23,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Jumlah Siswa</p>
+                        <p class="mb-0 text-secondary">Jumlah Peserta Didik</p>
                         
                         <h4 class="my-1 text-info">{{count($user_siswa)}}</h4>
                        
@@ -39,7 +39,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
            <div class="card-body">
                <div class="d-flex align-items-center">
                    <div>
-                       <p class="mb-0 text-secondary">Jumlah Guru</p>
+                       <p class="mb-0 text-secondary">Jumlah Pendidik</p>
                        <h4 class="my-1 text-danger">{{count($user_guru)}}</h4>
                        <!-- <p class="mb-0 font-13">+5.4% from last week</p> -->
                    </div>
@@ -87,7 +87,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 										<p class="mb-0 text-white">Jumlah Proka</p>
 										<h4 class="my-1 text-white">{{count($proka)}}</h4>
 									</div>
-									<div class="text-white ms-auto font-35"><i class='bx bx-cart-alt'></i>
+									<div class="text-white ms-auto font-35"><i class='bx bx-windows'></i>
 									</div>
 								</div>
 							</div>
@@ -101,7 +101,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 										<p class="mb-0 text-white">Jumlah Rombel</p>
 										<h4 class="my-1 text-white">{{count($rombel)}}</h4>
 									</div>
-									<div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+									<div class="text-white ms-auto font-35"><i class='bx bx-group'></i>
 									</div>
 								</div>
 							</div>
@@ -115,7 +115,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 										<p class="mb-0 text-dark">Total Pengguna</p>
 										<h4 class="text-dark my-1">{{count($all_user)}}</h4>
 									</div>
-									<div class="text-dark ms-auto font-35"><i class='bx bx-user-pin'></i>
+									<div class="text-dark ms-auto font-35"><i class='bx bx-user'></i>
 									</div>
 								</div>
 							</div>
@@ -129,7 +129,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 										<p class="mb-0 text-white">Total Jadwal</p>
 										<h4 class="my-1 text-white">{{count($jadwal)}}</h4>
 									</div>
-									<div class="text-white ms-auto font-35"><i class='bx bx-comment-detail'></i>
+									<div class="text-white ms-auto font-35"><i class='bx bx-calendar-event'></i>
 									</div>
 								</div>
 							</div>

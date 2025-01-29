@@ -34,6 +34,7 @@
                         <tr>
                             <th style="width: 5px;">No</th>
                             <th>Nama Peserta didik</th>
+                            <th>Email</th>
                             <th>Aksi</th>
                             
                         </tr>
@@ -43,6 +44,7 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$item->peserta_didik->name}}</td>
+                            <td>{{$item->peserta_didik->email}}</td>
                             <td>
                                <a href="{{route('hapus.anggota.rombel',$item->id)}}" id="delete" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>  
