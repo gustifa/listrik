@@ -48,7 +48,7 @@ class RombelController extends Controller
             Rombel::insert([
                 'id' => Str::uuid(),
                 'jurusan_id' => $request->jurusan_id,
-                'nama_rombel' => $request->nama_rombel,
+                'nama_rombel' => strtoupper($request->nama_rombel),
                 'walas_id' => $request->walas_id,
                 // 'siswa_id' => $request->siswa_id,
                 'created_at' => Carbon::now(),

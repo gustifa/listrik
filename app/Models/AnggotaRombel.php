@@ -17,4 +17,13 @@ class AnggotaRombel extends Model
     public function peserta_didik(){
         return $this->belongsTo(User::class, 'siswa_id', 'id');
     }
+
+    public function rombel(){
+        return $this->belongsTo(Rombel::class, 'rombel_id', 'id');
+    }
+
+    public function walas(){
+        return $this->belongsTo(User::class, 'walas_id', 'id');
+    }
+
 }

@@ -31,7 +31,10 @@
                     <thead>
                         <tr>
                             <th style="width: 5px;">No</th>
+                            <th>Jurusan</th>
+                            <th>Nama Rombel</th>
                             <th>Nama Peserta didik</th>
+                            <th>Nama Wali Kelas</th>
                             
                         </tr>
                     </thead>
@@ -39,9 +42,10 @@
                         @foreach ($anggota_rombel as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$item->peserta_didik->name}}</td>
-                           
-                            
+                            <td>{{$item->rombel->jurusan->nama_jurusan}}</td>  
+                            <td>{{$item->rombel->nama_rombel}}</td>  
+                            <td>{{$item->peserta_didik->name}}</td>  
+                            <td>{{$item->rombel->walas->name}}</td>  
                         </tr>
                         @endforeach
 
