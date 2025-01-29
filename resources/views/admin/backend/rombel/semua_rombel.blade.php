@@ -52,7 +52,7 @@
                             <td>{{$item->nama_rombel}}</td>
                             <td>{{$item['walas']['name']}}</td>
                             <td>
-                                <a href="{{route('detail.rombel', $item->id)}}" class="btn btn-primary" title="Detaik"><i class="lni lni-eye"></i></a>
+                                <a href="{{route('detail.rombel', $item->id)}}" class="btn btn-primary" title="Lihat Anggota Rombel"><i class="lni lni-eye"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
                             </td>
                             <!-- <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td> -->

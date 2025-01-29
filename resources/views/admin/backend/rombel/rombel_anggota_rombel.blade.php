@@ -26,6 +26,7 @@
     </div>
     <div class="card">
         <div class="card-body">
+            
             <p class="btn btn-secondary">Wali Kelas: {{$wali_kelas->name}}</p>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered" style="width:100%">
@@ -43,7 +44,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->peserta_didik->name}}</td>
                             <td>
-                               <a href="{{route('hapus.anggota.rombel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
+                               <a href="{{route('hapus.anggota.rombel',$item->id)}}" id="delete" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>  
                         </tr>
                         @endforeach
