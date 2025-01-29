@@ -63,6 +63,15 @@ class RombelController extends Controller
 
     }
 
+    public function DetailRombel($id){
+        $anggota_rombel = AnggotaRombel::where('rombel_id', $id)->get();
+        $walas_id = Rombel::where('id',$id)->get();
+        $nama_walas = $walas_id->implode('walas_id');
+        $wali_kelas = User::find($nama_walas);
+        // dd($walas_id);
+        return view('admin.backend.rombel.rombel_anggota_rombel', compact('anggota_rombel','wali_kelas'));
+    }
+
     public function GetJurusan($proka_id){
 
         $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();

@@ -136,6 +136,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/rombel/all', 'SemuaRombel')->name('semua.rombel');
         Route::get('/rombel/tambah', 'TambahRombel')->name('tambah.rombel');
         Route::get('/rombel/edit/{id}', 'EditRombel')->name('edit.rombel');
+        Route::get('/rombel/{id}', 'DetailRombel')->name('detail.rombel');
         Route::post('/rombel/simpan', 'SimpanRombel')->name('simpan.rombel');
         Route::post('/rombel/update', 'UpdateRombel')->name('update.rombel');
         Route::get('/jurusan/ajax/{proka_id}/','GetJurusan');

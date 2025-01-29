@@ -22,8 +22,6 @@ class AnggotaRombel extends Model
         return $this->belongsTo(Rombel::class, 'rombel_id', 'id');
     }
 
-    public function walas(){
-        return $this->belongsTo(User::class, 'walas_id', 'id');
-    }
+    
 
 }
