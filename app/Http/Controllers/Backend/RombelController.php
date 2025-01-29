@@ -72,6 +72,8 @@ class RombelController extends Controller
         return view('admin.backend.rombel.rombel_anggota_rombel', compact('anggota_rombel','wali_kelas'));
     }
 
+    
+
     public function GetJurusan($proka_id){
 
         $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
@@ -191,6 +193,18 @@ class RombelController extends Controller
         
         $anggota_rombel = AnggotaRombel::all();
         return view('admin.backend.rombel.all_anggota_rombel', compact('anggota_rombel'));
+    }
+
+    public function HapusAnggotaRombel($id){
+        // $item = AnggotaRombel::find($id);
+        AnggotaRombel::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Anggota Rombel Berhasil dikeluarkan',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
     }
 
 

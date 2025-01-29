@@ -43,7 +43,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->peserta_didik->name}}</td>
                             <td>
-                               <a href="" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
+                               <a href="{{route('hapus.anggota.rombel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>  
                         </tr>
                         @endforeach

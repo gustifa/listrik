@@ -146,6 +146,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/anggota-rombel/tambah', 'TambahAnggotaRombel')->name('tambah.anggota.rombel');
         Route::post('/anggota-rombel/simpan', 'SimpanAnggotaRombel')->name('simpan.anggota.rombel');
         Route::get('/anggota-rombel/all', 'AllAnggotaRombel')->name('all.anggota.rombel');
+        Route::get('/anggota-rombel/delete/{id}', 'HapusAnggotaRombel')->name('hapus.anggota.rombel');
     });
 
     // Group
