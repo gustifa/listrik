@@ -30,10 +30,10 @@
     <!--end breadcrumb-->
     <div class="mb-3">
         {{-- <a href="{{route('import.user')}}" class="btn btn-primary">Tambah User</a> --}}
-        <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-import"></i></a>
-        <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a>
-        <a href="{{route('cetak.guru.user')}}" class="btn btn-warning" title="Print Pengguna Guru" target="_blank"><i class="lni lni-printer"></i></a>
-        <a href="{{route('cetak.wakil.user')}}" class="btn btn-primary" title="Print Pengguna Wakil" target="_blank"><i class="lni lni-printer"></i></a>
+        <a href="" class="btn btn-primary" title="Import User" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-import"></i> User</a>
+        <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i> All</a>
+        <a href="{{route('cetak.guru.user')}}" class="btn btn-warning" title="Print Pengguna Guru" target="_blank"><i class="lni lni-printer"></i> Guru</a>
+        <a href="{{route('cetak.wakil.user')}}" class="btn btn-primary" title="Print Pengguna Wakil" target="_blank"><i class="lni lni-printer"></i> Wakil</a>
 
     </div>
 

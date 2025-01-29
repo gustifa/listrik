@@ -28,6 +28,7 @@ class SekolahTableSeeder extends Seeder
                 'provinsi' => 'Sumatera Barat',
                 'email' => 'smkn1kinali@gmail.com',
                 'website' => 'smkn1kinali.sch.id',
+                'kepsek' => 'Gustifa Fauzan',
                 'kode_pos' => '26361',
                 'desa_kelurahan' => 'Bandua Balai',
                 'created_at' => Carbon::now(),

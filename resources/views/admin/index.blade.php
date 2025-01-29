@@ -212,7 +212,7 @@ $jadwal = App\Models\JadwalPelajaran::all();
 					</tr>
 					<tr>
 						<td>Kepala Sekolah</td>
-						<td>: kepsek</td>
+						<td>: {{$sekolah->kepsek->name}}</td>
 					</tr>
 				</tbody></table>
 			</div>

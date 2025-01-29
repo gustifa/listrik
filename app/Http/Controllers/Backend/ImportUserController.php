@@ -147,7 +147,7 @@ class ImportUserController extends Controller
         // $id = Auth::user()->id;
         // $user = User::where('id',$id )->get();
         // dd($sekolah);
-        $users = User::all()->where('role', 'guru');
+        $users = User::all()->where('jenis_user', 'guru');
         // dd($bengkel);
         $data = [
             // 'title' => 'Welcome to ItSolutionStuff.com',
@@ -167,7 +167,7 @@ class ImportUserController extends Controller
         // $id = Auth::user()->id;
         // $user = User::where('id',$id )->get();
         // dd($sekolah);
-        $users = User::all()->where('role', 'wakil');
+        $users = User::all()->where('jenis_user', 'wakil');
         // dd($bengkel);
         $data = [
             // 'title' => 'Welcome to ItSolutionStuff.com',
