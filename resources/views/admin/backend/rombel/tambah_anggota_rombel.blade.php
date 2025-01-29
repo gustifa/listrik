@@ -73,7 +73,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="input1" class="form-label">Course Category </label>
-                            <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
+                            <select id="proka_id" name="proka_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option selected="" disabled>Nama Proka</option>
                                 @foreach ($proka as $item )
                                 <option value="{{$item->id}}">{{$item->nama_proka}}</option>
@@ -84,14 +84,14 @@
 
                         <div class="form-group col-md-12">
                             <label for="input1" class="form-label">Nama Jurusan </label>
-                            <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
+                            <select id="jurusan_id" name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option> </option>
 
                             </select>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="input1" class="form-label">Rombel </label>
-                            <select name="rombel_id" class="mb-3 form-select" aria-label="Default select example">
+                            <select id="rombel_id" name="rombel_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option> </option>
 
                             </select>
@@ -127,7 +127,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('select[name="proka_id"]').on('change', function(){
+        $('#proka_id').change(function(){
             var proka_id = $(this).val();
             if (proka_id) {
                 $.ajax({
@@ -135,10 +135,10 @@
                     type: "GET",
                     dataType:"json",
                     success:function(data){
-                        $('select[name="jurusan_id"]').html('');
-                        var d =$('select[name="jurusan_id"]').empty();
+                        $('#jurusan_id').html('');
+                        var d =$('#jurusan_id').empty();
                         $.each(data, function(key, value){
-                            $('select[name="jurusan_id"]').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
+                            $('#jurusan_id').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
                         });
                     },
                 });
@@ -150,7 +150,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('select[name="jurusan_id"]').on('change', function(){
+        $('#jurusan_id').change(function(){
             var jurusan_id = $(this).val();
             if (jurusan_id) {
                 $.ajax({
@@ -158,10 +158,10 @@
                     type: "GET",
                     dataType:"json",
                     success:function(data){
-                        $('select[name="rombel_id"]').html('');
-                        var d =$('select[name="rombel_id"]').empty();
+                        $('#rombel_id').html('');
+                        var d =$('#rombel_id').empty();
                         $.each(data, function(key, value){
-                            $('select[name="rombel_id"]').append('<option value="'+ value.id + '">' + value.nama_rombel + '</option>');
+                            $('#rombel_id').append('<option value="'+ value.id + '">' + value.nama_rombel + '</option>');
                         });
                     },
                 });
