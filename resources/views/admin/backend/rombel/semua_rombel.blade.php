@@ -26,7 +26,7 @@
         <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a>
         <a href="{{route('all.anggota.rombel')}}" class="btn btn-primary">All anggota</a>
         <a href="" class="btn btn-warning">{{count($rombel)}}</a>
-        <a href="" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-layout"></i></a>
+        <a href="" id="btn-create-post" class="btn btn-primary" title="Print Pengguna Siswa" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-layout"></i></a>
         {{-- <a href="{{route('cetak.semua.user')}}" class="btn btn-danger" title="Print Pengguna Siswa" target="_blank"><i class="lni lni-printer"></i></a> --}}
          <!-- Button trigger modal -->
          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="bx bx-user"></i></button>
@@ -136,72 +136,7 @@
 
                         </div>
                         {{-- Akhir Modal dasar --}}
-                        {{-- Awal Modal full --}}
-                        <div class="col">
-
-                            <div class="modal fade" id="exampleFullScreenModal" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-fullscreen">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Tambah Anggota Rombel</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="myForm" method="post" action="{{route('simpan.anggota.rombel')}}" enctype="multipart/form-data">
-                                                @csrf
-
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Program Keahlian </label>
-                                                    <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option selected="" disabled>Pilih Proka</option>
-                                                        @foreach ($proka as $item )
-                                                        <option value="{{$item->id}}">{{$item->nama_proka}}</option>
-                                                        @endforeach
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Nama Jurusan </label>
-                                                    <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option> </option>
-
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Rombel </label>
-                                                    <select name="rombel_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option> </option>
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Anggota Rombel </label>
-                                                    <select name="siswa_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option selected="" disabled>Pilih Anggota Rombel</option>
-                                                        @foreach ($siswa as $item )
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                        @endforeach
-
-                                                    </select>
-                                                </div>
-
-
-                                                <div class="mb-3">
-                                                    <button type="submit" class="px-5 btn btn-primary">Simpan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- Akhir Modal fulll --}}
+                       @include('admin.backend.rombel.modal_full_tambah_anggota')
             </div>
         </div>
     </div>

@@ -30,6 +30,7 @@
     <!--end breadcrumb-->
     <div class="mb-3">
         <a href="{{route('tambah.semester')}}" class="btn btn-primary"><i class="lni lni-plus"></i></a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button>
     </div>
     <div class="card">
         <div class="card-body">
@@ -65,11 +66,14 @@
                     </tbody>
 
                 </table>
+
+                @include('admin.backend.semester.modal_tambah_semester')
             </div>
         </div>
     </div>
 
 </div>
+
 
 
 <script>
