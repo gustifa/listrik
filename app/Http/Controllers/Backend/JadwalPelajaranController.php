@@ -89,7 +89,7 @@ class JadwalPelajaranController extends Controller
     // Guru
     public function SemuaJadwalGuru(){
         $id = Auth::user()->id;
-        $jadwal = JadwalPelajaran::all();
+        $jadwal = JadwalPelajaran::where('user_id', $id)->get();
         return view('guru.jadwal.lihat_jadwal_guru', compact('jadwal'));
     }
 
