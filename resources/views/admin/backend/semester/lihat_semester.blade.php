@@ -39,7 +39,7 @@
                 <table class="table table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th style="width: 5px;">No</th>
+                            <!-- <th style="width: 5px;">No</th> -->
                             <th>Semester</th>
                             <th>Status</th>
                             <th style="width: 20px;">Action</th>
@@ -49,7 +49,7 @@
                     <tbody id="table-semester">
                                 @foreach($semester as $key=> $post)
                                 <tr id="index_{{ $post->id }}">
-                                    <td>{{$key+1}}</td>
+                                    <!-- <td>{{$key+1}}</td> -->
                                     <td>{{ $post->nama }}</td>
                                     <td>{{ $post->keterangan }}</td>
                                     <td class="text-center">
