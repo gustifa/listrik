@@ -18,6 +18,21 @@ class SemesterController extends Controller
         return view('admin.backend.semester.tambah_semester');
     }
 
+    public function SimpanSemesterAjax(Request $request){
+        //create post
+        $post = Semester::create([
+            'nama'     => $request->nama, 
+            'keterangan'   => $request->keterangan
+        ]);
+
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Disimpan!',
+            'data'    => $post  
+        ]);
+    }
+
     public function SimpanSemester(Request $request){
 
         Semester::insert([

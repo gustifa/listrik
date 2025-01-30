@@ -30,12 +30,13 @@
     <!--end breadcrumb-->
     <div class="mb-3">
         <a href="{{route('tambah.semester')}}" class="btn btn-primary"><i class="lni lni-plus"></i></a>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Import User</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-create-post">TAMBAH</button>
+        <!-- <a href="javascript:void(0)" class="btn btn-success mb-2" id="btn-create-post">TAMBAH</a> -->
     </div>
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table class="table table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th style="width: 5px;">No</th>
@@ -44,26 +45,23 @@
                             <th style="width: 20px;">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($semester as $key=> $item)
-                        <tr>
-                            <td>{{$key+1}}</td>
-                            <td>{{$item->nama}}</td>
-                            <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-semester="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
-                                        <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
-                                      </div>
-                            </td>
-                            <td>
-                                <a href="{{route('edit.semester',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
-                                <a href="{{route('delete.semester',$item->id)}}" id="delete"  class="btn btn-danger" title="delete"><i class="lni lni-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
+
+                    <tbody id="table-posts">
+                                @foreach($semester as $key=> $post)
+                                <tr id="index_{{ $post->id }}">
+                                    <td>{{$key+1}}</td>
+                                    <td>{{ $post->nama }}</td>
+                                    <td>{{ $post->keterangan }}</td>
+                                    <td class="text-center">
+                                        <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $post->id }}" class="btn btn-primary btn-sm">EDIT</a>
+                                        <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $post->id }}" class="btn btn-danger btn-sm">DELETE</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
 
 
-                    </tbody>
+                    
 
                 </table>
 

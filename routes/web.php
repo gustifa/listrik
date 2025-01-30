@@ -212,6 +212,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/semester/tambah', 'TambahSemester')->name('tambah.semester');
         Route::get('/semester/edit/{id}', 'EditSemester')->name('edit.semester');
         Route::post('/semester/simpan', 'SimpanSemester')->name('simpan.semester');
+        Route::post('/semester-simpan-ajax', 'SimpanSemesterAjax')->name('simpan.semester.ajax');
         Route::post('/semester/update', 'UpdateSemester')->name('update.semester');
         Route::post('/update/semester/status', 'UpdateSemesterStatus')->name('update.semester.status');
         Route::get('/semester/delete/{id}', 'DeleteSemester')->name('delete.semester');

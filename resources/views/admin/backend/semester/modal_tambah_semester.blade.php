@@ -1,59 +1,126 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Tambah Rombongan Belajar</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+<!-- Modal -->
+<div class="modal fade" id="modal-create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">TAMBAH POST</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-                                            <form id="myForm" method="post" action="" enctype="multipart/form-data">
-                                                @csrf
+                <div class="form-group">
+                    <label for="name" class="control-label">Semester</label>
+                    <input type="text" class="form-control" id="nama">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nama"></div>
+                </div>
+                
 
+                <div class="form-group">
+                    <label class="control-label">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" rows="4"></textarea>
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-keterangan"></div>
+                </div>
 
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Nama Program Keahlian </label>
-                                                    <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option selected="" disabled>Nama Proka</option>
-                                                       
-                                                        <option value="{{$item->id}}">aa</option>
-                                                   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                <button type="button" class="btn btn-primary" id="store">SIMPAN</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                                    </select>
-                                                </div>
+<script>
+    //button create post event
+    $('body').on('click', '#btn-create-post', function () {
 
-                                                <div class="form-group col-md-12">
-                                                    <label for="input1" class="form-label">Nama Jurusan </label>
-                                                    <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
-                                                        <option> </option>
+        //open modal
+        $('#modal-create').modal('show');
+    });
 
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 form-group">
-                                                    <label class="form-label">Nama Rombel:</label>
-                                                    <input type="text" class="form-control" name="nama_rombel">
-                                                </div>
+    //action create post
+    $('#store').click(function(e) {
+        e.preventDefault();
 
-                                                <div class="mb-3 form-group">
-                                                    <label class="form-label">Wali Kelas:</label>
-                                                    <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                                        <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Walas</option>
-                                                      
-                                                        <option data-select2-id="select2-data-77-kb3z" value="guru">guru</option>
-                                                       
+        //define variable
+        let nama   = $('#nama').val();
+        let keterangan = $('#keterangan').val();
+        let token   = $("meta[name='csrf-token']").attr("content");
+        
+        //ajax
+        $.ajax({
 
+            url: `/semester-simpan-ajax`,
+            type: "POST",
+            cache: false,
+            data: {
+                "nama": nama,
+                "keterangan": keterangan,
+                "_token": token
+            },
+            success:function(response){
 
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <button type="submit" class="px-5 btn btn-primary">Simpan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                //show success message
+                Swal.fire({
+                    type: 'success',
+                    icon: 'success',
+                    title: `${response.message}`,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                //data post
+                let post = `
+                    <tr id="index_${response.data.id}">
+                        <td>${response.data.nama}</td>
+                        <td>${response.data.keterangan}</td>
+                        <td class="text-center">
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="${response.data.id}" class="btn btn-primary btn-sm">EDIT</a>
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="${response.data.id}" class="btn btn-danger btn-sm">DELETE</a>
+                        </td>
+                    </tr>
+                `;
+                
+                //append to table
+                $('#table-posts').prepend(post);
+                
+                //clear form
+                $('#nama').val('');
+                $('#keterangan').val('');
+
+                //close modal
+                $('#modal-create').modal('hide');
+                
+
+            },
+            error:function(error){
+                
+                if(error.responseJSON.title[0]) {
+
+                    //show alert
+                    $('#alert-title').removeClass('d-none');
+                    $('#alert-title').addClass('d-block');
+
+                    //add message to alert
+                    $('#alert-title').html(error.responseJSON.title[0]);
+                } 
+
+                if(error.responseJSON.content[0]) {
+
+                    //show alert
+                    $('#alert-content').removeClass('d-none');
+                    $('#alert-content').addClass('d-block');
+
+                    //add message to alert
+                    $('#alert-content').html(error.responseJSON.content[0]);
+                } 
+
+            }
+
+        });
+
+    });
+
+</script>
