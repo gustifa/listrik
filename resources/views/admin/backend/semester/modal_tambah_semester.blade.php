@@ -72,7 +72,7 @@
                 });
 
                 //data post
-                let post = `
+                let semester = `
                     <tr id="index_${response.data.id}">
                         <td>${response.data.nama}</td>
                         <td>${response.data.keterangan}</td>
@@ -84,7 +84,7 @@
                 `;
                 
                 //append to table
-                $('#table-posts').prepend(post);
+                $('#table-semester').prepend(semester);
                 
                 //clear form
                 $('#nama').val('');

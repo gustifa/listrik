@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
 
-                    <tbody id="table-posts">
+                    <tbody id="table-semester">
                                 @foreach($semester as $key=> $post)
                                 <tr id="index_{{ $post->id }}">
                                     <td>{{$key+1}}</td>
