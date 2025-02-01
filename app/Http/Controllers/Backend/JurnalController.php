@@ -28,4 +28,8 @@ class JurnalController extends Controller
         // dd($rombel);
         return view('guru.jurnal.tambah_jurnal', compact('jadwal', 'rombel_id'));
     }
+
+    public function SimpaJurnalGuru(Request $request){
+        
+    }
 }

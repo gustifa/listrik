@@ -42,8 +42,9 @@ class RombelController extends Controller
         // $id = $request->id;
         // dd($id);
         $request->validate([
-            // 'name' => ['required','string','max:255'],
-            // 'walas_id' => ['required', 'string','unique:rombels'],
+            'nama_rombel' => ['required|nama_rombel|unique:rombels'],
+            // 'email' => 'required|email|unique:users',
+            // 'walas_id' => ['required|walas_id|unique:rombels'],
         ]);
             Rombel::insert([
                 'id' => Str::uuid(),
