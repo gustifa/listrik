@@ -9,6 +9,7 @@ use App\Imports\UsersImport;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DataTables;
+use App\DataTables\UserDataTable;
 use Illuminate\Support\Facades\Auth;
 
 class ImportUserController extends Controller
@@ -19,6 +20,8 @@ class ImportUserController extends Controller
         $users = User::latest()->get();
 
         return view('admin.backend.user.lihat_user', compact('users'));
+        // return $dataTable->render('admin.backend.user.lihat_user');
+
     }
     // Test
     public function userMultiSelectSelect()
@@ -50,10 +53,11 @@ class ImportUserController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = User::query();
+            $data = User::where('jenis_user', 'admin')->get();
 
             return Datatables::of($data)
                     ->addIndexColumn()
+                    
                     ->addColumn('action', function($row){
        
                             // $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';

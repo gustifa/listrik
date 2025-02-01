@@ -41,11 +41,10 @@ class RombelController extends Controller
     public function SimpanRombel(Request $request){
         // $id = $request->id;
         // dd($id);
-        $request->validate([
-            'nama_rombel' => ['required|nama_rombel|unique:rombels'],
-            // 'email' => 'required|email|unique:users',
-            // 'walas_id' => ['required|walas_id|unique:rombels'],
-        ]);
+        // $request->validate([
+        //     'nama_rombel' => ['required','string','max:255'],
+        //     'walas_id' => ['required', 'string','unique:rombels'],
+        // ]);
             Rombel::insert([
                 'id' => Str::uuid(),
                 'jurusan_id' => $request->jurusan_id,
