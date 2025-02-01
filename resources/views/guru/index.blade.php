@@ -7,20 +7,16 @@
     
 @php
   $id = Auth::user()->id;
-  $instructorId = App\Models\User::find($id);
-  $status = $instructorId->status;
+  $guruId = App\Models\User::find($id);
+  $status = $guruId->status;
   $course = App\Models\Course::where('instructor_id',$id )->get();
+  $jadwal_guru = App\Models\JadwalPelajaran::where('user_id',$id )->where('status', '1')->get();
 @endphp
 
 <div class="page-content">
   
   @if ($status === '1')
-  <h4>Akun <b>{{ $instructorId->name}} </b><span class="text-success">Aktif</span> </h4>
-  @else   
-  <h4>Akun <b>{{ $instructorId->name}} <span class="text-danger">Belum Aktif</span> </h4> 
- <p class="text-danger"><b> Silahkan hubungi Admin untuk mengaktifkan akun</b> </p>
-  @endif
-
+  <h4>Akun <b>{{ $guruId->name}} </b><span class="text-success">Aktif</span> </h4>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
        <div class="col">
          <div class="card radius-10 border-start border-0 border-4 border-info">
@@ -28,8 +24,8 @@
                 <div class="d-flex align-items-center">
                     <div>
                         
-                        <p class="mb-0 text-secondary">Total Course</p>
-                        <h4 class="my-1 text-info">{{count($course)}}</h4>
+                        <p class="mb-0 text-secondary">Total Jadwal</p>
+                        <h4 class="my-1 text-info">{{count($jadwal_guru)}}</h4>
                         <p class="mb-0 font-13"><a href="{{route('all.course')}}">Detail Data</a></p>
                         
                     </div>
@@ -44,7 +40,7 @@
            <div class="card-body">
                <div class="d-flex align-items-center">
                    <div>
-                       <p class="mb-0 text-secondary">Total Revenue</p>
+                       <p class="mb-0 text-secondary">Jumlah Rombel</p>
                        <h4 class="my-1 text-danger">$84,245</h4>
                        <p class="mb-0 font-13">+5.4% from last week</p>
                    </div>
@@ -85,7 +81,6 @@
         </div>
       </div> 
     </div><!--end row-->
-
     <div class="row">
        <div class="col-12 col-lg-8 d-flex">
           <div class="card radius-10 w-100">
@@ -184,6 +179,14 @@
            </div>
        </div>
     </div><!--end row-->
+  @else   
+  <h4>Akun <b>{{ $guruId->name}} <span class="text-danger">Belum Aktif</span> </h4> 
+ <p class="text-danger"><b> Silahkan hubungi Admin untuk mengaktifkan akun</b> </p>
+  @endif
+
+
+
+    
 
      <div class="card radius-10">
         <div class="card-header">
