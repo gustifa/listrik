@@ -76,6 +76,18 @@ class RombelController extends Controller
 
     }
 
+    public function editRombel($id){
+        $guru = DB::table('rombels')
+            ->rightjoin('users', 'rombels.walas_id', '=', 'users.id')
+            ->where('jenis_user', 'guru')
+            ->select('rombels.*', 'users.*')
+            ->get();
+        
+        $rombel = Rombel::find($id);
+        // dd($rombel);
+        return view('admin.backend.rombel.edit_rombel', compact('guru', 'rombel'));
+    }
+
     public function DetailRombel($id){
         $anggota_rombel = AnggotaRombel::where('rombel_id', $id)->get();
         $walas_id = Rombel::where('id',$id)->get();

@@ -57,7 +57,7 @@
                             </td>
                             <!-- <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td> -->
                             <td>
-                                <a href="{{route('edit.kelas',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.rombel',$item->id)}}" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
                                 {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
                             </td>
                         </tr>
