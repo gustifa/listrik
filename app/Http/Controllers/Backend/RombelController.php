@@ -15,6 +15,7 @@ use App\Models\Group;
 use App\Models\Proka;
 use App\Models\AnggotaRombel;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 class RombelController extends Controller
@@ -24,12 +25,19 @@ class RombelController extends Controller
         $proka = Proka::latest()->get();
         $siswa = User::where('jenis_user', 'siswa')->get();
         $guru = User::where('jenis_user', 'guru')->get();
+       
         $anggota_rombel = AnggotaRombel::all();
         return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa', 'guru', 'anggota_rombel'));
     }
 
     public function TambahRombel(){
         $guru = User::where('jenis_user', 'guru')->get();
+        // $c = User::leftJoin('orders', function($join) {
+        //     $join->on('customers.id', '=', 'orders.customer_id');
+        //   })
+        //   ->whereNull('orders.customer_id')
+        //   ->first();
+        // $guru = DB::select("SELECT * FROM users");
         $siswa = User::where('jenis_user', 'siswa')->get();
         $proka = Proka::latest()->get();
         $jurusan = Jurusan::latest()->get();

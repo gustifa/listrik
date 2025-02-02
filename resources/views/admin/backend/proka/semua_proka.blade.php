@@ -22,7 +22,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        {{-- <a href="{{route('tambah.proka')}}" class="btn btn-primary">Tambah Proka</a> --}}
+        <a href="{{route('tambah.proka')}}" class="btn btn-primary">Tambah Proka</a>
         <button type="button" class="btn btn-primary bx bx-plus" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
     </div>
     <div class="card">

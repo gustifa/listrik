@@ -9,7 +9,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Proka;
 use App\Models\User;
-
+use Illuminate\Support\Facades\DB;
 class ProkaController extends Controller
 {
     public function SemuaProka(){
@@ -20,7 +20,17 @@ class ProkaController extends Controller
 
     public function TambahProka(){
         $proka = Proka::latest()->get();
-        $user = User::where('role', 'guru')->get();
+        // $user = User::where('jenis_user', 'guru')->get();
+        // $user = User::where('jenis_user', 'guru')->leftJoin('prokas', function($join) {
+        //     $join->on('users.id', '=', 'prokas.ka_proka_id');
+        //   })
+        //   ->whereNull('prokas.ka_proka_id')
+        //   ->first();
+        $user = DB::table('users')
+            ->where('jenis_user', 'guru')
+            ->join('prokas', 'users.id', '=', 'prokas.ka_proka_id')
+            ->get();
+          dd($user);
         return view('admin.backend.proka.tambah_proka', compact('user', 'proka'));
     }
 
@@ -28,6 +38,8 @@ class ProkaController extends Controller
         $request->validate([
             // 'name' => ['required','string','max:255'],
             'ka_proka_id' => ['required', 'string','unique:prokas'],
+            'nama_proka' => ['required', 'string','unique:prokas'],
+            'kode_proka' => ['required', 'string','unique:prokas'],
         ]);
         if($request->file('logo_proka')){
             $manager = new ImageManager(new Driver());
