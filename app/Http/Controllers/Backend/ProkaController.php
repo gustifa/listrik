@@ -28,18 +28,26 @@ class ProkaController extends Controller
         //     $join->on('users.id', '=', 'prokas.ka_proka_id');
         //   })
         //   ->whereNull('prokas.ka_proka_id')
-        //   ->first();
+        //   ->select('users.*', 'prokas.*')
+        //   ->select('users.*', 'prokas.*')
+        //   ->get();
         // $user = DB::table('users')
         //     ->where('jenis_user', 'guru')
         //     ->join('prokas', 'users.id', '=', 'prokas.ka_proka_id')
         //     ->get();
 
-        $user = DB::table('users')
-        ->join('prokas', function (JoinClause $join) {
-            $join->on('users.id', '=', 'prokas.ka_proka_id')
-                 ->where('users.id', '!=', 'prokas.ka_proka_id');
-        })
-        ->get();
+        $user = DB::table('prokas')
+            ->rightjoin('users', 'prokas.ka_proka_id', '=', 'users.id')
+            ->where('jenis_user', 'guru')
+            ->whereNull('prokas.ka_proka_id')
+            ->get();
+
+        // $user = DB::table('users')
+        // ->join('prokas', function (JoinClause $join) {
+        //     $join->on('users.id', '=', 'prokas.ka_proka_id')
+        //          ->where('users.id', '!=', 'prokas.ka_proka_id');
+        // })
+        // ->get();
         
         //   dd($user);
         return view('admin.backend.proka.tambah_proka', compact('user', 'proka'));
@@ -48,9 +56,9 @@ class ProkaController extends Controller
     public function SimpanProka(Request $request){
         $request->validate([
             // 'name' => ['required','string','max:255'],
-            'ka_proka_id' => ['required', 'string','unique:prokas'],
+            // 'ka_proka_id' => ['required', 'string','unique:prokas'],
             'nama_proka' => ['required', 'string','unique:prokas'],
-            'kode_proka' => ['required', 'string','unique:prokas'],
+            // 'kode_proka' => ['required', 'string','unique:prokas'],
         ]);
         if($request->file('logo_proka')){
             $manager = new ImageManager(new Driver());
