@@ -16,7 +16,7 @@
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('all.category')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Rombel</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah Rombel - Jumlah Rombel {{count($rombel)}}</li>
                 </ol>
             </nav>
         </div>
@@ -28,7 +28,16 @@
             {{-- <h6 class="mb-0 text-uppercase">Add Category</h6> --}}
             <hr/>
             <div class="card">
+                
                 <div class="card-body">
+                    @foreach ($rombel as $no => $item )
+                    @php
+                    $key = 1;
+                    @endphp
+                    <a class="btn btn-primary" href="">{{$key+$no}}. - {{$item->nama_rombel}}</a>
+                    @endforeach
+                   <br>
+                   <br>
                     <form id="myForm" method="post" action="{{route('simpan.rombel')}}" enctype="multipart/form-data">
                         @csrf
                         {{-- <div class="mb-3 form-group">
@@ -69,7 +78,7 @@
 
 
                         <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Course Category </label>
+                            <label for="input1" class="form-label">Nama Program Keahlian:</label>
                             <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option selected="" disabled>Nama Proka</option>
                                 @foreach ($proka as $item )
@@ -103,7 +112,8 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="px-5 btn btn-primary">Simpan</button>
+                            <button type="submit" class="px-5 btn btn-primary"><span class="bx bx-save"></span> Simpan</button>
+                            <a href="{{route('semua.rombel')}}" class="px-5 btn btn-danger"><span class="bx bx-cancel"></span> Batal</a>
                         </div>
                     </form>
                 </div>

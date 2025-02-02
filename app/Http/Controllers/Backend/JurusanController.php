@@ -69,8 +69,9 @@ class JurusanController extends Controller
 
     public function EditJurusan($id){
         $jurusan = Jurusan::find($id);
-        $user = User::where('role', 'wakil')->get();
-        return view('admin.backend.jurusan.edit_jurusan', compact('jurusan', 'user'));
+        $user = User::where('jenis_user', 'guru')->get();
+        $proka = Proka::latest()->get();
+        return view('admin.backend.jurusan.edit_jurusan', compact('jurusan', 'user', 'proka'));
     }
 
     public function UpdateJurusan(Request $request){
@@ -89,9 +90,9 @@ class JurusanController extends Controller
 
             Jurusan::find($id)->update([
                 'nama_jurusan' => $request->nama_jurusan,
-                'user_id' => $request->user_id,
+                'proka_id' => $request->proka_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
-                'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
+                // 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->slug_jurusan)),
                 'logo_jurusan' => $save_url,
                 'created_at' => Carbon::now(),
             ]);
@@ -104,9 +105,8 @@ class JurusanController extends Controller
          }else{
             Jurusan::find($id)->update([
                 'nama_jurusan' => $request->nama_jurusan,
-                'user_id' => $request->user_id,
+                'proka_id' => $request->proka_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
-                'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
                 'created_at' => Carbon::now(),
             ]);
 

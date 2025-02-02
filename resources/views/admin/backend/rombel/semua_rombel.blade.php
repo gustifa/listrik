@@ -22,7 +22,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.rombel')}}" class="btn btn-primary">Tambah Rombel</a>
+        <a href="{{route('tambah.rombel')}}" class="btn btn-danger "><span class="bx bx-group"></span> Rombel </a>
         <a href="{{route('tambah.anggota.rombel')}}" class="btn btn-primary">Tambah anggota</a>
         <a href="{{route('all.anggota.rombel')}}" class="btn btn-primary">All anggota</a>
         <a href="" class="btn btn-warning">{{count($rombel)}}</a>
@@ -53,7 +53,7 @@
                             <td>{{$item['walas']['name']}}</td>
                             <td>
                                 <a href="{{route('detail.rombel', $item->id)}}" class="btn btn-primary" title="Lihat Anggota Rombel"><i class="lni lni-eye"></i></a>
-                                {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
+                                <a href="" id="delete" class="btn btn-warning" id="delete" title="delete"><i class="bx bx-user"></i></a>
                             </td>
                             <!-- <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal"><i class="lni lni-user"></i></button></td> -->
                             <td>

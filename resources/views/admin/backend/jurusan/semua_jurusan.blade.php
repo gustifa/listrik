@@ -49,7 +49,7 @@
                             <td>{{$item->nama_jurusan}}</td>
                             <td>{{$item->kode_jurusan}}</td>
                             <td>
-                                <a href="{{route('edit.jurusan',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
+                                <a href="{{route('edit.jurusan',$item->id)}}" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
                                 <!-- <a href="{{route('delete.category',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> -->
                             </td>
                         </tr>

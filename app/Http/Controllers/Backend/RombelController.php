@@ -48,7 +48,8 @@ class RombelController extends Controller
         $jurusan = Jurusan::latest()->get();
         $tingkat = Kelas::latest()->get();
         $group = Group::latest()->get();
-        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'guru', 'tingkat', 'group', 'proka', 'siswa'));
+        $rombel = ROmbel::all();
+        return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'guru', 'tingkat', 'group', 'proka', 'siswa', 'rombel'));
     }
 
     public function SimpanRombel(Request $request){
@@ -84,8 +85,9 @@ class RombelController extends Controller
             ->get();
         
         $rombel = Rombel::find($id);
+        $jurusan = Jurusan::all();
         // dd($rombel);
-        return view('admin.backend.rombel.edit_rombel', compact('guru', 'rombel'));
+        return view('admin.backend.rombel.edit_rombel', compact('guru', 'rombel', 'jurusan'));
     }
 
     public function DetailRombel($id){

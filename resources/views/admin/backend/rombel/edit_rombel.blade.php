@@ -29,23 +29,28 @@
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('update.rombel')}}" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Nama Rombel </label>
-                            <div class="form-group col-md-12">kode Jurusan</label>
-                                <input type="text" name="kode_jurusan" class="form-control" id="input1" value="{{$rombel->nama_rombel}}">
-                            </div>
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Wali Kelas:</label>
+                            <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Walas</option>
+                                @foreach ($guru as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Nama Jurusan </label>
-                            <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
-                                <option> </option>
-
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Nama Jurusan:</label>
+                            <select name="walas_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Walas</option>
+                                @foreach ($jurusan as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}" {{ $item->id == $rombel->id ? 'selected' : '' }}>{{$item->nama_jurusan}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Rombel:</label>
-                            <input type="text" class="form-control" name="nama_rombel">
+                            <input type="text" name="kode_jurusan" class="form-control" id="input1" value="{{$rombel->nama_rombel}}">
                         </div>
 
                         <div class="mb-3 form-group">
