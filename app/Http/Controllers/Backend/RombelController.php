@@ -185,13 +185,28 @@ class RombelController extends Controller
 
     public function getUserSiswa(Request $request){
         $siswa_id =[];
+        // $user = DB::table('anggota_rombels')
+        //     ->rightjoin('users', 'anggota_rombels.siswa_id', '=', 'users.id')
+        //     ->where('jenis_user', 'siswa')
+        //     ->whereNull('anggota_rombels.siswa_id')
+        //     ->select("*")
+
+        //     ->where('name','LIKE','%'.$search.'%')
+        //     ->get();
         //dd( $siswa_id);
         if($search=$request->name){
-            // $tags=Usaaaaaaaer::where('username', 'LIKE', "%$search%")->get();
-            $siswa_id = User::where('jenis_user', 'siswa')->select("*")
+            // // $tags=Usaaaaaaaer::where('username', 'LIKE', "%$search%")->get();
+            // $siswa_id = User::where('jenis_user', 'siswa')->select("*")
 
+            // ->where('name','LIKE','%'.$search.'%')
+
+            // ->get();
+            $siswa_id = DB::table('anggota_rombels')
+            ->rightjoin('users', 'anggota_rombels.siswa_id', '=', 'users.id')
+            ->where('jenis_user', 'siswa')
+            ->whereNull('anggota_rombels.siswa_id')
+            ->select("*")
             ->where('name','LIKE','%'.$search.'%')
-
             ->get();
         }
         return response()->json($siswa_id);
