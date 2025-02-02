@@ -10,7 +10,10 @@ use Intervention\Image\Drivers\Imagick\Driver;
 use App\Models\Proka;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\JoinClause;
+
 class ProkaController extends Controller
+
 {
     public function SemuaProka(){
         $proka = Proka::latest()->get();    
@@ -26,11 +29,19 @@ class ProkaController extends Controller
         //   })
         //   ->whereNull('prokas.ka_proka_id')
         //   ->first();
+        // $user = DB::table('users')
+        //     ->where('jenis_user', 'guru')
+        //     ->join('prokas', 'users.id', '=', 'prokas.ka_proka_id')
+        //     ->get();
+
         $user = DB::table('users')
-            ->where('jenis_user', 'guru')
-            ->join('prokas', 'users.id', '=', 'prokas.ka_proka_id')
-            ->get();
-          dd($user);
+        ->join('prokas', function (JoinClause $join) {
+            $join->on('users.id', '=', 'prokas.ka_proka_id')
+                 ->where('users.id', '!=', 'prokas.ka_proka_id');
+        })
+        ->get();
+        
+        //   dd($user);
         return view('admin.backend.proka.tambah_proka', compact('user', 'proka'));
     }
 
