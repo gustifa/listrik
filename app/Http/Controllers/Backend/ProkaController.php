@@ -54,6 +54,19 @@ class ProkaController extends Controller
     }
 
     public function SimpanProka(Request $request){
+        $kode = $request->nama_proka;
+        $arr = explode(' ', $kode);
+        $singkatan = '';
+        foreach($arr as $kata)
+        {
+        $singkatan .= substr($kata, 0, 1);
+        }
+        // $arr = substr($kode, 0, 1);
+        // foreach($arr as $kata)
+        //     {
+        //     $singkatan = substr($kata, 0, 1);
+        //     }
+        // dd(strtoupper($singkatan));
         $request->validate([
             // 'name' => ['required','string','max:255'],
             // 'ka_proka_id' => ['required', 'string','unique:prokas'],
