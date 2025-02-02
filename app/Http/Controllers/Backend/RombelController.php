@@ -31,7 +31,12 @@ class RombelController extends Controller
     }
 
     public function TambahRombel(){
-        $guru = User::where('jenis_user', 'guru')->get();
+        // $guru = User::where('jenis_user', 'guru')->get();
+        $guru = DB::table('rombels')
+            ->rightjoin('users', 'rombels.walas_id', '=', 'users.id')
+            ->where('jenis_user', 'guru')
+            ->whereNull('rombels.walas_id')
+            ->get();
         // $c = User::leftJoin('orders', function($join) {
         //     $join->on('customers.id', '=', 'orders.customer_id');
         //   })
