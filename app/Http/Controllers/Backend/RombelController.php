@@ -52,6 +52,20 @@ class RombelController extends Controller
         return view('admin.backend.rombel.tambah_rombel', compact('jurusan', 'guru', 'tingkat', 'group', 'proka', 'siswa', 'rombel'));
     }
 
+    public function GetJurusan($proka_id){
+
+        $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
+        return json_encode($rombel);
+
+    }// End Method
+
+    public function GetRombel($jurusan_id){
+
+        $jurusan = Rombel::where('jurusan_id',$jurusan_id)->orderBy('nama_rombel','ASC')->get();
+        return json_encode($jurusan);
+
+    }// End Method
+
     public function SimpanRombel(Request $request){
         // $id = $request->id;
         // dd($id);
@@ -101,19 +115,7 @@ class RombelController extends Controller
 
     
 
-    public function GetJurusan($proka_id){
-
-        $rombel = Jurusan::where('proka_id',$proka_id)->orderBy('nama_jurusan','ASC')->get();
-        return json_encode($rombel);
-
-    }// End Method
-
-    public function GetRombel($jurusan_id){
-
-        $jurusan = Rombel::where('jurusan_id',$jurusan_id)->orderBy('nama_rombel','ASC')->get();
-        return json_encode($jurusan);
-
-    }// End Method
+   
 
     public function EditJurusan($id){
         $jurusan = Rombel::find($id);
