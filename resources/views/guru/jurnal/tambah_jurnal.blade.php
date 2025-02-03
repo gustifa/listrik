@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <a id="search" class="btn btn-primary" name="search"> Search</a>
+                            <a id="search" class="btn btn-primary" name="search"> Tampilkan</a>
 
                             <br>
                             <br>
@@ -165,10 +165,10 @@
             // '<td>'+v.student.gender+'</td>'+
             `<td>
                 <select class="form-select select2-hidden-accessible">
-                    <option>Hadir</option>
-                    <option>Sakit</option>
-                    <option>Izin</option>
-                    <option>Alfa</option>
+                    <option value="1">Hadir</option>
+                    <option value="2">Sakit</option>
+                    <option value="3">Izin</option>
+                    <option value="4">Alfa</option>
                 </select>
             </td>`+
             '</tr>';
