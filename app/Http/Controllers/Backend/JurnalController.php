@@ -10,6 +10,7 @@ use App\Models\JadwalPelajaran;
 use App\Models\Hari;
 use App\Models\AnggotaRombel;
 use App\Models\Rombel;
+use App\Models\Kehadiran;
 
 class JurnalController extends Controller
 {
@@ -25,8 +26,9 @@ class JurnalController extends Controller
         $hari = Hari::latest()->get();
         $rombel_id = Rombel::where('id',$rombel)->get();
         $anggota_rombel = AnggotaRombel::all();
-        // dd($rombel);
-        return view('guru.jurnal.tambah_jurnal', compact('jadwal', 'rombel_id'));
+        $kehadiran = Kehadiran::where('status', '1')->get();
+        // dd($anggota_rombel);
+        return view('guru.jurnal.tambah_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran'));
     }
 
     public function SimpaJurnalGuru(Request $request){

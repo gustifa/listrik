@@ -46,9 +46,9 @@
                         </div>
 
                         <div class="mb-3 form-group">
-                            <label class="form-label">Siswa Hadir:</label>
+                            <label class="form-label">Nama Rombongan Belajar:</label>
                             <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Rombongan Belajar</option>
                                 @foreach ($jadwal as $item )
                                 <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->rombel->nama_rombel}}</option>
                                 @endforeach
@@ -64,6 +64,48 @@
                             <label class="form-label">Keterangan:</label>
                             <input type="text" class="form-control" name="keterangan">
                         </div>
+
+                        <div class="mb-3 form-group">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5px;">No</th>
+                                            <th>Nama Peserta didik</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if(count($anggota_rombel) > 0)
+                                        @foreach ($anggota_rombel as $key=> $item)
+                                        <tr>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{$item->peserta_didik->name}}</td>
+                                            <td>{{$item->peserta_didik->email}}</td>
+                                            <td>
+                                                <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                                    <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                                    @foreach ($kehadiran as $item )
+                                                    <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_kehadiran}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>  
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">Data tidak ada...</td>
+                                        </tr>
+                                    @endif
+                
+                                    </tbody>
+                
+                                </table>
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                         </div>
