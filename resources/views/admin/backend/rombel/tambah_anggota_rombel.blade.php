@@ -103,7 +103,6 @@
                         $("#jurusan_id").append('<option>---Pilih Jurusan---</option>');
                         $("#rombel_id").append('<option>---Pilih Rombel---</option>');
                         $.each(data,function(key,value){
-
                             $('#jurusan_id').append('<option value="'+ value.id + '">' + value.nama_jurusan + '</option>');
                         });
                     },
@@ -123,7 +122,8 @@
                     type: "GET",
                     dataType:"json",
                     success:function(data){
-                        $('#rombel_id').html('');
+                        $("#rombel_id").empty();
+                        // $("#rombel_id").append('<option>---Pilih Rombel---</option>');
                         var d =$('#rombel_id').empty();
                         $.each(data, function(key, value){
                             $('#rombel_id').append('<option value="'+ value.id + '">' + value.nama_rombel + '</option>');

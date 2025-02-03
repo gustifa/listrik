@@ -40,6 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @if(count($anggota_rombel) > 0)
                         @foreach ($anggota_rombel as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
@@ -50,7 +51,11 @@
                             </td>  
                         </tr>
                         @endforeach
-
+                        @else
+                        <tr>
+                            <td colspan="6" class="text-center">Data tidak ada...</td>
+                        </tr>
+                    @endif
 
                     </tbody>
 
