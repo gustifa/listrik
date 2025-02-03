@@ -36,7 +36,7 @@ class JurusanController extends Controller
 
 
             Jurusan::insert([
-                'nama_jurusan' => $request->nama_jurusan,
+                'nama_jurusan' =>  strtoupper($request->nama_jurusan),
                 'proka_id' => $request->proka_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 // 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->slug_jurusan)),
@@ -51,7 +51,7 @@ class JurusanController extends Controller
             return redirect()->route('semua.jurusan')->with($notification);
          }else{
             Jurusan::insert([
-                'nama_jurusan' => $request->nama_jurusan,
+                'nama_jurusan' =>  strtoupper($request->nama_jurusan),
                 'proka_id' => $request->proka_id,
                 'kode_jurusan' => strtoupper($request->kode_jurusan),
                 // 'slug_jurusan' => strtolower(str_replace(' ', '-',$request->nama_jurusan)),
