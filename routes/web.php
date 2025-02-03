@@ -383,6 +383,7 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
         Route::post('/guru/jurnal/update', 'UpdateJurnalGuru')->name('update.jurnal.guru');
         Route::post('/guru/update/jurnal/status', 'UpdateJurnalGuruStatus')->name('update.jurnal.guru.status');
         Route::get('/guru/jurnal/delete/{id}', 'DeleteJurnal')->name('delete.jurnal.guru');
+        Route::get('/reg/getstudents', 'GetAnggotaRombel')->name('get.anggota.rombel');
     });
 }); ///Akhir guru Group Middleware
 

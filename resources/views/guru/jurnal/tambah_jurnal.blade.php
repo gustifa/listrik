@@ -45,15 +45,7 @@
                             </select>
                         </div>
 
-                        <div class="mb-3 form-group">
-                            <label class="form-label">Nama Rombongan Belajar:</label>
-                            <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Rombongan Belajar</option>
-                                @foreach ($jadwal as $item )
-                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->rombel->nama_rombel}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                       
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Kode Bengkel:</label>
@@ -65,7 +57,7 @@
                             <input type="text" class="form-control" name="keterangan">
                         </div>
 
-                        <div class="mb-3 form-group">
+                        {{-- <div class="mb-3 form-group">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered" style="width:100%">
                                     <thead>
@@ -104,10 +96,44 @@
                 
                                 </table>
                             </div>
+                        </div> --}}
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Nama Rombongan Belajar:</label>
+                            <select name="rombel_id" class="form-select select2-hidden-accessible" id="rombel_id" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Rombongan Belajar</option>
+                                @foreach ($rombel_id as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_rombel}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="px-5 btn btn-primary">Simpan</button>
+                            <a id="search" class="btn btn-primary" name="search"> Search</a>
+
+                            <br>
+                            <br>
+                            <div class="row d-none" id="roll-generate">
+                                <div class="col-md-12">
+                                    <table class="table table-bordered table-striped" style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID No</th>
+                                                <th>Nama Siswa </th>
+                                                <th>Kehadiran </th>
+                                                
+                                             </tr> 				
+                                        </thead>
+                                        <tbody id="roll-generate-tr">
+                                            
+                                        </tbody>
+                                        
+                                    </table>
+                                    
+                                </div>
+                                
+                            </div>
+                            {{-- <button type="submit" class="px-5 btn btn-primary">Simpan</button> --}}
                         </div>
                     </form>
                 </div>
@@ -116,8 +142,43 @@
 
         </div>
     </div>
+    
     <!--end row-->
 </div>
+
+<script type="text/javascript">
+    $(document).on('click','#search',function(){
+      var rombel_id = $('#rombel_id').val();
+       $.ajax({
+        url: "{{ route('get.anggota.rombel')}}",
+        type: "GET",
+        data: {'rombel_id':rombel_id},
+        success: function (data) {
+          $('#roll-generate').removeClass('d-none');
+          var html = '';
+          $.each( data, function(key, v){
+            html +=
+            '<tr>'+
+            '<td>'+v.peserta_didik.id+'<input type="hidden" name="siswa_id[]" value="'+v.siswa_id+'"></td>'+
+            '<td>'+v.peserta_didik.name+'</td>'+
+            // '<td>'+'<input type="text" name="siswa_id[]" value="'+v.peserta_didik.name+'</td>'+
+            // '<td>'+v.student.gender+'</td>'+
+            `<td>
+                <select class="form-select select2-hidden-accessible">
+                    <option>Hadir</option>
+                    <option>Sakit</option>
+                    <option>Izin</option>
+                    <option>Alfa</option>
+                </select>
+            </td>`+
+            '</tr>';
+          });
+          html = $('#roll-generate-tr').html(html);
+        }
+      });
+    });
+  
+</script>
 
 <script type="text/javascript">
     $(document).ready(function (){
@@ -199,4 +260,6 @@
     });
 
 </script>
+
+
 @endsection

@@ -24,7 +24,7 @@ class JurnalController extends Controller
         $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
         $rombel = $jadwal->implode('rombel_id');
         $hari = Hari::latest()->get();
-        $rombel_id = Rombel::where('id',$rombel)->get();
+        $rombel_id = Rombel::all();
         $anggota_rombel = AnggotaRombel::all();
         $kehadiran = Kehadiran::where('status', '1')->get();
         // dd($anggota_rombel);
@@ -33,5 +33,14 @@ class JurnalController extends Controller
 
     public function SimpaJurnalGuru(Request $request){
         
+    }
+
+    public function GetAnggotaRombel(Request $request){
+    	//dd('ok done');
+    	$allData = AnggotaRombel::with(['peserta_didik'])->where('rombel_id',$request->rombel_id)->get();
+    	// $allData = AnggotaRombel::where('rombel_id',$request->rombel_id)->get();
+    	// dd($allData->toArray());
+    	return response()->json($allData);
+
     }
 }
