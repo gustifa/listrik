@@ -45,12 +45,31 @@
                             <label class="form-label"> Permission All</label>
                         </div>
 
-                        <div class="mb-3 form-group">
-                            @foreach($permission_groups as $item)
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
-                            <label class="form-label"> {{$item->group_name}}</label>
-                            @endforeach
+                        <hr>
+                        
+                        @foreach($permission_groups as $item)
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="mb-3 form-group">
+                                   
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
+                                    <label class="form-label"> {{$item->group_name}}</label>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="col-3">
+                                    <div class="mb-3 form-group">
+                                       
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
+                                        <label class="form-label"> {{$item->group_name}}</label>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+                         @endforeach
                         <div class="mb-3">
                             <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                         </div>
