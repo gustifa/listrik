@@ -70,7 +70,23 @@
             <ul>
                 <li> <a href="{{route('semua.rombel')}}"><i class='bx bx-radio-circle'></i>Rombel</a>
                 <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>Jadwal Guru</a>
+                <li> <a href="{{route('semua.jadwal')}}"><i class='bx bx-radio-circle'></i>All Permission</a>
                 {{-- <li> <a href="{{route('semua.waktu')}}"><i class='bx bx-radio-circle'></i>Waktu Pelajaran</a> --}}
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Role & Permission</div>
+            </a>
+            <ul>
+               
+                <li> <a href="{{route('all.permission')}}"><i class='bx bx-radio-circle'></i>All Permission</a>
+                <li> <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>All Role</a>
+                <li> <a href="{{route('add.roles.permission')}}"><i class='bx bx-radio-circle'></i>Role Permission</a>
                 </li>
 
             </ul>
