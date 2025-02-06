@@ -284,6 +284,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('delete/roles/{id}', 'deleteroles')->name('delete.roles');
         Route::post('update/roles', 'updateroles')->name('update.roles');
         Route::get('add/role/permission', 'addRolesPermission')->name('add.roles.permission');
+        Route::post('store/role/permissions', 'storeRolePermissios')->name('store.role.permissions');
     });
 
 

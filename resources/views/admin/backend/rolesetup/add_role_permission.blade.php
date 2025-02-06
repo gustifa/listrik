@@ -5,6 +5,11 @@
 @section('title')
    Tambah Roles Permission
 @endsection
+<style>
+    .form-check-label{
+        text-transform: capitalize;
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -22,17 +27,14 @@
     <!--end breadcrumb-->
     <div class="row">
         <div class="mx-auto col-xl-12">
-
-            {{-- <h6 class="mb-0 text-uppercase">Add Category</h6> --}}
-            <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('store.roles')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('store.role.permissions')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
-                            <label class="form-label">Nama Group:</label>
-                            <select name="group_name" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Roles</option>
+                            <!-- <label class="form-label">Nama Group:</label> -->
+                            <select name="role_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Open Roles</option>
                                @foreach($roles as $item)
                                 <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
@@ -41,8 +43,8 @@
                         
                         <div class="mb-3 form-group">
                             
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
-                            <label class="form-label"> Permission All</label>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckMain">
+                            <label class="form-check-label"> Permission All</label>
                         </div>
 
                         <hr>
@@ -53,19 +55,24 @@
                                 <div class="mb-3 form-group">
                                    
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
-                                    <label class="form-label"> {{$item->group_name}}</label>
+                                    <label class="form-check-label"> {{$item->group_name}}</label>
                                    
                                 </div>
                             </div>
                             <div class="col-9">
+                                @php
+                                    $permissions = App\Models\User::getPermissionGroupByName($item->group_name)
+                                @endphp
+                                @foreach($permissions as $permission)
                                 <div class="col-3">
                                     <div class="mb-3 form-group">
                                        
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
-                                        <label class="form-label"> {{$item->group_name}}</label>
+                                        <input class="form-check-input" type="checkbox" name="permission[]" value="{{$permission->id}}" id="checkDefault {{$permission->id}}">
+                                        <label class="form-check-label"> {{$permission->name}}</label>
                                        
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
 
                         </div>
@@ -82,6 +89,16 @@
     </div>
     <!--end row-->
 </div>
+
+<script>
+   $('#flexCheckMain').click(function(){
+    if ($(this).is(':checked')){
+        $('input[ type=checkbox').prop('checked', true)
+    }else{
+        $('input[ type=checkbox').prop('checked', false)
+    }
+   }); 
+</script>
 
 <script type="text/javascript">
     $(document).ready(function (){
