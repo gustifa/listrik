@@ -285,6 +285,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::post('update/roles', 'updateroles')->name('update.roles');
         Route::get('add/role/permission', 'addRolesPermission')->name('add.roles.permission');
         Route::post('store/role/permissions', 'storeRolePermissios')->name('store.role.permissions');
+        Route::get('all/role/permission', 'allRolePermission')->name('all.role.permissions');
     });
 
 

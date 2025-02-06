@@ -144,4 +144,9 @@ class RoleController extends Controller
         );
         return redirect()->route('all.roles')->with($notification);
     }
+
+    public function allRolePermission(){
+        $roles = Role::all();
+        return view('admin.backend.rolesetup.all_role_permission', compact('roles'));
+    }
 }
