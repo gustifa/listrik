@@ -47,7 +47,7 @@
                             </td>
                             
                             <td>
-                                <a href="{{route('edit.roles',$item->id)}}" class="btn btn-warning" title="Edit"><i class="lni lni-pencil"></i></a>
+                                <a href="{{route('edit.role.permissions',$item->id)}}" class="btn btn-warning" title="Edit"><i class="lni lni-pencil"></i></a>
                                 <a href="{{route('delete.roles',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>
