@@ -32,12 +32,8 @@
                     <form id="myForm" method="post" action="{{route('store.role.permissions')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
-                            <!-- <label class="form-label">Nama Group:</label> -->
                             <select name="role_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Open Roles</option>
-                               @foreach($roles as $item)
-                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$roles->id}}">{{$roles->name}}</option>
                             </select>
                         </div>
                         
@@ -76,7 +72,7 @@
                         </div>
                          @endforeach
                         <div class="mb-3">
-                            <button type="submit" class="px-5 btn btn-primary">Simpan</button>
+                            <button type="submit" class="px-5 btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
