@@ -29,7 +29,7 @@
         <div class="mx-auto col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('store.role.permissions')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('update.roles.permission', $role->id)}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
                             {{-- <select name="role_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
