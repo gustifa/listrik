@@ -122,6 +122,7 @@ class RoleController extends Controller
         $roles = Role::all();
         $permissions = Permission::all();
         $permission_groups = User::getPermissionGroups();
+        // dd($permission_groups);
         return view('admin.backend.rolesetup.add_role_permission', compact('roles', 'permission_groups', 'permissions'));
     }
 
@@ -152,9 +153,9 @@ class RoleController extends Controller
 
 
     public function editRolePermission($id){
-        $roles = Role::find($id);
+        $role = Role::find($id);
         $permissions = Permission::all();
         $permission_groups = User::getPermissionGroups();
-        return view('admin.backend.rolesetup.edit_role_permission', compact('roles', 'permission_groups', 'permissions'));
+        return view('admin.backend.rolesetup.edit_role_permission', compact('role', 'permission_groups', 'permissions'));
     }
 }

@@ -32,9 +32,10 @@
                     <form id="myForm" method="post" action="{{route('store.role.permissions')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
-                            <select name="role_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                            {{-- <select name="role_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option data-select2-id="select2-data-77-kb3z" value="{{$roles->id}}">{{$roles->name}}</option>
-                            </select>
+                            </select> --}}
+                            <h2 class="mb-3 form-group">{{$role->name}}</h2>
                         </div>
                         
                         <div class="mb-3 form-group">
@@ -48,10 +49,14 @@
                         @foreach($permission_groups as $item)
                         <div class="row">
                             <div class="col-3">
+
+                                @php
+                                $permissions = App\Models\User::getPermissionGroupByName($item->group_name)
+                                @endphp
                                 <div class="mb-3 form-group">
                                    
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedSuccess">
-                                    <label class="form-check-label"> {{$item->group_name}}</label>
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"{{App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : ''}}>
+                                    <label class="form-check-label" for="flexCheckDefault"> {{$item->group_name}}</label>
                                    
                                 </div>
                             </div>
@@ -61,8 +66,8 @@
                                 <div class="col-3">
                                     <div class="mb-3 form-group">
                                        
-                                        <input class="form-check-input" type="checkbox" name="permission[]" value="{{$permission->id}}" id="checkDefault {{$permission->id}}">
-                                        <label class="form-check-label" for="checkDefault {{$permission->id}}"> {{$permission->name}}</label>
+                                        <input class="form-check-input" type="checkbox" name="permission[]" value="{{$permission->id}}" id="checkDefault{{$permission->id}}" {{ $role->hasPermissionTo($permission->name) ? 'checked' : ''}}>
+                                        <label class="form-check-label" for="checkDefault{{$permission->id}}"> {{$permission->name}}</label>
                                        
                                     </div>
                                 </div>
