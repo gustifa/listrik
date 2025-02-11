@@ -171,6 +171,6 @@ class RoleController extends Controller
             'message' => 'Roles Permission Berhasil diperbahaui',
             'alert-type' => 'success',
         );
-        return redirect()->route('all.roles')->with($notification);
+        return redirect()->route('all.role.permissions')->with($notification);
     }
 }
