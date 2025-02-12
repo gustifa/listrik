@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\ImportsGuruController;
 use App\Http\Controllers\Backend\ProkaController;
 use App\Http\Controllers\Backend\KehadiranController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\PesertaDidikController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -288,6 +289,11 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('all/role/permission', 'allRolePermission')->name('all.role.permissions');
         Route::get('edit/role/permission/{id}', 'editRolePermission')->name('edit.role.permissions');
         Route::post('update/roles/permission/{id}', 'updaterolesPermission')->name('update.roles.permission');
+    });
+
+    Route::controller(PesertaDidikController::class)->group(function(){
+        Route::get('peserta-didik/all', 'allPesertaDidik')->name('peserta.didik.all');
+        Route::get('peserta-didik/import', 'importPesertaDidik')->name('peserta.didik.import');
     });
 
 
