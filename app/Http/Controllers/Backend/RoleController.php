@@ -129,21 +129,21 @@ class RoleController extends Controller
     public function storeRolePermissios(Request $request){
         $data = array();
         $permissions = $request->permission;
+                foreach($permissions as $key => $item){
+                    $data['role_id'] = $request->role_id;
+                    $data['permission_id'] = $item;
+        
+                    DB::table('role_has_permissions')->insert($data);
+                
+                }  // End Foreach
 
-        foreach($permissions as $key => $item){
-            $data['role_id'] = $request->role_id;
-            $data['permission_id'] = $item;
-
-            DB::table('role_has_permissions')->insert($data);
-           
-        }  // End Foreach
-
-         
-        $notification = array(
-            'message' => 'Roles Permission Berhasil ditambahkan',
-            'alert-type' => 'success',
-        );
-        return redirect()->route('all.roles')->with($notification);
+                $notification = array(
+                    'message' => 'Roles Permission Berhasil ditambahkan',
+                    'alert-type' => 'success',
+                );
+                return redirect()->route('all.role.permissions')->with($notification);
+            
+        
     }
 
     public function allRolePermission(){
@@ -161,9 +161,7 @@ class RoleController extends Controller
 
     public function updaterolesPermission(Request $request, $id){
         $role = Role::find($id);
-        //dd($role);
         $permissions = $request->permission;
-        //dd($permissions);
         if(!empty($permissions)){
             $role->syncPermissions($permissions);
         }
