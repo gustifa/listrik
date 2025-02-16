@@ -17,7 +17,9 @@ use Carbon\Carbon;
 class JurnalController extends Controller
 {
     public function SemuaJurnalGuru(){
+        $id = Auth::user()->id;
         $jurnal = Jurnal::latest()->get();
+        // $jurnal = Jurnal::find($id);
         return view('guru.jurnal.lihat_jurnal', compact('jurnal'));
     }
 

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('jurnals', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('tujuan_pembelajaran');
-            $table->integer('guru_id');
-            $table->integer('mapel_id');
-            $table->integer('rombel_id');
+            $table->integer('tp_id')->nullable();
+            $table->integer('siswa_id')->nullable();
+            $table->integer('guru_id')->nullable();
+            $table->integer('jadwal_id')->nullable();
+            $table->integer('kehadiran')->nullable();
             $table->timestamps();
         });
     }
