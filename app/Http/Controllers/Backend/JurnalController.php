@@ -51,24 +51,6 @@ class JurnalController extends Controller
         $kehadiran = $request->kehadiran;
         $jadwal = $request->jadwal_id;
         $guru_id = Auth::user()->id;
-        // dd($kehadiran);
-
-        
-        // $jurnal = $request->permission;
-        //         foreach($permissions as $key => $item){
-        //             $data['role_id'] = $request->role_id;
-        //             $data['permission_id'] = $item;
-        
-        //             DB::table('role_has_permissions')->insert($data);
-                
-        //         }  // End Foreach
-
-        //         $notification = array(
-        //             'message' => 'Roles Permission Berhasil ditambahkan',
-        //             'alert-type' => 'success',
-        //         );
-        //         return redirect()->route('all.role.permissions')->with($notification);
-
         if($siswa_id == !NULL){
             $countsiswa_id = count($siswa_id);
             for ($i=0; $i < $countsiswa_id; $i++) { 
