@@ -25,7 +25,6 @@ class RombelController extends Controller
         $proka = Proka::latest()->get();
         $siswa = User::where('jenis_user', 'siswa')->get();
         $guru = User::where('jenis_user', 'guru')->get();
-       
         $anggota_rombel = AnggotaRombel::all();
         return view('admin.backend.rombel.semua_rombel', compact('rombel', 'proka', 'siswa', 'guru', 'anggota_rombel'));
     }
