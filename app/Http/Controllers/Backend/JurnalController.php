@@ -70,7 +70,8 @@ class JurnalController extends Controller
         //         return redirect()->route('all.role.permissions')->with($notification);
 
         if($siswa_id == !NULL){
-            for ($i=0; $i < $siswa_id; $i++) { 
+            $countsiswa_id = count($siswa_id);
+            for ($i=0; $i < $countsiswa_id; $i++) { 
                 $jurnal = new Jurnal();
                 $jurnal->siswa_id = $request->siswa_id[$i];
                 $jurnal->kehadiran = $request->kehadiran[$i];
@@ -79,20 +80,12 @@ class JurnalController extends Controller
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();
             }
-            // $data = array();
-            // foreach($kehadiran as $key => $item){
-            //                 $data['siswa_id'] = $siswa_id;
-            //                 $data['kehadiran'] = $item;
-                
-            //                 DB::table('jurnals')->insert($data);
-                        
-                        // }  // End Foreach
             $notification = array(
             'message' => 'Berhasil Menyimpan Jurnal',
             'alert-type' => 'error'
             );
 
-            return redirect()->route('SemuaJurnalGuru')->with($notification);
+            return redirect()->route('lihat.jurnal.guru')->with($notification);
         }else{
             $notification = array(
                 'message' => 'Gagal Menyimpan Jurnal',

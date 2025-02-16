@@ -53,9 +53,9 @@
                             
                             {{-- <td>{{$item['user']['name']}}</td> --}}
                             <td>{{$item->id}}</td>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->id}}</td>
+                            <td>{{$item->mapel_id}}</td>
+                            <td>{{$item->siswa_id}}</td>
+                            <td>{{$item->guru_id}}</td>
                             <td>{{$item->id}}</td>
                             
                             {{-- <td> --}}
