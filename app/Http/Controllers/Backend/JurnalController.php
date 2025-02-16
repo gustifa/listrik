@@ -46,6 +46,23 @@ class JurnalController extends Controller
 
     public function SimpanJurnalGuru(Request $request){
         $siswa_id = $request->siswa_id;
-        dd($siswa_id);
+        $kehadiran = $request->kehadiran;
+        dd($kehadiran);
+
+        $data = array();
+        $jurnal = $request->permission;
+                foreach($permissions as $key => $item){
+                    $data['role_id'] = $request->role_id;
+                    $data['permission_id'] = $item;
+        
+                    DB::table('role_has_permissions')->insert($data);
+                
+                }  // End Foreach
+
+                $notification = array(
+                    'message' => 'Roles Permission Berhasil ditambahkan',
+                    'alert-type' => 'success',
+                );
+                return redirect()->route('all.role.permissions')->with($notification);
     }
 }

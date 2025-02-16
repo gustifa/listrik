@@ -164,7 +164,7 @@
             // '<td>'+'<input type="text" name="siswa_id[]" value="'+v.peserta_didik.name+'</td>'+
             // '<td>'+v.student.gender+'</td>'+
             `<td>
-                <select class="form-select select2-hidden-accessible">
+                <select name="kehadiran[]" class="form-select select2-hidden-accessible">
                     <option value="1">Hadir</option>
                     <option value="2">Sakit</option>
                     <option value="3">Izin</option>
