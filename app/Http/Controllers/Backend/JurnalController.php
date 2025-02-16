@@ -11,6 +11,7 @@ use App\Models\Hari;
 use App\Models\AnggotaRombel;
 use App\Models\Rombel;
 use App\Models\Kehadiran;
+use Carbon\Carbon;
 
 class JurnalController extends Controller
 {
@@ -47,22 +48,46 @@ class JurnalController extends Controller
     public function SimpanJurnalGuru(Request $request){
         $siswa_id = $request->siswa_id;
         $kehadiran = $request->kehadiran;
-        dd($kehadiran);
+        $guru_id = Auth::user()->id;
+        // dd($kehadiran);
 
-        $data = array();
-        $jurnal = $request->permission;
-                foreach($permissions as $key => $item){
-                    $data['role_id'] = $request->role_id;
-                    $data['permission_id'] = $item;
+        // $data = array();
+        // $jurnal = $request->permission;
+        //         foreach($permissions as $key => $item){
+        //             $data['role_id'] = $request->role_id;
+        //             $data['permission_id'] = $item;
         
-                    DB::table('role_has_permissions')->insert($data);
+        //             DB::table('role_has_permissions')->insert($data);
                 
-                }  // End Foreach
+        //         }  // End Foreach
 
-                $notification = array(
-                    'message' => 'Roles Permission Berhasil ditambahkan',
-                    'alert-type' => 'success',
+        //         $notification = array(
+        //             'message' => 'Roles Permission Berhasil ditambahkan',
+        //             'alert-type' => 'success',
+        //         );
+        //         return redirect()->route('all.role.permissions')->with($notification);
+
+        if($siswa_id == !NULL && $kehadiran == !NULL ){
+            for ($i=0; $i < $siswa_id; $i++) { 
+                $jurnal = new Jurnal();
+                $jurnal->siswa_id = $request->siswa_id[$i];
+                $jurnal->kehadiran = $request->kehadiran[$i];
+                $jurnal->guru_id = $guru_id;
+                $jurnal->created_at = Carbon::now();
+                $jurnal->save();
+            }
+            $notification = array(
+            'message' => 'Gagal Menyimpan Jurnal',
+            'alert-type' => 'error'
+            );
+
+            return redirect()->back()->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'Gagal Menyimpan Jurnal',
+                'alert-type' => 'error'
                 );
-                return redirect()->route('all.role.permissions')->with($notification);
+            return redirect()->back()->with($notification);
+        }
     }
 }
