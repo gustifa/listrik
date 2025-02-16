@@ -37,7 +37,7 @@
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Hari:</label>
-                            <select name="mulai_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                            <select name="jadwal_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
                                 @foreach ($jadwal as $item )
                                 <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item['hari']['nama_hari']. ' Mata Pelajaran '.$item['mapel']['nama_mapel']. ' <=> '.$item['waktu_mulai']['waktu_mulai']. ' s/d '.$item['waktu_selesai']['waktu_selesai']}}</option>

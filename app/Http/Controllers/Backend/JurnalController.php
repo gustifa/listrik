@@ -49,6 +49,7 @@ class JurnalController extends Controller
     public function SimpanJurnalGuru(Request $request){
         $siswa_id = $request->siswa_id;
         $kehadiran = $request->kehadiran;
+        $jadwal = $request->jadwal_id;
         $guru_id = Auth::user()->id;
         // dd($kehadiran);
 
@@ -74,6 +75,7 @@ class JurnalController extends Controller
                 $jurnal->siswa_id = $request->siswa_id[$i];
                 $jurnal->kehadiran = $request->kehadiran[$i];
                 $jurnal->guru_id = $guru_id;
+                $jurnal->jadwal_id = $jadwal;
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();
             }
