@@ -82,7 +82,7 @@ class JurnalController extends Controller
             }
             $notification = array(
             'message' => 'Berhasil Menyimpan Jurnal',
-            'alert-type' => 'error'
+            'alert-type' => 'success'
             );
 
             return redirect()->route('lihat.jurnal.guru')->with($notification);
