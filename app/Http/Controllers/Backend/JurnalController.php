@@ -43,4 +43,9 @@ class JurnalController extends Controller
     	return response()->json($allData);
 
     }
+
+    public function SimpanJurnalGuru(Request $request){
+        $siswa_id = $request->siswa_id;
+        dd($siswa_id);
+    }
 }

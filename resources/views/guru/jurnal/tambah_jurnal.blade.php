@@ -118,7 +118,7 @@
                                     <table class="table table-bordered table-striped" style="width: 100%">
                                         <thead>
                                             <tr>
-                                                <th>ID No</th>
+                                                <!-- <th>ID No</th> -->
                                                 <th>Nama Siswa </th>
                                                 <th>Kehadiran </th>
                                                 
@@ -133,7 +133,7 @@
                                 </div>
                                 
                             </div>
-                            {{-- <button type="submit" class="px-5 btn btn-primary">Simpan</button> --}}
+                            <button type="submit" class="px-5 btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -159,7 +159,7 @@
           $.each( data, function(key, v){
             html +=
             '<tr>'+
-            '<td>'+v.peserta_didik.id+'<input type="hidden" name="siswa_id[]" value="'+v.siswa_id+'"></td>'+
+            '<input type="hidden" name="siswa_id[]" value="'+v.siswa_id+'">'+
             '<td>'+v.peserta_didik.name+'</td>'+
             // '<td>'+'<input type="text" name="siswa_id[]" value="'+v.peserta_didik.name+'</td>'+
             // '<td>'+v.student.gender+'</td>'+
@@ -184,7 +184,7 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                category_name: {
+                siswa_id: {
                     required : true,
                 },
 
@@ -194,7 +194,7 @@
 
             },
             messages :{
-                category_name: {
+                siswa_id: {
                     required : 'Please Enter Category Name',
                 },
 
