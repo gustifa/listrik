@@ -12,21 +12,21 @@ use App\Models\AnggotaRombel;
 use App\Models\Rombel;
 use App\Models\Kehadiran;
 use Illuminate\Support\Facades\DB;
+use App\DataTables\JurnalDataTable;
 use Carbon\Carbon;
 
 class JurnalController extends Controller
 {
-    public function SemuaJurnalGuru(){
-        $id = Auth::user()->id;
-        $jurnal = Jurnal::latest()->get();
-        // $jurnal = Jurnal::find($id);
-        return view('guru.jurnal.lihat_jurnal', compact('jurnal'));
-    }
-
     // public function SemuaJurnalGuru(){
+    //     $id = Auth::user()->id;
+    //     $jurnal = Jurnal::latest()->get();
+    //     // $jurnal = Jurnal::find($id);
     //     return view('guru.jurnal.lihat_jurnal', compact('jurnal'));
-
     // }
+    public function SemuaJurnalGuru(JurnalDataTable $dataTable){
+        return $dataTable->render('guru.jurnal.lihat_jurnal');
+
+    }
     public function TambahJurnalGuru(){
         $id = Auth::user()->id;
         $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
@@ -63,7 +63,7 @@ class JurnalController extends Controller
                 $jurnal = new Jurnal();
                 $jurnal->siswa_id = $request->siswa_id[$i];
                 $jurnal->kehadiran = $request->kehadiran[$i];
-                $jurnal->guru_id = $guru_id;
+                // $jurnal->guru_id = $guru_id;
                 $jurnal->jadwal_id = $jadwal;
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();

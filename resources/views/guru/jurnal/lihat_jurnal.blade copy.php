@@ -4,7 +4,6 @@
 @section('title')
    Jadwal Pelajaran
 @endsection
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
     .large-chexbox{
@@ -34,7 +33,42 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                {{ $dataTable->table() }}
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width: 5px;">No</th>
+                            {{-- <th>Nama Guru</th> --}}
+                            <th>Hari</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Rombel</th>
+                            <th>Mulai</th>
+                            <th>Status</th>
+                            {{-- <th style="width: 20px;">Action</th> --}}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($jurnal as $key=> $item)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            
+                            {{-- <td>{{$item['user']['name']}}</td> --}}
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->mapel_id}}</td>
+                            <td>{{$item->siswa_id}}</td>
+                            <td>{{$item->guru_id}}</td>
+                            <td>{{$item->id}}</td>
+                            
+                            {{-- <td> --}}
+                                {{-- <a href="{{route('edit.jadwal',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a> --}}
+                                {{-- <!-- <a href="{{route('delete.jadwal',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
+                            {{-- </td> --}}
+                        </tr>
+                        @endforeach
+
+
+                    </tbody>
+
+                </table>
             </div>
         </div>
     </div>
@@ -69,8 +103,4 @@
     });
 
 </script>
-
-
 @endsection
-
-

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('tp_id')->nullable();
             $table->integer('siswa_id')->nullable();
-            $table->integer('guru_id')->nullable();
+            // $table->integer('guru_id')->nullable();
             $table->integer('jadwal_id')->nullable();
             $table->integer('kehadiran')->nullable();
             $table->timestamps();
