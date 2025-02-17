@@ -23,6 +23,10 @@ class JurnalController extends Controller
         return view('guru.jurnal.lihat_jurnal', compact('jurnal'));
     }
 
+    // public function SemuaJurnalGuru(){
+    //     return view('guru.jurnal.lihat_jurnal', compact('jurnal'));
+
+    // }
     public function TambahJurnalGuru(){
         $id = Auth::user()->id;
         $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
