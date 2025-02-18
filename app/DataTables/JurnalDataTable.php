@@ -22,7 +22,17 @@ class JurnalDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'jurnal.action')
+            // ->addColumn('action', 'jurnal.action')
+            ->addColumn('action', function($query){
+                $editBtn = "
+                            <a href='' class='btn btn-primary'><i class='bx bx-pencil'></i></a>
+                            ";
+                $deletetBtn = "
+                            <a href='' class='btn btn-danger ml-2 delete-item'><i class='bx bx-trash'></i></a>
+                            ";
+                
+                return $editBtn.$deletetBtn;
+            })
             ->setRowId('id');
     }
 
@@ -47,12 +57,12 @@ class JurnalDataTable extends DataTable
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('excel'),
+                        // Button::make('csv'),
+                        // Button::make('pdf'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     ]);
     }
 
@@ -62,15 +72,22 @@ class JurnalDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
+            // Column::computed('action')
+            Column::make('id')
+                ->width(10)
+                ->addClass('text-center'),
+            Column::make('siswa_id')
+                ->width(40)
+                ->addClass('text-center'),
+            Column::make('action')
+                  ->exportable(true)
+                  ->printable(true)
+                //   ->width(20)
                   ->addClass('text-center'),
-            Column::make('id'),
-            // Column::make('Kolom Q'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            // Column::make('id'),
+            // Column::make('siswa_id'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
         ];
     }
 
