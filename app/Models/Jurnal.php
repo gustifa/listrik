@@ -16,4 +16,8 @@ class Jurnal extends Model
     public function peserta_didik(){
         return $this->belongsTo(User::class, 'siswa_id', 'id');
     }
+
+    public function jadwal_guru(){
+        return $this->belongsTo(JadwalPelajaran::class, 'jadwal_id', 'id');
+    }
 }

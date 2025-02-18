@@ -33,6 +33,11 @@ class JurnalDataTable extends DataTable
                 
                 return $editBtn.$deletetBtn;
             })
+
+            // ->addColumn('jadwal_id', function($query){
+            //     $jadwal = $query->jadwal_guru->mapel->nama_mapel;
+            //     return $jadwal;
+            // })
             ->addColumn('siswa_id', function($query){
                 $siswa_id = $query->peserta_didik->name;
                 return $siswa_id;
@@ -105,7 +110,7 @@ class JurnalDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('siswa_id')
                 ->width(40),
-            Column::make('kehadiran'),
+            // Column::make('kehadiran'),
             Column::make('jadwal_id'),
             Column::make('created_at'),
             Column::make('updated_at'),
