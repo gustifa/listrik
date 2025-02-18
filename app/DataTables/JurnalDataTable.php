@@ -106,6 +106,7 @@ class JurnalDataTable extends DataTable
             Column::make('siswa_id')
                 ->width(40),
             Column::make('kehadiran'),
+            Column::make('jadwal_id'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::make('action')
