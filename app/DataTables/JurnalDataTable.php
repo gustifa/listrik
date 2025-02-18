@@ -33,6 +33,10 @@ class JurnalDataTable extends DataTable
                 
                 return $editBtn.$deletetBtn;
             })
+            ->addColumn('siswa_id', function($query){
+                $siswa_id = $query->peserta_didik->name;
+                return $siswa_id;
+            })
             ->setRowId('id');
     }
 
@@ -77,8 +81,7 @@ class JurnalDataTable extends DataTable
                 ->width(10)
                 ->addClass('text-center'),
             Column::make('siswa_id')
-                ->width(40)
-                ->addClass('text-center'),
+                ->width(40),
             Column::make('action')
                   ->exportable(true)
                   ->printable(true)
