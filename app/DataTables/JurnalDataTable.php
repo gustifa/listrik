@@ -89,8 +89,8 @@ class JurnalDataTable extends DataTable
                   ->addClass('text-center'),
             // Column::make('id'),
             // Column::make('siswa_id'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
         ];
     }
 
