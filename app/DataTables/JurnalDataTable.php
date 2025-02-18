@@ -37,6 +37,29 @@ class JurnalDataTable extends DataTable
                 $siswa_id = $query->peserta_didik->name;
                 return $siswa_id;
             })
+
+            ->addColumn('kehadiran', function($query){
+                if($query->kehadiran == 1){
+                    $kehadiran = "
+                            <span class='badge bg-success'>Hadir</span>
+                        ";
+                }else if($query->kehadiran == 2){
+                    $kehadiran = "
+                             <span class='badge bg-warning'>Sakit</span>
+                        ";
+                }else if($query->kehadiran == 3){
+                    $kehadiran = "
+                             <span class='badge bg-warning'>Izin</span>
+                        ";
+                }else{
+                    $kehadiran = "
+                    <span class='badge bg-danger'>Alfa</span>
+                        ";
+                }
+
+                return $kehadiran;   
+            })
+            ->rawColumns(['kehadiran', 'action'])
             ->setRowId('id');
     }
 
@@ -82,6 +105,9 @@ class JurnalDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('siswa_id')
                 ->width(40),
+            Column::make('kehadiran'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
             Column::make('action')
                   ->exportable(true)
                   ->printable(true)
@@ -89,8 +115,7 @@ class JurnalDataTable extends DataTable
                   ->addClass('text-center'),
             // Column::make('id'),
             // Column::make('siswa_id'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+
         ];
     }
 
