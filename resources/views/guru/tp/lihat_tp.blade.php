@@ -2,7 +2,7 @@
 @section('guru')
 
 @section('title')
-   Jadwal Pelajaran
+   Lihat TP
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
@@ -29,13 +29,13 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.jurnal.guru')}}" class="btn btn-primary">Tambah Jurnal</a>
+        <a href="{{route('tambah.tp.guru')}}" class="btn btn-primary">Tambah TP</a>
     </div>
     <div class="card">
         <div class="card-body">
            
                 {{ $dataTable->table() }}
-            
+           
         </div>
     </div>
 

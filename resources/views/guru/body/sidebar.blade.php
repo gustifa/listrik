@@ -34,6 +34,7 @@
             </a>
             <ul>
                 <li> <a href="{{route('lihat.jadwal.guru')}}"><i class='bx bx-radio-circle'></i>Jadwal</a>
+                <li> <a href="{{route('semua.tp.guru')}}"><i class='bx bx-radio-circle'></i>TP</a>
                 <li> <a href="{{route('lihat.jurnal.guru')}}"><i class='bx bx-radio-circle'></i>Jurnal</a>
                 </li>
                 

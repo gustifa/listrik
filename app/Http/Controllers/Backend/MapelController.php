@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\Sekolah;
 use App\Models\Proka;
+use App\DataTables\TujuanPembelajaranDataTable;
 
 class MapelController extends Controller
 {
@@ -97,4 +98,10 @@ class MapelController extends Controller
 
         return $pdf->stream('mapel.pdf');
     }
+
+    public function SemuaTp(TujuanPembelajaranDataTable $dataTable){
+        return $dataTable->render('guru.tp.lihat_tp');
+    }
+
+    
 }

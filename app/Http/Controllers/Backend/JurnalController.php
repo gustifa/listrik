@@ -57,7 +57,7 @@ class JurnalController extends Controller
                 $jurnal = new Jurnal();
                 $jurnal->siswa_id = $request->siswa_id[$i];
                 $jurnal->kehadiran = $request->kehadiran[$i];
-                // $jurnal->guru_id = $guru_id;
+                $jurnal->guru_id = $guru_id;
                 $jurnal->jadwal_id = $jadwal;
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();

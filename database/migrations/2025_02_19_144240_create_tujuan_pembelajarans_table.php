@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jurnals', function (Blueprint $table) {
+        Schema::create('tujuan_pembelajarans', function (Blueprint $table) {
             $table->id();
-            $table->integer('tp_id')->nullable();
-            $table->integer('siswa_id')->nullable();
-            $table->integer('guru_id')->nullable();
-            $table->integer('jadwal_id')->nullable();
-            $table->integer('kehadiran')->nullable();
+            $table->string('nama');
+            $table->integer('mapel_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jurnals');
+        Schema::dropIfExists('tujuan_pembelajarans');
     }
 };

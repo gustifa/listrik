@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Auth;
 
 class JurnalDataTable extends DataTable
 {
@@ -73,7 +74,8 @@ class JurnalDataTable extends DataTable
      */
     public function query(Jurnal $model): QueryBuilder
     {
-        return $model->newQuery();
+        //return $model->newQuery();
+        return $model->where('guru_id', Auth::id())->newQuery();
     }
 
     /**
@@ -108,12 +110,11 @@ class JurnalDataTable extends DataTable
             Column::make('id')
                 ->width(10)
                 ->addClass('text-center'),
-            Column::make('siswa_id')
-                ->width(40),
+            Column::make('siswa_id'),
             // Column::make('kehadiran'),
             Column::make('jadwal_id'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
             Column::make('action')
                   ->exportable(true)
                   ->printable(true)
