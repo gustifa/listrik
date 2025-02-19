@@ -58,7 +58,7 @@
                                         <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $post->id }}" class="btn btn-primary btn-sm">EDIT</a>
                                         <a href="{{route('delete.semester', $post->id)}}" id="btn-delete-post" data-id="{{ $post->id }}" class="btn btn-danger btn-sm">DELETE</a>
                                     </td>
-                                    <td>{{ date('Y-m-d',strtotime($post->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y H:i:s',strtotime($post->created_at)) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
