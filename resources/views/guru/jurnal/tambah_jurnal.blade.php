@@ -36,6 +36,16 @@
                         </div>
 
                         <div class="mb-3 form-group">
+                            <label class="form-label">Tujuan Pembelajaran:</label>
+                            <select name="jadwal_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
+                                @foreach ($tp as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$itemm->nama}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-group">
                             <label class="form-label">Nama Hari:</label>
                             <select name="jadwal_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
                                 <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>

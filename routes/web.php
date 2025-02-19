@@ -420,7 +420,8 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
      // Mapel
      Route::controller(MapelController::class)->group(function(){
         Route::get('/tp/all', 'SemuaTp')->name('semua.tp.guru');
-        Route::get('/tp/tambah', 'tambahTp')->name('tambah.tp.guru');
+        Route::get('/tp/tambah', 'tambahTpGuru')->name('tambah.tp.guru');
+        Route::post('/tp/simpan', 'simpanTpGuru')->name('simpan.tp.guru');
 
     });
 }); ///Akhir guru Group Middleware

@@ -11,6 +11,7 @@ use App\Models\Hari;
 use App\Models\AnggotaRombel;
 use App\Models\Rombel;
 use App\Models\Kehadiran;
+use App\Models\TujuanPembelajaran;
 use Illuminate\Support\Facades\DB;
 use App\DataTables\JurnalDataTable;
 use Carbon\Carbon;
@@ -28,9 +29,10 @@ class JurnalController extends Controller
         $hari = Hari::latest()->get();
         $rombel_id = Rombel::all();
         $anggota_rombel = AnggotaRombel::all();
+        $tp = TujuanPembelajaran::all();
         $kehadiran = Kehadiran::where('status', '1')->get();
         // dd($anggota_rombel);
-        return view('guru.jurnal.tambah_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran'));
+        return view('guru.jurnal.tambah_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran', 'tp'));
     }
 
     public function SimpaJurnalGuru(Request $request){

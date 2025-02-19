@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\Sekolah;
 use App\Models\Proka;
+use App\Models\TujuanPembelajaran;
 use App\DataTables\TujuanPembelajaranDataTable;
 
 class MapelController extends Controller
@@ -101,6 +102,26 @@ class MapelController extends Controller
 
     public function SemuaTp(TujuanPembelajaranDataTable $dataTable){
         return $dataTable->render('guru.tp.lihat_tp');
+    }
+
+    public function tambahTpGuru(){
+        $mapel = Mapel::all();
+        return view('guru.tp.tambah_tp', compact('mapel'));
+    }
+    public function simpanTpGuru(Request $request){
+        TujuanPembelajaran::insert([
+            'mapel_id' => $request->mapel_id,
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'TP Berhasil ditambahkan',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('semua.tp.guru')->with($notification);
     }
 
     

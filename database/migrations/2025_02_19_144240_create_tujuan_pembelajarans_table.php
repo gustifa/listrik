@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->integer('mapel_id')->nullable();
+            $table->integer('guru_id')->nullable();
+            $table->enum('status', ['1', '0'])->default('0');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
