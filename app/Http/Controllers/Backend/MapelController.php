@@ -28,6 +28,12 @@ class MapelController extends Controller
         return view('admin.backend.mapel.tambah_mapel', compact('proka'));
     }
 
+    public function EditMapel($id){
+        $proka = Proka::latest()->get();
+        $mapel = Mapel::find($id);
+        return view('admin.backend.mapel.edit_mapel', compact('proka', 'mapel'));
+    }
+
     public function SimpanMapel(Request $request){
         Mapel::insert([
             'jurusan_id' => $request->jurusan_id,
@@ -102,7 +108,7 @@ class MapelController extends Controller
     public function UpdateMapelStatus(Request $request){
         $mapelId = $request->input('mapel');
         $isChecked = $request->input('is_checked', 0);
-        $mapel = Mapel::find($$mapelId);
+        $mapel = Mapel::find($mapelId);
         if ($mapel) {
             $mapel->status =  $isChecked;
             $mapel->save();

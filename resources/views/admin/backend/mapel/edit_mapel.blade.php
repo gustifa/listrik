@@ -2,7 +2,7 @@
 @section('admin')
 
 @section('title')
-   Tambah Mata Pelajaran
+   Edit Mata Pelajaran
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -15,7 +15,7 @@
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('all.category')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Mapel</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Mapel</li>
                 </ol>
             </nav>
         </div>
@@ -28,11 +28,11 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('simpan.mapel')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('update.mapel')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Course Category </label>
+                            <label for="input1" class="form-label">Nama Program Keahlian: </label>
                             <select name="proka_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option selected="" disabled>Nama Proka</option>
                                 @foreach ($proka as $item )
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Nama Jurusan </label>
+                            <label for="input1" class="form-label">Nama Jurusan: </label>
                             <select name="jurusan_id" class="mb-3 form-select" aria-label="Default select example">
                                 <option> </option>
             
@@ -51,20 +51,20 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Nama Mapel:</label>
-                            <input type="text" class="form-control" name="nama_mapel">
+                            <input type="text" class="form-control" name="nama_mapel" value="{{$mapel->nama_mapel}}">
                         </div>
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Kode Mapel:</label>
-                            <input type="text" class="form-control" name="kode_mapel">
+                            <input type="text" class="form-control" name="kode_mapel" value="{{$mapel->kode_mapel}}">
                         </div>
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Keterangan:</label>
-                            <input type="text" class="form-control" name="keterangan">
+                            <input type="text" class="form-control" name="keterangan" value="{{$mapel->keterangan}}">
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="px-3 btn btn-primary"><i class="bx bx-save"></i>Simpan</button>
+                            <button type="submit" class="px-3 btn btn-primary"><i class="bx bx-save"></i>Update</button>
                             {{-- <button type="reset" value="reset" class="btn btn-secondary" >Close</button> --}}
                         </div>
                     </form>

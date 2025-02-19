@@ -150,7 +150,7 @@
             // send an ajax request to update status
 
             $.ajax({
-                url: "{{ route('update.status.mapel') }}",
+                url: "{{ route('update.mapel.status') }}",
                 method: "POST",
                 data: {
                     mapel : mapelId,
