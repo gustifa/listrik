@@ -125,7 +125,7 @@
                             </td>
                             <td>{{$item->keterangan}}</td>
                             <td>
-                                <a href="{{route('edit.mapel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
+                                <a href="{{route('edit.mapel',$item->id)}}" class="btn btn-warning" title="Edit"><i class="bx bx-edit"></i></a>
                                 <a href="{{route('hapus.mapel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>

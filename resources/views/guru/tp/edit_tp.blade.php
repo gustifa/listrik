@@ -50,7 +50,7 @@
                             <input type="text" class="form-control" name="keterangan" value="{{$tp->keterangan}}">
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="px-5 btn btn-primary">Update</button>
+                            <button type="submit" class="px-3 btn btn-primary"><i class="bx bx-save"></i>Update</button>
                         </div>
                     </form>
                 </div>

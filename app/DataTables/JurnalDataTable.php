@@ -111,7 +111,7 @@ class JurnalDataTable extends DataTable
                 ->width(10)
                 ->addClass('text-center'),
             Column::make('siswa_id'),
-            // Column::make('kehadiran'),
+            Column::make('kehadiran'),
             Column::make('jadwal_id'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
