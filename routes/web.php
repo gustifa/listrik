@@ -183,6 +183,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/mapel/cetak', 'CetakMapel')->name('cetak.mapel');
         Route::get('/tp/all', 'SemuaMapel')->name('semua.mapel');
         Route::get('/tp/tambah', 'TpMapel')->name('tp.mapel');
+        Route::post('/update/mapel/status', 'UpdateMapelStatus')->name('update.mapel.status');
 
     });
 
@@ -422,6 +423,8 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
         Route::get('/tp/all', 'SemuaTp')->name('semua.tp.guru');
         Route::get('/tp/tambah', 'tambahTpGuru')->name('tambah.tp.guru');
         Route::post('/tp/simpan', 'simpanTpGuru')->name('simpan.tp.guru');
+        Route::get('/tp/edit/{id}', 'editTpGuru')->name('edit.tp.guru');
+        Route::post('/tp/update', 'updateTpGuru')->name('update.tp.guru');
 
     });
 }); ///Akhir guru Group Middleware

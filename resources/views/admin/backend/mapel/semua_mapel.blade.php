@@ -4,6 +4,13 @@
 @section('title')
    Data Mapel
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    .large-chexbox{
+        transform: scale(1.5);
+        /* margin-left: 2em; */
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -109,6 +116,13 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_mapel}}</td>
                             <td>{{$item->kode_mapel}}</td>
+                            <td>{{$item->kode_mapel}}</td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-mapel="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
+                                </div>
+                            </td>
                             <td>{{$item->keterangan}}</td>
                             <td>
                                 <a href="{{route('edit.mapel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
@@ -126,5 +140,33 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var mapelId = $(this).data('mapel');
+            var isChecked = $(this).is(':checked');
+
+            // send an ajax request to update status
+
+            $.ajax({
+                url: "{{ route('update.status.mapel') }}",
+                method: "POST",
+                data: {
+                    mapel : mapelId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    toastr.success(response.message);
+                },
+                error: function(){
+
+                }
+            });
+
+        });
+    });
+</script>
 
 @endsection

@@ -99,13 +99,26 @@ class MapelController extends Controller
 
         return $pdf->stream('mapel.pdf');
     }
+    public function UpdateMapelStatus(Request $request){
+        $mapelId = $request->input('mapel');
+        $isChecked = $request->input('is_checked', 0);
+        $mapel = Mapel::find($$mapelId);
+        if ($mapel) {
+            $mapel->status =  $isChecked;
+            $mapel->save();
+        }
+        return response()->json(['message'=>'Mapel Berhasil diganti']);
+
+    }
+
+
 
     public function SemuaTp(TujuanPembelajaranDataTable $dataTable){
         return $dataTable->render('guru.tp.lihat_tp');
     }
 
     public function tambahTpGuru(){
-        $mapel = Mapel::all();
+        $mapel = Mapel::where('status', '1')->get();
         return view('guru.tp.tambah_tp', compact('mapel'));
     }
     public function simpanTpGuru(Request $request){
@@ -122,6 +135,32 @@ class MapelController extends Controller
         );
 
         return redirect()->route('semua.tp.guru')->with($notification);
+    }
+
+    public function editTpGuru($id){
+        $tp = TujuanPembelajaran::find($id);
+        $mapel = Mapel::all();
+        return view('guru.tp.edit_tp', compact('tp', 'mapel'));
+    }
+
+    public function updateTpGuru(Request $request){
+        $tp_id = $request->id;
+        // dd($tp_id);
+
+        TujuanPembelajaran::find($tp_id)->update([
+            'mapel_id' => $request->mapel_id,
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'TP Berhasil diperbaharui',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('semua.tp.guru')->with($notification);
+
     }
 
     

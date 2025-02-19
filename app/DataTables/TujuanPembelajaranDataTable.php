@@ -22,7 +22,16 @@ class TujuanPembelajaranDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'tujuanpembelajaran.action')
+            ->addColumn('action', function($query){
+                $editBtn = "
+                            <a href='".route('edit.tp.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-pencil'></i></a>
+                            ";
+                $deletetBtn = "
+                            <a href='' id='delete' class='btn btn-danger ml-2 delete-item'><i class='bx bx-trash'></i></a>
+                            ";
+                return $editBtn.$deletetBtn;
+            })
+            ->rawColumns(['nama', 'action'])
             ->setRowId('id');
     }
 
@@ -62,13 +71,22 @@ class TujuanPembelajaranDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')
+                ->exportable(false)
+                ->printable(false)
+                ->width(50)
+                ->addClass('text-center'),
+            Column::make('nama'),
+            Column::make('keterangan')
+                ->exportable(false)
+                ->printable(false)
+                ->width(500),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(150)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('nama'),
+
             // Column::make('created_at'),
             // Column::make('updated_at'),
         ];

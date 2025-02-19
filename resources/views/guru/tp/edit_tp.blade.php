@@ -28,12 +28,13 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('simpan.tp.guru')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('update.tp.guru')}}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" value="{{$tp->id}}" name="id">
                         <div class="mb-3 form-group">
                             <label class="form-label">Mata Pelajaran:</label>
                             <select name="mapel_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
-                                <option disabled data-select2-id="select2-data-2-747t">Pilih Mapel</option>
+                                <option disabled data-select2-id="select2-data-2-747t">Pilih Nama Mapel</option>
                                 @foreach ($mapel as $item )
                                 <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->nama_mapel}}</option>
                                 @endforeach
@@ -41,15 +42,15 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Tujuan Pembelajaran:</label>
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nama" value="{{$tp->nama}}">
                         </div>
 
                         <div class="mb-3 form-group">
                             <label class="form-label">Keterangan:</label>
-                            <input type="text" class="form-control" name="keterangan">
+                            <input type="text" class="form-control" name="keterangan" value="{{$tp->keterangan}}">
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="px-3 btn btn-primary"><i class="bx bx-save"></i>Simpan</button>
+                            <button type="submit" class="px-5 btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
