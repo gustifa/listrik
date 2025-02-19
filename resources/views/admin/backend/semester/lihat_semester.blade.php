@@ -42,6 +42,7 @@
                             <!-- <th style="width: 5px;">No</th> -->
                             <th>Semester</th>
                             <th>Status</th>
+                            <th>Dibuat</th>
                             <th style="width: 20px;">Action</th>
                         </tr>
                     </thead>
@@ -52,10 +53,12 @@
                                     <!-- <td>{{$key+1}}</td> -->
                                     <td>{{ $post->nama }}</td>
                                     <td>{{ $post->keterangan }}</td>
+                                    <td>{{ date('d-m-Y',strtotime($post->created_at)) }}</td>
                                     <td class="text-center">
                                         <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $post->id }}" class="btn btn-primary btn-sm">EDIT</a>
                                         <a href="{{route('delete.semester', $post->id)}}" id="btn-delete-post" data-id="{{ $post->id }}" class="btn btn-danger btn-sm">DELETE</a>
                                     </td>
+                                    <td>{{ date('Y-m-d',strtotime($post->created_at)) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
