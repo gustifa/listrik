@@ -15,12 +15,18 @@ use App\Models\TujuanPembelajaran;
 use Illuminate\Support\Facades\DB;
 use App\DataTables\JurnalDataTable;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 
 class JurnalController extends Controller
 {
-    public function SemuaJurnalGuru(JurnalDataTable $dataTable){
-        return $dataTable->render('guru.jurnal.lihat_jurnal');
+    // public function SemuaJurnalGuru(JurnalDataTable $dataTable){
+    //     return $dataTable->render('guru.jurnal.lihat_jurnal');
 
+    // }
+
+    public function SemuaJurnalGuru(){
+        $data = Jurnal::select('siswa_id')->get();
+        return view('guru.jurnal.lihat_jurnal', compact('data'));
     }
     public function TambahJurnalGuru(){
         $id = Auth::user()->id;
@@ -81,8 +87,11 @@ class JurnalController extends Controller
         // }
 
                 $jurnal = new Jurnal();
-                $jurnal->siswa_id = $request->siswa_id;
-                $jurnal->kehadiran = $request->kehadiran;
+                $jurnal->siswa_id = $request['siswa_id'];
+                $jurnal->kehadiran = $request['kehadiran'];
+                $jurnal->guru_id = Auth::user()->id;
+                $jurnal->jadwal_id = $request->jadwal_id;
+                $jurnal->tp_id = $request->tp_id;
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();
 
