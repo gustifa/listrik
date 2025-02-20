@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jurnal extends Model
 {
-    protected $guarded = [];
+    // protected $guarded = [];
+
+    protected $casts = [
+        'siswa_id' => 'array',
+        'kehadiran' => 'array'
+    ];
 
 
     public function rombel(){

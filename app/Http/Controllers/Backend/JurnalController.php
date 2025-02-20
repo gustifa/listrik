@@ -49,35 +49,50 @@ class JurnalController extends Controller
     }
 
     public function SimpanJurnalGuru(Request $request){
-        $siswa_id = $request->siswa_id;
-        $kehadiran = $request->kehadiran;
-        $jadwal = $request->jadwal_id;
-        $tp = $request->tp_id;
-        $guru_id = Auth::user()->id;
-        if($siswa_id == !NULL){
-            $countsiswa_id = count($siswa_id);
-            for ($i=0; $i < $countsiswa_id; $i++) { 
+        // $siswa_id = $request->siswa_id;
+        // $kehadiran = $request->kehadiran;
+        // $jadwal = $request->jadwal_id;
+        // $tp = $request->tp_id;
+        // $guru_id = Auth::user()->id;
+        // if($siswa_id == !NULL){
+        //     $countsiswa_id = count($siswa_id);
+        //     for ($i=0; $i < $countsiswa_id; $i++) { 
+        //         $jurnal = new Jurnal();
+        //         $jurnal->siswa_id = $request->siswa_id[$i];
+        //         $jurnal->kehadiran = $request->kehadiran[$i];
+        //         $jurnal->tp_id = $tp;
+        //         $jurnal->guru_id = $guru_id;
+        //         $jurnal->jadwal_id = $jadwal;
+        //         $jurnal->created_at = Carbon::now();
+        //         $jurnal->save();
+        //     }
+        //     $notification = array(
+        //     'message' => 'Berhasil Menyimpan Jurnal',
+        //     'alert-type' => 'success'
+        //     );
+
+        //     return redirect()->route('lihat.jurnal.guru')->with($notification);
+        // }else{
+        //     $notification = array(
+        //         'message' => 'Gagal Menyimpan Jurnal',
+        //         'alert-type' => 'error'
+        //         );
+        //     return redirect()->back()->with($notification);
+        // }
+
                 $jurnal = new Jurnal();
-                $jurnal->siswa_id = $request->siswa_id[$i];
-                $jurnal->kehadiran = $request->kehadiran[$i];
-                $jurnal->tp_id = $tp;
-                $jurnal->guru_id = $guru_id;
-                $jurnal->jadwal_id = $jadwal;
+                $jurnal->siswa_id = $request->siswa_id;
+                $jurnal->kehadiran = $request->kehadiran;
                 $jurnal->created_at = Carbon::now();
                 $jurnal->save();
-            }
-            $notification = array(
-            'message' => 'Berhasil Menyimpan Jurnal',
-            'alert-type' => 'success'
-            );
 
-            return redirect()->route('lihat.jurnal.guru')->with($notification);
-        }else{
-            $notification = array(
-                'message' => 'Gagal Menyimpan Jurnal',
-                'alert-type' => 'error'
-                );
-            return redirect()->back()->with($notification);
-        }
+                $notification = array(
+                        'message' => 'Berhasil Menyimpan Jurnal',
+                        'alert-type' => 'success'
+                        );
+            
+                        return redirect()->route('lihat.jurnal.guru')->with($notification);
+
+
     }
 }
