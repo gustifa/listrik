@@ -425,6 +425,7 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
         Route::post('/tp/simpan', 'simpanTpGuru')->name('simpan.tp.guru');
         Route::get('/tp/edit/{id}', 'editTpGuru')->name('edit.tp.guru');
         Route::post('/tp/update', 'updateTpGuru')->name('update.tp.guru');
+        Route::get('tp-jurnal/tambah/{tp}', 'TpTambahJurnal')->name('tambah.jurnal');
 
     });
 }); ///Akhir guru Group Middleware

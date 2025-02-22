@@ -14,6 +14,11 @@ use App\Models\User;
 use App\Models\Sekolah;
 use App\Models\Proka;
 use App\Models\TujuanPembelajaran;
+use App\Models\JadwalPelajaran;
+use App\Models\Hari;
+use App\Models\Rombel;
+use App\Models\AnggotaRombel;
+use App\Models\Kehadiran;
 use App\DataTables\TujuanPembelajaranDataTable;
 
 class MapelController extends Controller
@@ -171,6 +176,22 @@ class MapelController extends Controller
         );
         return redirect()->route('semua.tp.guru')->with($notification);
 
+    }
+
+    public function TpTambahJurnal($tp){
+        $id = Auth::user()->id;
+        $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
+        $rombel = $jadwal->implode('rombel_id');
+        $hari = Hari::latest()->get();
+        $rombel_id = Rombel::all();
+        $anggota_rombel = AnggotaRombel::all();
+        $tp = TujuanPembelajaran::find($tp);
+        // $tp = $implode_tp->implode('nama');
+        // dd($tp);
+        $kehadiran = Kehadiran::where('status', '1')->get();
+        // dd($anggota_rombel);
+        // echo "tes";
+        return view('guru.tp.tambah_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran', 'tp'));
     }
 
     
