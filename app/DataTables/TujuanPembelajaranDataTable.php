@@ -73,10 +73,10 @@ class TujuanPembelajaranDataTable extends DataTable
                     ->selectStyleSingle()
                     ->buttons([
                         // Button::make('excel'),
-                        // Button::make('csv'),
-                        // Button::make('pdf'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
+                        // // Button::make('csv'),
+                        // // Button::make('pdf'),
+                        // // Button::make('print'),
+                        // // Button::make('reset'),
                         // Button::make('reload')
                     ]);
     }
@@ -88,19 +88,22 @@ class TujuanPembelajaranDataTable extends DataTable
     {
         return [
             Column::make('id')
-                ->exportable(false)
-                ->printable(false)
-                ->width(50)
+            ->exportable(true)
+            ->printable(true)
+                ->width(10)
                 ->addClass('text-center'),
             // Column::make('no'),
-            Column::make('nama'),
-            Column::make('keterangan')
+            Column::make('nama')
                 ->exportable(false)
                 ->printable(false)
-                ->width(500),
+                ->width(50),
+            Column::make('keterangan')
+                ->exportable(true)
+                ->printable(true)
+                ->width(50),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
+            ->exportable(true)
+            ->printable(true)
                   ->width(150)
                   ->addClass('text-center'),
 
