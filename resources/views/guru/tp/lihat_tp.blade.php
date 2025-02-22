@@ -29,8 +29,8 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.tp.guru')}}" class="btn btn-primary">Tambah TP</a>
-        <a href="{{route('tambah.jurnal.guru')}}" class="btn btn-primary">Tambah Jurnal</a>
+        <a href="{{route('tambah.tp.guru')}}" class="btn btn-success">Tambah TP</a>
+        <a href="{{route('tambah.jurnal.guru')}}" class="btn btn-warning">Tambah Jurnal</a>
     </div>
     <div class="card">
         <div class="card-body">
