@@ -128,9 +128,11 @@ class MapelController extends Controller
         return view('guru.tp.tambah_tp', compact('mapel'));
     }
     public function simpanTpGuru(Request $request){
+        $guru_id = Auth::user()->id;
         TujuanPembelajaran::insert([
             'mapel_id' => $request->mapel_id,
             'nama' => $request->nama,
+            'guru_id' => $guru_id,
             'keterangan' => $request->keterangan,
             'created_at' => Carbon::now(),
         ]);
@@ -151,11 +153,13 @@ class MapelController extends Controller
 
     public function updateTpGuru(Request $request){
         $tp_id = $request->id;
+        $guru_id = Auth::user()->id;
         // dd($tp_id);
 
         TujuanPembelajaran::find($tp_id)->update([
             'mapel_id' => $request->mapel_id,
             'nama' => $request->nama,
+            'guru_id' => $guru_id,
             'keterangan' => $request->keterangan,
             'updated_at' => Carbon::now(),
 

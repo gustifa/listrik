@@ -44,6 +44,11 @@ class JurnalDataTable extends DataTable
                 return $siswa_id;
             })
 
+            ->addColumn('tp_id', function($query){
+                $tp = $query->tp->nama;
+                return $tp;
+            })
+
             ->addColumn('kehadiran', function($query){
                 if($query->kehadiran == 1){
                     $kehadiran = "
@@ -65,7 +70,7 @@ class JurnalDataTable extends DataTable
 
                 return $kehadiran;   
             })
-            ->rawColumns(['kehadiran', 'action'])
+            ->rawColumns(['kehadiran', 'action', 'tp_id'])
             ->setRowId('id');
     }
 
@@ -111,6 +116,7 @@ class JurnalDataTable extends DataTable
                 ->width(10)
                 ->addClass('text-center'),
             Column::make('siswa_id'),
+            Column::make('tp_id'),
             Column::make('kehadiran'),
             Column::make('jadwal_id'),
             // Column::make('created_at'),

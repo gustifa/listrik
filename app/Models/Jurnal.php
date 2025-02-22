@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jurnal extends Model
 {
-    // protected $guarded = [];
+    protected $guarded = [];
 
-    protected $casts = [
-        'siswa_id' => 'array',
-        'kehadiran' => 'array'
-    ];
+    // protected $casts = [
+    //     'siswa_id' => 'array',
+    //     'kehadiran' => 'array'
+    // ];
 
 
     public function rombel(){
@@ -25,4 +25,9 @@ class Jurnal extends Model
     public function jadwal_guru(){
         return $this->belongsTo(JadwalPelajaran::class, 'jadwal_id', 'id');
     }
+
+    public function tp(){
+        return $this->belongsTo(TujuanPembelajaran::class, 'tp_id', 'id');
+    }
+
 }

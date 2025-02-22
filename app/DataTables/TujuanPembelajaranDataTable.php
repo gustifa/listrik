@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Auth;
 
 class TujuanPembelajaranDataTable extends DataTable
 {
@@ -29,8 +30,23 @@ class TujuanPembelajaranDataTable extends DataTable
                 $deletetBtn = "
                             <a href='' id='delete' class='btn btn-danger ml-2 delete-item'><i class='bx bx-trash'></i></a>
                             ";
-                return $editBtn.$deletetBtn;
+                $detailBtn = "
+                            <a href='".route('edit.tp.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-detail'></i></a>
+                            ";
+                $addBtn = "
+                            <a href='".route('edit.tp.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-plus'></i></a>
+                            ";
+                return $addBtn.$detailBtn.$editBtn.$deletetBtn;
             })
+
+            // ->addColumn('no', function($query){
+            //     $key = 0;
+            //     foreach ($query as $key => $editBtn) {
+
+            //     }
+            //     // $editBtn = '1';
+            //     return  $editBtn++;
+            // })
             ->rawColumns(['nama', 'action'])
             ->setRowId('id');
     }
@@ -40,7 +56,7 @@ class TujuanPembelajaranDataTable extends DataTable
      */
     public function query(TujuanPembelajaran $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->orderBy('id')->where('guru_id', Auth::id())->newQuery();
     }
 
     /**
@@ -76,6 +92,7 @@ class TujuanPembelajaranDataTable extends DataTable
                 ->printable(false)
                 ->width(50)
                 ->addClass('text-center'),
+            // Column::make('no'),
             Column::make('nama'),
             Column::make('keterangan')
                 ->exportable(false)
