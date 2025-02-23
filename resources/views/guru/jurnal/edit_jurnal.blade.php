@@ -47,10 +47,9 @@
                             <td>{{$item->peserta_didik->name}}</td>
                             <td>
                             <select name="kehadiran[]" class="form-select select2-hidden-accessible">
-                                <option value="1">Hadir</option>
-                                <option value="2">Sakit</option>
-                                <option value="3">Izin</option>
-                                <option value="4">Alfa</option>
+                            @foreach ($kehadiran as $cat) 
+                            <option value="{{ $cat->id }}" {{ $cat->id == $item->kehadiran ? 'selected' : '' }} >{{ $cat->nama_kehadiran }}</option>
+                            @endforeach
                             </select>
                             </td>
                             
