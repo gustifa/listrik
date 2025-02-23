@@ -19,6 +19,7 @@ use App\Models\Hari;
 use App\Models\Rombel;
 use App\Models\AnggotaRombel;
 use App\Models\Kehadiran;
+use App\Models\Jurnal;
 use App\DataTables\TujuanPembelajaranDataTable;
 
 class MapelController extends Controller
@@ -193,6 +194,7 @@ class MapelController extends Controller
         // echo "tes";
         return view('guru.tp.tambah_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran', 'tp'));
     }
+
 
     
 }

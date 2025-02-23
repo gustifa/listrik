@@ -121,4 +121,18 @@ class JurnalController extends Controller
 
 
     }
+
+    public function ViewJurnal($id){
+        // dd($id);
+        // $tp_id = TujuanPembelajaran::find($id);
+        // dd($tp_id);
+        //$id_jurnal = $tp_id->implode('id');
+        //dd($jurnal);
+        // $jurnal = Jurnal::find($id_jurnal);
+        $jurnal = Jurnal::where('tp_id', $id)->get();
+
+        // dd($jurnal);
+        
+        return view('guru.jurnal.view_jurnal', compact('jurnal'));
+    }
 }

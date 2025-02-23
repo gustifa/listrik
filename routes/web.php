@@ -416,6 +416,7 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
         Route::post('/guru/update/jurnal/status', 'UpdateJurnalGuruStatus')->name('update.jurnal.guru.status');
         Route::get('/guru/jurnal/delete/{id}', 'DeleteJurnal')->name('delete.jurnal.guru');
         Route::get('/reg/getstudents', 'GetAnggotaRombel')->name('get.anggota.rombel');
+        Route::get('jurnal/view/{id}', 'ViewJurnal')->name('view.jurnal');
     });
 
      // Mapel
@@ -426,6 +427,7 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
         Route::get('/tp/edit/{id}', 'editTpGuru')->name('edit.tp.guru');
         Route::post('/tp/update', 'updateTpGuru')->name('update.tp.guru');
         Route::get('tp-jurnal/add/{tp}', 'TpTambahJurnal')->name('tambah.jurnal');
+
 
     });
 }); ///Akhir guru Group Middleware

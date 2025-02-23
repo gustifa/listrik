@@ -31,7 +31,7 @@ class TujuanPembelajaranDataTable extends DataTable
                             <a href='' id='delete' class='btn btn-danger ml-2 delete-item'><i class='bx bx-trash'></i></a>
                             ";
                 $detailBtn = "
-                            <a href='".route('edit.tp.guru', $query->id)."' class='btn btn-warning'><i class='bx bx-detail'></i></a>
+                            <a href='".route('view.jurnal', $query->id)."' class='btn btn-warning'><i class='bx bx-detail'></i></a>
                             ";
                 $addBtn = "
                             <a href='".route('tambah.jurnal', $query->id)."' class='btn btn-success'><i class='bx bx-plus'></i></a>
