@@ -124,15 +124,18 @@ class JurnalController extends Controller
     }
 
     public function EditJurnalGuru($id){
-        $id = Auth::user()->id;
-        $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
-        $rombel = $jadwal->implode('rombel_id');
-        $hari = Hari::latest()->get();
-        $rombel_id = Rombel::all();
-        $anggota_rombel = AnggotaRombel::all();
-        $tp = TujuanPembelajaran::all();
-        $kehadiran = Kehadiran::where('status', '1')->get();
-        return view('guru.jurnal.edit_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran', 'tp'));
+        //dd($id);
+        // $id = Auth::user()->id;
+        // $jadwal = JadwalPelajaran::latest()->Where('user_id',$id)->where('status', '1')->get();
+        // $rombel = $jadwal->implode('rombel_id');
+        // $hari = Hari::latest()->get();
+        // $rombel_id = Rombel::all();
+        // $anggota_rombel = AnggotaRombel::all();
+        // $tp = TujuanPembelajaran::find($id);
+        // $kehadiran = Kehadiran::where('status', '1')->get();
+        $jurnal = Jurnal::find($id);
+        //dd($jurnal);
+        return view('guru.jurnal.edit_jurnal', compact('jurnal'));
     }
 
     public function ViewJurnal($id){
