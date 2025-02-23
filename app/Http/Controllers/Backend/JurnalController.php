@@ -131,12 +131,21 @@ class JurnalController extends Controller
         $rombel_id = Rombel::all();
         $anggota_rombel = AnggotaRombel::all();
         $kehadiran = Kehadiran::all();
-        // dd($kehadiran);
-        //$tp = TujuanPembelajaran::all();
-        $kehadiran = Kehadiran::where('status', '1')->get();
         $jurnal = Jurnal::where('tp_id',$tp)->get();
+        // dd($kehadiran);
+        $tp = TujuanPembelajaran::find($tp);
+        //dd($tp);
+        $kehadiran = Kehadiran::where('status', '1')->get();
+        
         // dd($jurnal);
         return view('guru.jurnal.edit_jurnal', compact('jadwal', 'rombel_id', 'anggota_rombel', 'kehadiran', 'tp', 'jurnal', 'kehadiran'));
+    }
+
+    public function UpdateJurnalGuru(Request $request){
+        $id = $request->id;
+        $kehadiran = $request->kehadiran;
+        $siswa_id = $request->siswa_id;
+        dd($siswa_id);
     }
 
     public function ViewJurnal($id){

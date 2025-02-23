@@ -9,7 +9,7 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">Bengkel</div>
+        <div class="breadcrumb-title pe-3">Edit Kehadiran</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
@@ -24,15 +24,26 @@
     <div class="row">
         <div class="mx-auto col-xl-12">
 
-            {{-- <h6 class="mb-0 text-uppercase">Add Category</h6> --}}
-            <hr/>
+            <!-- <h6 class="mb-0 text-uppercase">{{$tp->nama}}</h6>
+            <hr/> -->
             <div class="card">
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('update.jurnal.guru')}}" enctype="multipart/form-data">
                         @csrf
-                       
+                        <div class="row">
+                            <div class="mb-3 form-group col-6">
+                                <input type="hidden" name="id" value="{{$tp->id}}">
+                                <label class="form-label">Tujuan Pembelajaran:</label>
+                                <input type="text" class="form-control" name="nama" value="{{$tp->nama}}">
+                            </div>
+                            <div class="mb-3 form-group col-6">
+                                <label class="form-label">Keterangan:</label>
+                                <input type="text" class="form-control" name="keterangan" value="{{$tp->keterangan}}">
+                            </div>
+                        </div>
                     
-
+                        <div class="mb-3 form-group">
+                        <label class="form-label">Peserta Didik:</label>
                 <table class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -43,12 +54,12 @@
                     <tbody>
                         @foreach($jurnal as $item)
                         <tr>
-                            
+                            <input type="hidden" name="siswa_id[]" value="{{$item->siswa_id}}">
                             <td>{{$item->peserta_didik->name}}</td>
                             <td>
                             <select name="kehadiran[]" class="form-select select2-hidden-accessible">
-                            @foreach ($kehadiran as $cat) 
-                            <option value="{{ $cat->id }}" {{ $cat->id == $item->kehadiran ? 'selected' : '' }} >{{ $cat->nama_kehadiran }}</option>
+                            @foreach ($kehadiran as $hadir) 
+                            <option value="{{ $hadir->id }}" {{ $hadir->id == $item->kehadiran ? 'selected' : '' }} >{{ $hadir->nama_kehadiran }}</option>
                             @endforeach
                             </select>
                             </td>
@@ -59,6 +70,7 @@
                     </tbody>
 
                 </table>
+                </div>
 
                         <div class="mb-3">
                             <button type="submit" class="px-3 btn btn-primary"><i class="bx bx-save"></i>Update</button>
