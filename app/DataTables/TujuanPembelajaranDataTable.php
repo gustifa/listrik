@@ -24,6 +24,12 @@ class TujuanPembelajaranDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
+
+     
+                    $addBtn = "
+                            <a href='".route('tambah.jurnal', $query->id)."' class='btn btn-success'><i class='bx bx-plus'></i></a>
+                            ";
+
                 $editBtn = "
                             <a href='".route('edit.jurnal.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-pencil'></i></a>
                             ";
@@ -33,9 +39,7 @@ class TujuanPembelajaranDataTable extends DataTable
                 $detailBtn = "
                             <a href='".route('view.jurnal', $query->id)."' class='btn btn-warning'><i class='bx bx-detail'></i></a>
                             ";
-                $addBtn = "
-                            <a href='".route('tambah.jurnal', $query->id)."' class='btn btn-success'><i class='bx bx-plus'></i></a>
-                            ";
+                
                 return $addBtn.$detailBtn.$editBtn.$deletetBtn;
             })
 

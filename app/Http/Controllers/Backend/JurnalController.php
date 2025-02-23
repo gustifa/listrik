@@ -72,6 +72,13 @@ class JurnalController extends Controller
     }
 
     public function SimpanJurnalGuru(Request $request){
+        $request->validate([
+            // 'tp_id' => ['required','string','max:255'],
+            // 'ka_proka_id' => ['required', 'string','unique:prokas'],
+            'tp_id' => ['required', 'string','unique:jurnals'],
+            // 'kode_proka' => ['required', 'string','unique:prokas'],
+        ]);
+        
         $siswa_id = $request->siswa_id;
         $kehadiran = $request->kehadiran;
         $jadwal = $request->jadwal_id;
