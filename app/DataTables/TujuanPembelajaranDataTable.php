@@ -47,7 +47,11 @@ class TujuanPembelajaranDataTable extends DataTable
             //     // $editBtn = '1';
             //     return  $editBtn++;
             // })
-            ->rawColumns(['nama', 'action'])
+            ->addColumn('mapel_id', function($query){
+                $mapel = $query->mapel->nama_mapel;
+                return  $mapel;
+            })
+            ->rawColumns(['nama', 'action', 'mapel'])
             ->setRowId('id');
     }
 
@@ -98,6 +102,10 @@ class TujuanPembelajaranDataTable extends DataTable
                 ->printable(false)
                 ->width(50),
             Column::make('keterangan')
+                ->exportable(true)
+                ->printable(true)
+                ->width(50),
+            Column::make('mapel_id')
                 ->exportable(true)
                 ->printable(true)
                 ->width(50),

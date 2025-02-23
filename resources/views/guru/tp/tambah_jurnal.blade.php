@@ -27,9 +27,11 @@
                 <div class="card-body">
                     <form id="myForm" method="post" action="{{route('simpan.jurnal.guru')}}" enctype="multipart/form-data">
                         @csrf
+                        <input name="tp_id" type="hidden" value="{{$tp->id}}">
                         <div class="mb-3 form-group">
                             <label class="form-label">Tujuan Pembelajaran: </label>
                             <input disabled type="text" class="form-control" name="nama_bengkel" value="{{$tp->nama}}">
+                            
                         </div>
                         <div class="mb-3 form-group">
                             <label class="form-label">Jurnal Pembelajaran:</label>

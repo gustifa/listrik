@@ -75,7 +75,8 @@ class JurnalController extends Controller
         $siswa_id = $request->siswa_id;
         $kehadiran = $request->kehadiran;
         $jadwal = $request->jadwal_id;
-        $tp = $request->tp_id;
+        $tp_id = $request->tp_id;
+        //dd($id);
         $guru_id = Auth::user()->id;
         if($siswa_id == !NULL){
             $countsiswa_id = count($siswa_id);
@@ -83,7 +84,7 @@ class JurnalController extends Controller
                 $jurnal = new Jurnal();
                 $jurnal->siswa_id = $request->siswa_id[$i];
                 $jurnal->kehadiran = $request->kehadiran[$i];
-                $jurnal->tp_id = $tp;
+                $jurnal->tp_id = $tp_id;
                 $jurnal->guru_id = $guru_id;
                 $jurnal->jadwal_id = $jadwal;
                 $jurnal->created_at = Carbon::now();
@@ -123,16 +124,7 @@ class JurnalController extends Controller
     }
 
     public function ViewJurnal($id){
-        // dd($id);
-        // $tp_id = TujuanPembelajaran::find($id);
-        // dd($tp_id);
-        //$id_jurnal = $tp_id->implode('id');
-        //dd($jurnal);
-        // $jurnal = Jurnal::find($id_jurnal);
         $jurnal = Jurnal::where('tp_id', $id)->get();
-
-        // dd($jurnal);
-        
         return view('guru.jurnal.view_jurnal', compact('jurnal'));
     }
 }
