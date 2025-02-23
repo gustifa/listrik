@@ -410,7 +410,7 @@ Route::middleware(['auth','jenis_user:guru'])->group(function(){
     Route::controller(JurnalController::class)->group(function(){
         Route::get('/guru/jurnal/all', 'SemuaJurnalGuru')->name('lihat.jurnal.guru');
         Route::get('/guru/jurnal/tambah', 'TambahJurnalGuru')->name('tambah.jurnal.guru');
-        Route::get('/guru/jurnal/edit/{id}', 'EditJurnalGuru')->name('edit.jurnal.guru');
+        Route::get('/guru/jurnal/edit/{tp}', 'EditJurnalGuru')->name('edit.jurnal.guru');
         Route::post('/guru/jurnal/simpan', 'SimpanJurnalGuru')->name('simpan.jurnal.guru');
         Route::post('/guru/jurnal/update', 'UpdateJurnalGuru')->name('update.jurnal.guru');
         Route::post('/guru/update/jurnal/status', 'UpdateJurnalGuruStatus')->name('update.jurnal.guru.status');

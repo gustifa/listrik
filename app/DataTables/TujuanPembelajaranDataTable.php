@@ -25,7 +25,7 @@ class TujuanPembelajaranDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
                 $editBtn = "
-                            <a href='".route('edit.tp.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-pencil'></i></a>
+                            <a href='".route('edit.jurnal.guru', $query->id)."' class='btn btn-primary'><i class='bx bx-pencil'></i></a>
                             ";
                 $deletetBtn = "
                             <a href='' id='delete' class='btn btn-danger ml-2 delete-item'><i class='bx bx-trash'></i></a>
