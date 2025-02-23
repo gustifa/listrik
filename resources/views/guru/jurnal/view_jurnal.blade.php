@@ -70,7 +70,7 @@
                             <td>{{$item->updated_at}}</td>
                             <td>
                             
-                                <a href="" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
+                                <a href="{{route('edit.jurnal.guru', $item->id)}}" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
                         
                             </td>
                         </tr>
