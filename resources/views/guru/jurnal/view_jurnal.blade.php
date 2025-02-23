@@ -40,6 +40,8 @@
                             <th style="width: 5px;">No</th>
                             <th>Nama Pengguna</th>
                             <th>Kehadiran</th>
+                            <th>dibuat</th>
+                            <th>diperbaharui</th>
                             
                            
                             
@@ -63,6 +65,8 @@
 
                             @endif
                             </td>
+                            <td>{{$item->created_at}}</td>
+                            <td>{{$item->updated_at}}</td>
                         </tr>
                         @endforeach
                     </tbody>
