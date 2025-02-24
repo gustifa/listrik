@@ -43,6 +43,17 @@ class TujuanPembelajaranDataTable extends DataTable
                 return $addBtn.$detailBtn.$editBtn.$deletetBtn;
             })
 
+            ->addColumn('id', function($query){
+
+     
+                $addBtn = "
+                        <i class='bx bx-user'></i>
+                        ";
+
+            
+            return $addBtn;
+        })
+
             // ->addColumn('no', function($query){
             //     $key = 0;
             //     foreach ($query as $key => $editBtn) {
@@ -55,7 +66,7 @@ class TujuanPembelajaranDataTable extends DataTable
                 $mapel = $query->mapel->nama_mapel;
                 return  $mapel;
             })
-            ->rawColumns(['nama', 'action', 'mapel'])
+            ->rawColumns(['nama', 'action', 'mapel', 'id'])
             ->setRowId('id');
     }
 
