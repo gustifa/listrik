@@ -117,7 +117,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Jurusan
     Route::controller(JurusanController::class)->group(function(){
-        Route::get('/jurusan/all', 'SemuaJurusan')->name('semua.jurusan');
+        Route::get('/jurusan', 'SemuaJurusan')->name('semua.jurusan');
         Route::get('/jurusan/tambah', 'TambahJurusan')->name('tambah.jurusan');
         Route::get('/jurusan/edit/{id}', 'EditJurusan')->name('edit.jurusan');
         Route::post('/jurusan/simpan', 'SimpanJurusan')->name('simpan.jurusan');
@@ -126,7 +126,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Kelas
     Route::controller(KelasController::class)->group(function(){
-        Route::get('/kelas/all', 'SemuaKelas')->name('semua.kelas');
+        Route::get('/kelas', 'SemuaKelas')->name('semua.kelas');
         Route::get('/kelas/tambah', 'TambahKelas')->name('tambah.kelas');
         Route::get('/kelas/edit/{id}', 'EditKelas')->name('edit.kelas');
         Route::post('/kelas/simpan', 'SimpanKelas')->name('simpan.kelas');
@@ -135,7 +135,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Rombel
     Route::controller(RombelController::class)->group(function(){
-        Route::get('/rombel/all', 'SemuaRombel')->name('semua.rombel');
+        Route::get('/rombel', 'SemuaRombel')->name('semua.rombel');
         Route::get('/rombel/tambah', 'TambahRombel')->name('tambah.rombel');
         Route::get('/rombel/edit/{id}', 'EditRombel')->name('edit.rombel');
         Route::get('/rombel/{id}', 'DetailRombel')->name('detail.rombel');
@@ -153,7 +153,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Group
     Route::controller(GroupController::class)->group(function(){
-        Route::get('/group/all', 'SemuaGroup')->name('semua.group');
+        Route::get('/group', 'SemuaGroup')->name('semua.group');
         Route::get('/group/tambah', 'TambahGroup')->name('tambah.group');
         Route::get('/group/edit/{id}', 'EditGroupl')->name('edit.group');
         Route::post('/group/simpan', 'SimpanGroup')->name('simpan.group');
@@ -162,7 +162,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Waktu
     Route::controller(WaktuController::class)->group(function(){
-        Route::get('/waktu/all', 'SemuaWaktu')->name('semua.waktu');
+        Route::get('/waktu', 'SemuaWaktu')->name('semua.waktu');
         Route::get('/waktu/tambah', 'TambahWaktu')->name('tambah.waktu');
         Route::get('/waktu/edit/{id}', 'EditWaktu')->name('edit.waktu');
         Route::post('/waktu/simpan', 'SimpanWaktu')->name('simpan.waktu');
@@ -172,7 +172,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Mapel
     Route::controller(MapelController::class)->group(function(){
-        Route::get('/mapel/all', 'SemuaMapel')->name('semua.mapel');
+        Route::get('/mapel', 'SemuaMapel')->name('semua.mapel');
         Route::get('/mapel/tambah', 'TambahMapel')->name('tambah.mapel');
         Route::get('/mapel/edit/{id}', 'EditMapel')->name('edit.mapel');
         Route::post('/mapel/simpan', 'SimpanMapel')->name('simpan.mapel');
@@ -189,7 +189,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Bengkel
     Route::controller(BengkelController::class)->group(function(){
-        Route::get('/bengkel/all', 'SemuaBengkel')->name('semua.bengkel');
+        Route::get('/bengkel', 'SemuaBengkel')->name('semua.bengkel');
         Route::get('/bengkel/tambah', 'TambahBengkel')->name('tambah.bengkel');
         Route::get('/bengkel/edit/{id}', 'EditBengkel')->name('edit.bengkel');
         Route::post('/bengkel/simpan', 'SimpanBengkel')->name('simpan.bengkel');
@@ -204,7 +204,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Tahun Pelajaran
     Route::controller(TahunPelajaranController::class)->group(function(){
-        Route::get('/tahun-pelajaran/all', 'SemuaTahunPelajaran')->name('semua.tahun.pelajaran');
+        Route::get('/tahun-pelajaran', 'SemuaTahunPelajaran')->name('semua.tahun.pelajaran');
         Route::get('/tahun-pelajaran/tambah', 'TambahTahunPelajaran')->name('tambah.tahun.pelajaran');
         Route::get('/tahun-pelajaran/edit/{id}', 'EditTahunPelajaran')->name('edit.tahun.pelajaran');
         Route::post('/tahun-pelajaran/simpan', 'SimpanTahunPelajaran')->name('simpan.tahun.pelajaran');
