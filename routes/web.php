@@ -110,7 +110,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Sekolah
     Route::controller(SekolahController::class)->group(function(){
-        Route::get('/sekolah/all', 'ProfileSekolah')->name('profile.sekolah');
+        Route::get('/sekolah', 'ProfileSekolah')->name('profile.sekolah');
         Route::get('/sekolah/edit/{id}', 'EditProfileSekolah')->name('edit.profile.sekolah');
         Route::post('/sekolah/update', 'UpdateProfileSekolah')->name('update.profile.sekolah');
     });

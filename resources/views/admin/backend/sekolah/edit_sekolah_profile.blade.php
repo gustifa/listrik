@@ -93,11 +93,19 @@
                             <img id ="showImage"src="{{ asset($sekolah->logo_sekolah)}}" alt="{{$sekolah->logo_sekolah}}" class="p-1 rounded-circle bg-primary" width="150">
                         </div>
 
+                        <div class="form-group col-md-12">
+                            <label for="input3" class="form-label">Logo Provinsi</label>
+                            <input type="file" class="form-control" name="logo_provinsi" id="image1"  />
+                        </div>
+                        <div class="col-md-12">
+                            <img id ="showImage1"src="{{ asset($sekolah->logo_provinsi)}}" alt="{{$sekolah->logo_provinsi}}" class="p-1 rounded-circle bg-primary" width="150">
+                        </div>
+
 
 
                         <div class="col-md-12">
                             <div class="gap-3 d-md-flex d-grid align-items-center">
-                                <button type="submit" class="px-4 btn btn-primary">Simpan</button>
+                                <button type="submit" class="px-4 btn btn-primary"><i class="bx bx-save"></i>Update</button>
                                 <!-- {{-- <button type="button" class="px-4 btn btn-light">Reset</button> --}} -->
                             </div>
                         </div>
@@ -149,6 +157,17 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$('#showImage').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(e.target.files['0']);
+		})
+
+	});
+
+    $(document).ready(function(){
+		$('#image1').change(function(e){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#showImage1').attr('src',e.target.result);
 			}
 			reader.readAsDataURL(e.target.files['0']);
 		})
