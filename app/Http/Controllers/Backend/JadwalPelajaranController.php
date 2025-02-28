@@ -131,7 +131,27 @@ class JadwalPelajaranController extends Controller
         );
         return redirect()->route('lihat.jadwal.guru')->with($notification);
 
+    }
 
+    public function DeleteJadwal($id){
 
+        $jadwal = JadwalPelajaran::find($id);
+
+        if($jadwal->status != '1'){
+            $jadwal_pelajaran = JadwalPelajaran::find($id)->delete();
+            $notification = array(
+                'message' => 'Jadwal Berhasil dihapus',
+                'alert-type' => 'success',
+            );
+            return redirect()->route('semua.jadwal')->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'Jadwal Aktif, tidak bisa dihapus',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('semua.jadwal')->with($notification);
+        }
+
+        
     }
 }

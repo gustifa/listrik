@@ -226,7 +226,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Jadwal
     Route::controller(JadwalPelajaranController::class)->group(function(){
-        Route::get('/jadwal/all', 'SemuaJadwal')->name('semua.jadwal');
+        Route::get('/jadwal', 'SemuaJadwal')->name('semua.jadwal');
         Route::get('/jadwal/tambah', 'TambahJadwal')->name('tambah.jadwal');
         Route::get('/jadwal/edit/{id}', 'EditJadwal')->name('edit.jadwal');
         Route::post('/jadwal/simpan', 'SimpanJadwal')->name('simpan.jadwal');
