@@ -115,4 +115,100 @@ class ProkaController extends Controller
          }
 
     }
+
+    public function EditProka($id){
+        $proka = Proka::find($id);
+        // $user = DB::table('prokas')
+        //     ->rightjoin('users', 'prokas.ka_proka_id', '=', 'users.id')
+        //     ->where('jenis_user', 'guru')
+        //     ->whereNull('prokas.ka_proka_id')
+        //     ->get();
+
+        $user = User::where('jenis_user', 'guru')->get();
+
+        return view('admin.backend.proka.edit_proka', compact('user', 'proka'));   
+    }
+
+    public function UpdateProka(Request $request){
+        $id = $request->id;
+        //dd($id);
+        $data = Proka::find($id);
+        $logo_proka = $request->file('logo_proka');
+        if($logo_proka){
+            @unlink(public_path($data->logo_proka));
+            $manager = new ImageManager(new Driver());
+            $image_gen_logo_proka = hexdec(uniqid()).'.'.$request->file('logo_proka')->getClientOriginalExtension();
+            $img = $manager->read($request->file('logo_proka'));
+            $img = $img->resize(370,370);
+            $img->toPng()->save(base_path('public/upload/logo_proka/'.$image_gen_logo_proka));
+            $save_url_logo_proka = 'upload/logo_proka/'.$image_gen_logo_proka;
+            Proka::find($id)->update([
+                'nama_proka' => strtoupper($request->nama_proka),
+                'ka_proka_id' => $request->ka_proka_id,
+                'kode_proka' => strtoupper($request->kode_proka),
+                'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
+                'logo_proka' => $save_url_logo_proka,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = array(
+                'message' => 'Logo dan Data Proka Berhasil diganti',
+                'alert-type' => 'success',
+            );
+            return redirect()->route('semua.proka')->with($notification);
+         }else{
+            Proka::find($id)->update([
+                'nama_proka' => strtoupper($request->nama_proka),
+                'ka_proka_id' => $request->ka_proka_id,
+                'kode_proka' => strtoupper($request->kode_proka),
+                'slug_proka' => strtolower(str_replace(' ', '-',$request->slug_proka)),
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = array(
+                'message' => 'Data Proka Berhasil diganti',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('semua.proka')->with($notification);
+         }
+
+    }
+
+    public function UpdateProkaStatus(Request $request){
+        $prokaId = $request->input('proka');
+        $isChecked = $request->input('is_checked', 0);
+        $proka = Proka::find($prokaId);
+        if ($proka) {
+            $proka->status =  $isChecked;
+            $proka->save();
+        }
+        return response()->json(['message'=>'Proka Berhasil diganti']);
+
+    }
+
+    public function DeleteProka($id){
+
+        $proka = Proka::find($id);
+        if($proka->status != '1'){
+            $proka->delete();
+            @unlink(public_path($proka->logo_proka));
+
+            $notification = array(
+                'message' => 'Proka '.$proka->nama_proka. 'Berhasil dihapus',
+                'alert-type' => 'success',
+            );
+            return redirect()->route('semua.proka')->with($notification);
+        }else{
+            
+        $notification = array(
+            'message' => 'Proka '.$proka->nama_proka. 'Aktif, Gagal dihapus',
+            'alert-type' => 'error',
+        );
+        return redirect()->route('semua.proka')->with($notification);
+        }
+       
+
+    }
+
 }

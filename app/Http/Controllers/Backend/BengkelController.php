@@ -92,15 +92,26 @@ class BengkelController extends Controller
     }
 
     public function HapusBengkel($id){
+        $bengkel = Bengkel::find($id);
+        if($bengkel->status != '1'){
+            Bengkel::find($id)->delete();
 
-        Bengkel::find($id)->delete();
+            $notification = array(
+                'message' => 'Bengkel Berhasil dihapus',
+                'alert-type' => 'success',
+            );
+    
+            return redirect()->route('semua.bengkel')->with($notification); 
+        }else{
+            $notification = array(
+                'message' => 'Bengkel Gagal Dihapus',
+                'alert-type' => 'error',
+            );
+    
+            return redirect()->route('semua.bengkel')->with($notification);
+        }
 
-        $notification = array(
-            'message' => 'Bengkel Berhasil dihapus',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->route('semua.bengkel')->with($notification);
+        
     }
 
     public function CetakBengkel(){
@@ -153,4 +164,5 @@ class BengkelController extends Controller
 
     }
 
+    
 }

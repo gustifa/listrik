@@ -249,13 +249,15 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
 
     // Proka
     Route::controller(ProkaController::class)->group(function(){
-        Route::get('/proka/all', 'SemuaProka')->name('semua.proka');
+        Route::get('/proka', 'SemuaProka')->name('semua.proka');
         Route::get('/proka/tambah', 'TambahProka')->name('tambah.proka');
         Route::get('/proka/edit/{id}', 'EditProka')->name('edit.proka');
         Route::post('/proka/simpan', 'SimpanProka')->name('simpan.proka');
         Route::post('/proka/update', 'UpdateProka')->name('update.proka');
         Route::post('/update/proka/status', 'UpdateProkaStatus')->name('update.proka.status');
-        Route::get('/proka/delete/{id}', 'DeleteProka')->name('proka.hari');
+        Route::get('/proka/delete/{id}', 'DeleteProka')->name('delete.proka');
+        Route::post('/update/proka/status', 'UpdateProkaStatus')->name('update.proka.status');
+
     });
 
     // Hari

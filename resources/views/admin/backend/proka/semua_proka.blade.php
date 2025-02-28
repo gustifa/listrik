@@ -5,6 +5,12 @@
    Data Proka
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    .large-chexbox{
+        transform: scale(1.5);
+        /* margin-left: 2em; */
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -22,7 +28,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.proka')}}" class="btn btn-primary">Tambah Proka</a>
+        <a href="{{route('tambah.proka')}}" class="btn btn-primary"><i class="bx bx-plus"></i> Tambah Proka</a>
         <button type="button" class="btn btn-primary bx bx-plus" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
     </div>
     <div class="card">
@@ -31,11 +37,11 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th style="width: 5px;">No</th>
-                            <th>Logo Program Keahlian</th>
+                            <th style="width: 3px;">No</th>
+                            <th>Logo </th>
                             <th>Nama Proka</th>
-                            <th>Kode Proka</th>
                             <th>Ka. Proka</th>
+                            <th>Status</th>
                             <th style="width: 20px;">Action</th>
                         </tr>
                     </thead>
@@ -48,12 +54,17 @@
                                 <img src="{{(!empty($item->logo_proka)) ? url($item->logo_proka): url('upload/no_image.jpg')}}" alt="logo_proka" width="90" class="p-1 rounded-circle bg-primary">
                             </td>
                             
-                            <td>{{$item->nama_proka}}</td>
-                            <td>{{$item->kode_proka}}</td>
+                            <td>{{$item->nama_proka}} ({{$item->kode_proka}})</td>
                             <td>{{$item['ka_proka']['name']}}</td>
                             <td>
-                                <a href="{{route('edit.group',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
-                                {{-- <!-- <a href="{{route('delete.kelas',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a> --> --}}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-proka="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="{{route('edit.proka',$item->id)}}" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
+                                <a href="{{route('delete.proka',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -184,6 +195,7 @@
         });
     });
 
+    
 </script>
 
 <script type="text/javascript">
@@ -197,6 +209,33 @@
 		})
 
 	});
+
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var prokaId = $(this).data('proka');
+            var isChecked = $(this).is(':checked');
+
+            // send an ajax request to update status
+
+            $.ajax({
+                url: "{{ route('update.proka.status') }}",
+                method: "POST",
+                data: {
+                    proka : prokaId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    toastr.success(response.message);
+                },
+                error: function(){
+
+                }
+            });
+
+        });
+    });
+
 
 </script>
 
