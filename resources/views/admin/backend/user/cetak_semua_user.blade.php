@@ -43,7 +43,7 @@
             <th>Nama Pengguna</th>
             <th>Email</th>
             <th>Password</th>
-            <th>Jenis Pengguna</th>
+            <th>Role</th>
         </tr>
         @foreach ($users as $key=> $user)
         <tr>

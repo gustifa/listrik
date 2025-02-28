@@ -1,9 +1,14 @@
 <style>
     .sekolah{
-            line-height: 10px;
+            line-height: 10%;
         }
         .garis{
-            border: 1.5px solid;
+            border: 2.5px solid;
+            margin-top: -25px;
+        }
+
+        #jarak{
+          line-height: 10%;
         }
 </style>
 
@@ -12,6 +17,7 @@ $sekolah = App\Models\Sekolah::find(1);
 //dd($sekolah->logo_sekolah);
 @endphp
 
+<div id="">
 <table id="judul" class="sekolah">
 <tr>
 <td>
@@ -34,10 +40,11 @@ $sekolah = App\Models\Sekolah::find(1);
 </td>
 <td>
   <h2>
-    <img id ="showImageProvinsi"src="{{$sekolah->logo_provinsi}}" width="100">
+    <img id ="showImageProvinsi"src="{{$sekolah->logo_provinsi}}" width="80">
 
   </h2>
 </td>
 </tr>
 </table>
-<hr class="garis" />
+<hr class="garis" id="jarak" />
+</div>
