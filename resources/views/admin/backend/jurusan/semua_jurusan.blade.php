@@ -28,7 +28,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="mb-3">
-        <a href="{{route('tambah.jurusan')}}" class="btn btn-primary">Tambah Jurusan</a>
+        <a href="{{route('tambah.jurusan')}}" class="btn btn-primary"><i class="bx bx-plus"></i>Tambah Jurusan</a>
     </div>
     <div class="card">
         <div class="card-body">

@@ -156,11 +156,20 @@ class BengkelController extends Controller
         $bengkelId = $request->input('bengkel');
         $isChecked = $request->input('is_checked', 0);
         $bengkel = Bengkel::find($bengkelId);
-        if ($bengkel) {
-            $bengkel->status =  $isChecked;
-            $bengkel->save();
+        if($bengkel->status != '1'){
+            if ($bengkel) {
+                $bengkel->status =  $isChecked;
+                $bengkel->save();
+            }
+            return response()->json(['message'=>'Status Bengkel '.$bengkel->nama_bengkel. ' Berhasil diaktifkan']);
+        }else{
+            if ($bengkel) {
+                $bengkel->status =  $isChecked;
+                $bengkel->save();
+            }
+            return response()->json(['message'=>'Status Bengkel '.$bengkel->nama_bengkel. ' Berhasil dinonaktifkan']);
         }
-        return response()->json(['message'=>'Bengkel Berhasil diganti']);
+        
 
     }
 
