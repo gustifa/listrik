@@ -10,11 +10,14 @@
         #jarak{
           line-height: 10%;
         }
+        .judul-tulisan{
+          font-size: 14px;
+          margin-top: -25px;
+        }
 </style>
 
 @php
 $sekolah = App\Models\Sekolah::find(1);
-//dd($sekolah->logo_sekolah);
 @endphp
 
 <div id="">
@@ -30,11 +33,17 @@ $sekolah = App\Models\Sekolah::find(1);
   <h3>
     DINAS PROVINSI {{strtoupper($sekolah->provinsi)}}
   </h3>
+  <h3>
+    DINAS PENDIDIKAN
+  </h3>
   <h2>
     {{$sekolah->nama}}
   </h2>
-  <p>{{$sekolah->alamat}}</p>
-  <p>Email: {{$sekolah->email}}, Website: <a href="http://{{$sekolah->website}}" target="_blank">{{$sekolah->website}}</a>, </p>
+  <div class="judul-tulisan">
+    <p>{{$sekolah->alamat}}</p>
+    <p>Email: {{$sekolah->email}}, Website: <a href="http://{{$sekolah->website}}" target="_blank">{{$sekolah->website}}</a>, </p>
+  </div>
+  
 
 
 </td>
