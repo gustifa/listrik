@@ -122,6 +122,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/jurusan/edit/{id}', 'EditJurusan')->name('edit.jurusan');
         Route::post('/jurusan/simpan', 'SimpanJurusan')->name('simpan.jurusan');
         Route::post('/jurusan/update', 'UpdateJurusan')->name('update.jurusan');
+        Route::post('/update/jurusan/status', 'UpdateJurusanStatus')->name('update.jurusan.status');
     });
 
     // Kelas
