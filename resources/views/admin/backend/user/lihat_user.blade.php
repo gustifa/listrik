@@ -80,7 +80,7 @@
                             <td>
                                 <a href="{{route('cetak.per.user', $item->id)}}" class="btn btn-warning" title="Detail User" target="_blank"><i class="bx bx-detail"></i></a>
                                 <a href="{{route('cetak.per.user', $item->id)}}" class="btn btn-info" title="Print" target="_blank"><i class="lni lni-printer"></i></a>
-                                <a href="" class="btn btn-info" title="Edit"><i class="lni lni-pencil"></i></a>
+                                <a href="" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
                                 <a href="" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
                             </td>
                         </tr>
