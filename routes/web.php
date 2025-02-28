@@ -199,6 +199,7 @@ Route::middleware(['auth','jenis_user:admin'])->group(function(){
         Route::get('/bengkel/delete/{id}', 'HapusBengkel')->name('hapus.bengkel');
         Route::get('/bengkel/cetak', 'CetakBengkel')->name('cetak.bengkel');
         Route::get('/bengkel-cetak/{id}', 'CetakPerBengkel')->name('cetak.per.bengkel');
+        Route::post('/update/bengkel/status', 'UpdateBengkelStatus')->name('update.bengkel.status');
 
     });
 

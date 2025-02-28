@@ -4,6 +4,14 @@
 @section('title')
    Data Bengkel
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    .large-chexbox{
+        transform: scale(1.5);
+        /* margin-left: 2em; */
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -95,6 +103,7 @@
                             <th>Nama Bengkel</th>
                             <th>Kode Bengkel</th>
                             <th>Keterangan</th>
+                            <th>Status</th>
                             <th style="width: 30px;">Action</th>
                         </tr>
                     </thead>
@@ -106,9 +115,15 @@
                             <td>{{$item->kode_bengkel}}</td>
                             <td>{{$item->keterangan}}</td>
                             <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-bengkel="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
+                                </div>
+                            </td>
+                            <td>
                                 <a href="{{route('cetak.per.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-printer"></i></a>
-                                <a href="{{route('edit.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i></a>
-                                <a href="{{route('hapus.bengkel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
+                                <a href="{{route('edit.bengkel',$item->id)}}" class="btn btn-info" title="Edit"><i class="bx bx-edit"></i></a>
+                                <a href="{{route('hapus.bengkel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="bx bx-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -122,5 +137,34 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var bengkelId = $(this).data('bengkel');
+            var isChecked = $(this).is(':checked');
+
+            // send an ajax request to update status
+
+            $.ajax({
+                url: "{{ route('update.bengkel.status') }}",
+                method: "POST",
+                data: {
+                    bengkel : bengkelId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    toastr.success(response.message);
+                },
+                error: function(){
+
+                }
+            });
+
+        });
+    });
+</script>
+
 
 @endsection

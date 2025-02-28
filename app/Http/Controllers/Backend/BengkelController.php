@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BengkelImport;
 use Carbon\Carbon;
 use App\Models\Bengkel;
+use App\Models\Jurusan;
 use App\Models\Proka;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -34,6 +35,32 @@ class BengkelController extends Controller
 
         $notification = array(
             'message' => 'RMapel Berhasil ditambahkan',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('semua.bengkel')->with($notification);
+    }
+
+    public function EditBengkel($id){
+        $bengkel = Bengkel::find($id);
+        $proka = Proka::latest()->get();
+        $jurusan = Jurusan::all();
+        return view('admin.backend.bengkel.edit_bengkel', compact('bengkel', 'proka', 'jurusan'));
+    }
+
+    public function UpdateBengkel(Request $request){
+        $id = $request->id;
+        //dd($id);
+        Bengkel::find($id)->update([
+            'jurusan_id' => $request->jurusan_id,
+            'nama_bengkel' => $request->nama_bengkel,
+            'kode_bengkel' => $request->kode_bengkel,
+            'keterangan' => $request->keterangan,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Bengkel Berhasil Diperbaharui',
             'alert-type' => 'success',
         );
 
@@ -112,6 +139,18 @@ class BengkelController extends Controller
                     ->setPaper($customPaper, 'landscape');
 
         return $pdf->stream('bengkel '.$bengkel->nama_bengkel.'.pdf');
+    }
+
+    public function UpdateBengkelStatus(Request $request){
+        $bengkelId = $request->input('bengkel');
+        $isChecked = $request->input('is_checked', 0);
+        $bengkel = Bengkel::find($bengkelId);
+        if ($bengkel) {
+            $bengkel->status =  $isChecked;
+            $bengkel->save();
+        }
+        return response()->json(['message'=>'Bengkel Berhasil diganti']);
+
     }
 
 }

@@ -106,7 +106,7 @@
                             <th style="width: 5px;">No</th>
                             <th>Nama Mapel</th>
                             <th>Kode Jurusan</th>
-                            <th>Keterangan</th>
+                            <th>Status</th>
                             <th style="width: 20px;">Action</th>
                         </tr>
                     </thead>
@@ -116,14 +116,12 @@
                             <td>{{$key+1}}</td>
                             <td>{{$item->nama_mapel}}</td>
                             <td>{{$item->kode_mapel}}</td>
-                            <td>{{$item->kode_mapel}}</td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-mapel="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
                                     <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
                                 </div>
                             </td>
-                            <td>{{$item->keterangan}}</td>
                             <td>
                                 <a href="{{route('edit.mapel',$item->id)}}" class="btn btn-warning" title="Edit"><i class="bx bx-edit"></i></a>
                                 <a href="{{route('hapus.mapel',$item->id)}}" id="delete" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i></a>
