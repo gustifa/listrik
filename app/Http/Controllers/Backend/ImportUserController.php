@@ -23,6 +23,10 @@ class ImportUserController extends Controller
         // return $dataTable->render('admin.backend.user.lihat_user');
 
     }
+
+    public function userAll(UserDataTable $dataTable){
+        return $dataTable->render('admin.backend.user.all_user');
+    }
     // Test
     public function userMultiSelectSelect()
     {
@@ -199,13 +203,23 @@ class ImportUserController extends Controller
                     $user->save();
                 }
                 return response()->json(['message'=>'Pengguna <b class="text-dark">'.$user->name.' </b>Berhasil diaktifkan']); 
+                // $notification = array(
+                //     'message' => 'Kelas Berhasil ditambahkan',
+                //     'alert-type' => 'success',
+                // );
+                // return redirect()->back()->with($notification); 
             }else{
                 $user = User::find($userId);
                 if ($user) {
                     $user->status =  $isChecked;
                     $user->save();
                 }
-                return response()->json(['message'=>'Pengguna <b class="text-danger">'.$user->name.' </b>Berhasil dinonaktifkan']); 
+                return response()->json(['message'=>'Pengguna <b class="text-danger">'.$user->name.' </b>Berhasil dinonaktifkan']);
+                // $notification = array(
+                //     'message' => 'Kelas Berhasil ditambahkan',
+                //     'alert-type' => 'success',
+                // );
+                // return redirect()->back()->with($notification); 
             }
         }else{
             return response()->json(['message'=>'Anda Login sebagai <b class="text-danger">'.$name.' </b>Gagal Bro']);
